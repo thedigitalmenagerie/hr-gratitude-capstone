@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+#authButtonsHome {
+  #loggedInLogo {
+    width: 30em;
+  }
+  #loggedOutView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    #loggedOutLogo {
+      width: 40em;
+    }
+    #signIn {
+      background-color: #001859;
+      color: #F8CD4C;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      padding-left: 1em;
+      padding-right: 1em;
+      padding-top: .25em;
+      #signInButton {
+        width: 1em;
+      }
+    }
+  }
+}

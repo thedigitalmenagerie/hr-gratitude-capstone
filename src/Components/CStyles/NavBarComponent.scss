@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.NavBar {
+  background-color: #001859;
+}
+
+.navImg {
+  width: 1.75em;
+  margin-left: 1em;
+}
+
+#signOut {
+  background-color: #f8cd4c;
+  color: #001859;
+  border-radius: 5px;
+  font-family: 'Bebas Neue', cursive;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: .25em;
+  #signOutButton {
+    width: 1em;
+  }
+}
