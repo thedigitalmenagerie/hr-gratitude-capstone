@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import HomeView from '../Views/HomeView';
+import UsersView from '../Views/UsersView';
 
 const PrivateRoute = ({
   component: Component,
@@ -28,6 +29,13 @@ export default function Routes({
       <Switch>
         <Route exact path='/'
         component={() => <HomeView
+        user={user}
+        setUser={setUser}
+        />}
+        user={user}
+        />
+        <Route exact path='/userView'
+        component={() => <UsersView
         user={user}
         setUser={setUser}
         />}

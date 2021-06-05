@@ -18,6 +18,7 @@ function App() {
           profileImage: authed.photoURL,
           uid: authed.uid,
           user: authed.email.split('@')[0],
+          userEmail: authed.email,
         };
         setUser(userInfoObj);
         getSpecificUser(userInfoObj).then((response) => {
