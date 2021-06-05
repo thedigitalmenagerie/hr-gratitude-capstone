@@ -27,7 +27,6 @@ const addUser = (user) => new Promise((resolve, reject) => {
 });
 
 export {
-  // getCurrentUserUid,
   getUser,
   getSpecificUser,
   addUser
