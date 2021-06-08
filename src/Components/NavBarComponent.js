@@ -51,7 +51,14 @@ const NavBar = ({ user }) => {
             && <NavItem id="authButtons">
               {
                 user
-                  ? <button id="signOut" onClick={signOutUser}><img id="signOutButton" src={signOut}></img>  SIGN OUT</button>
+                  ? <div className="loggedInRight">
+                      <img className="loggedInProfilePic" src={user.profileImage}></img>
+                      <div className="wordInfo">
+                        <div>{user.fullName}</div>
+                        <div>{user.userEmail}</div>
+                      </div>
+                      <button id="signOut" onClick={signOutUser}><img id="signOutButton" src={signOut}></img>  SIGN OUT</button>
+                    </div>
                   : <div></div>
               }
             </NavItem>

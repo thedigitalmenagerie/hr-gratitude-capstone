@@ -4,7 +4,6 @@ import { signInUser } from '../Helpers/Authorization';
 import gratitude from '../Assets/gratitudeLogo.png';
 import signIn from '../Assets/signOut.png';
 import './VStyles/HomeView.scss';
-import SelfCardComponent from '../Components/SelfCardComponent';
 
 export default function HomeView({
   user,
@@ -17,14 +16,7 @@ export default function HomeView({
           && <div id="authButtonsHome">
             {
               user
-                ? <div className="loggedInHomeView">
-                    <div className="leftLoggedIn">
-                      <SelfCardComponent user={user}/>
-                    </div>
-                    <div className="rightLoggedIn">
-                      <img id="loggedInLogo" src={gratitude}></img>
-                    </div>
-                  </div>
+                ? <img id="loggedInLogo" src={gratitude}></img>
                 : <div id="loggedOutView">
                     <img id="loggedOutLogo" src={gratitude}></img>
                     <button id="signIn" onClick={signInUser}>SIGN IN <img id="signInButton" src={signIn}></img></button>
