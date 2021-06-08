@@ -20,6 +20,7 @@ PrivateRoute.propTypes = {
   user: PropTypes.any,
   setUser: PropTypes.func,
 };
+
 export default function Routes({
   user,
   setUser,

@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 #authButtonsHome {
-  #loggedInLogo {
-    width: 30em;
+  .loggedInHomeView {
+    display: flex;
+    flex-flow: row;
+    width: auto;
+    .leftLoggedIn {
+      width: 6em;
+      background-color: #F8CD4C;
+    }
+    .rightLoggedIn {
+      #loggedInLogo {
+      width: 20em;
+      }
+    }
   }
   #loggedOutView {
     display: flex;

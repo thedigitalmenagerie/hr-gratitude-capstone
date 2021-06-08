@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { addUser, getSpecificUser } from '../Helpers/Data/UserData';
+import { addUser, getLoggedInUser, getSpecificUser } from '../Helpers/Data/UserData';
 import NavBar from '../Components/NavBarComponent';
 import Routes from '../Helpers/Routes';
 import './App.scss';
@@ -24,6 +24,7 @@ function App() {
         getSpecificUser(userInfoObj).then((response) => {
           if (Object.values(response.data).length === 0) {
             addUser(userInfoObj);
+            getLoggedInUser(userInfoObj);
           }
         });
       } else if ((user || user === null)) {
