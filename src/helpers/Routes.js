@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import HomeView from '../Views/HomeView';
 import UsersView from '../Views/UsersView';
+import CategoryView from '../Views/CategoryView';
 
 const PrivateRoute = ({
   component: Component,
@@ -30,6 +31,13 @@ export default function Routes({
       <Switch>
         <Route exact path='/'
         component={() => <HomeView
+        user={user}
+        setUser={setUser}
+        />}
+        user={user}
+        />
+        <Route exact path='/myCategories'
+        component={() => <CategoryView
         user={user}
         setUser={setUser}
         />}
