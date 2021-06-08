@@ -52,7 +52,6 @@ const UserCards = ({
                 { user
                   ? <div>
                       <button className="addUserAsFriend" onClick={() => handleClick('addFriend')}>Friend</button>
-                      <button className="addUserAsCloseFriend">Close Friend</button>
                         <div>
                           {editingUsers && <FriendForm
                             FriendFormTitle='Add Friend'

@@ -35,6 +35,9 @@ export default function Routes({
         />}
         user={user}
         />
+        <Route exact path='/friendView'
+        user={user}
+        />
         <Route exact path='/userView'
         component={() => <UsersView
         user={user}

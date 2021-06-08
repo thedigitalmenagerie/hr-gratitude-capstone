@@ -29,9 +29,21 @@ const addUser = (user) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
+const addFriend = (user) => new Promise((resolve, reject) => {
+  axios.post(`${DBURL}/friends.json`, user)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${DBURL}/friends/${response.data.name}.json`, body)
+        .then(() => {
+          getSpecificUser().then((friendArray) => resolve(friendArray));
+        });
+    }).catch((error) => reject(error));
+});
+
 export {
   getLoggedInUser,
   getUser,
   getSpecificUser,
-  addUser
+  addUser,
+  addFriend,
 };

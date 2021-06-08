@@ -16,6 +16,7 @@ import category from '../Assets/category.png';
 import giftView from '../Assets/giftView.png';
 import userView from '../Assets/userView.png';
 import signOut from '../Assets/signInBlue.png';
+import friend from '../Assets/friend.png';
 import './CStyles/NavBarComponent.scss';
 
 const NavBar = ({ user }) => {
@@ -41,6 +42,9 @@ const NavBar = ({ user }) => {
           <NavItem>
            <Link className="nav-link" to="/myGifts"><img className="navImg" src={giftView}></img></Link>
           </NavItem>
+          <NavItem>
+            <Link className="nav-link" to="/friendView"><img className="navImg" src={friend}></img></Link>
+         </NavItem>
           <NavItem>
             <Link className="nav-link" to="/userView"><img className="navImg" src={userView}></img></Link>
          </NavItem>
