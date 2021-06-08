@@ -40,7 +40,7 @@ const NavBar = ({ user }) => {
             <Link className="nav-link" to="/myCategories"><img className="navImg" src={category}></img></Link>
           </NavItem>
           <NavItem>
-           <Link className="nav-link" to="/myGifts"><img className="navImg" src={giftView}></img></Link>
+           <Link className="nav-link" to="/myItems"><img className="navImg" src={giftView}></img></Link>
           </NavItem>
           <NavItem>
             <Link className="nav-link" to="/friendView"><img className="navImg" src={friend}></img></Link>

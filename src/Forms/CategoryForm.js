@@ -9,14 +9,16 @@ const CategoryForm = ({
   categoryName,
   categoryImage,
   categoryDescription,
-  uidKey
+  uidKey,
+  friendsOnly
 }) => {
   const [category, setCategory] = useState({
     categoryName: categoryName || '',
     categoryImage: categoryImage || '',
     categoryDescription: categoryDescription || '',
     firebaseKey: firebaseKey || null,
-    uidKey: uidKey || ''
+    uidKey: uidKey || '',
+    friendsOnly: friendsOnly || true,
   });
 
   const handleInputChange = (e) => {
@@ -38,7 +40,8 @@ const CategoryForm = ({
         categoryImage: '',
         categoryDescription: '',
         firebaseKey: null,
-        uidKey: ''
+        uidKey: '',
+        friendsOnly: true,
       });
     }
   };
@@ -90,6 +93,7 @@ CategoryForm.propTypes = {
   categoryName: PropTypes.string,
   categoryImage: PropTypes.string,
   categoryDescription: PropTypes.string,
+  friendsOnly: PropTypes.boolean,
   uidKey: PropTypes.string,
   category: PropTypes.any,
 };

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import HomeView from '../Views/HomeView';
 import UsersView from '../Views/UsersView';
 import CategoryView from '../Views/CategoryView';
+import ItemView from '../Views/ItemView';
 
 const PrivateRoute = ({
   component: Component,
@@ -38,6 +39,13 @@ export default function Routes({
         />
         <Route exact path='/myCategories'
         component={() => <CategoryView
+        user={user}
+        setUser={setUser}
+        />}
+        user={user}
+        />
+        <Route exact path='/myItems'
+        component={() => <ItemView
         user={user}
         setUser={setUser}
         />}

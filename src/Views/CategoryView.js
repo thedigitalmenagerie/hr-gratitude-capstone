@@ -32,6 +32,7 @@ export default function CategoryView({
             categoryName={categoryInfo.categoryName}
             categoryDescription={categoryInfo.categoryDescription}
             uidKey={categoryInfo.uidKey}
+            friendsOnly={categoryInfo.friendsOnly}
             setCategories={setCategories}
             user={user}
             setUser={setUser}

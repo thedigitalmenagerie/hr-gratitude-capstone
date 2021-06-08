@@ -16,6 +16,7 @@ const CategoryCards = ({
   categoryImage,
   categoryDescription,
   uidKey,
+  friendsOnly,
   user,
   setUser,
 }) => {
@@ -45,6 +46,7 @@ const CategoryCards = ({
           <div className="col-5 right">
               <CardTitle tag="h5" className="name">{categoryName}</CardTitle>
               <CardText id="area">{categoryDescription}</CardText>
+              <CardText id="area">{friendsOnly}</CardText>
               <div>
                 <button id="deleteCategory" onClick={() => handleClick('delete')}>Delete Category</button>
                 <button id="editCategory" onClick={() => handleClick('edit')}>
@@ -59,6 +61,7 @@ const CategoryCards = ({
                   categoryName={categoryName}
                   categoryDescription={categoryDescription}
                   uidKey={uidKey}
+                  friendsOnly={friendsOnly}
                   setCategories={setCategories}
                   user={user}
                   setUser={setUser}
@@ -79,6 +82,7 @@ CategoryCards.propTypes = {
   categoryName: PropTypes.string.isRequired,
   categoryImage: PropTypes.string.isRequired,
   categoryDescription: PropTypes.string.isRequired,
+  friendsOnly: PropTypes.boolean,
   uidKey: PropTypes.string.isRequired
 };
 
