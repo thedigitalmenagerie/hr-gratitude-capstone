@@ -8,7 +8,8 @@ const EventForm = ({
   eventName,
   eventDate,
   eventDescription,
-  uidKey,
+  uid,
+  user,
   setEvents,
 }) => {
   const [event, setEvent] = useState({
@@ -16,7 +17,7 @@ const EventForm = ({
     eventDate: eventDate || '',
     eventDescription: eventDescription || '',
     firebaseKey: firebaseKey || null,
-    uidKey: uidKey || '',
+    uid: uid || user.uid,
   });
 
   const handleInputChange = (e) => {
@@ -38,7 +39,7 @@ const EventForm = ({
         eventDate: '',
         eventDescription: '',
         firebaseKey: null,
-        uidKey: '',
+        uid: '',
       });
     }
   };
@@ -91,7 +92,8 @@ EventForm.propTypes = {
   eventDate: PropTypes.string,
   eventDescription: PropTypes.string,
   friendsOnly: PropTypes.boolean,
-  uidKey: PropTypes.any,
+  uid: PropTypes.any,
+  user: PropTypes.any,
 };
 
 export default EventForm;

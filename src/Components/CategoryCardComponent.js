@@ -15,7 +15,7 @@ const CategoryCards = ({
   categoryName,
   categoryImage,
   categoryDescription,
-  uidKey,
+  uid,
   friendsOnly,
   user,
   setUser,
@@ -38,7 +38,7 @@ const CategoryCards = ({
 
   return (
     <div className="categoryContainer">
-      <Card className= "categoryLeft" key={firebaseKey}>
+      <Card className= "categoryLeft" key={firebaseKey} id={uid}>
         <div className="row no-gutters">
           <div className="col-5">
             <CardImg className="categoryImg" src={categoryImage} alt="Honey-Rae Swan" />
@@ -60,7 +60,7 @@ const CategoryCards = ({
                   categoryImage={categoryImage}
                   categoryName={categoryName}
                   categoryDescription={categoryDescription}
-                  uidKey={uidKey}
+                  uid={uid}
                   friendsOnly={friendsOnly}
                   setCategories={setCategories}
                   user={user}
@@ -83,7 +83,7 @@ CategoryCards.propTypes = {
   categoryImage: PropTypes.string.isRequired,
   categoryDescription: PropTypes.string.isRequired,
   friendsOnly: PropTypes.boolean,
-  uidKey: PropTypes.string.isRequired
+  uid: PropTypes.string.isRequired
 };
 
 export default CategoryCards;

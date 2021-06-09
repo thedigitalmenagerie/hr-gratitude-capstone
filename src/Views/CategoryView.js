@@ -16,7 +16,7 @@ export default function CategoryView({
   };
 
   useEffect(() => {
-    getCategory().then((response) => setCategories(response));
+    getCategory(user.uid).then((response) => setCategories(response));
   }, []);
   return (
     <div className="categoryView">
@@ -31,7 +31,7 @@ export default function CategoryView({
             categoryImage={categoryInfo.categoryImage}
             categoryName={categoryInfo.categoryName}
             categoryDescription={categoryInfo.categoryDescription}
-            uidKey={categoryInfo.uidKey}
+            uid={categoryInfo.uid}
             friendsOnly={categoryInfo.friendsOnly}
             setCategories={setCategories}
             user={user}

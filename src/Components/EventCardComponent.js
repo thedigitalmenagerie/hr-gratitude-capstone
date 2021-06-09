@@ -14,7 +14,7 @@ const EventCards = ({
   eventName,
   eventDate,
   eventDescription,
-  uidKey,
+  uid,
   user,
   setUser,
 }) => {
@@ -36,7 +36,7 @@ const EventCards = ({
 
   return (
     <div className="eventContainer">
-      <Card className= "eventLeft" key={firebaseKey}>
+      <Card className= "eventLeft" key={firebaseKey} id={uid}>
         <div className="row no-gutters">
           <div className="col-5 right">
               <CardTitle tag="h5" className="name">{eventName}</CardTitle>
@@ -55,7 +55,7 @@ const EventCards = ({
                   eventDate={eventDate}
                   eventName={eventName}
                   eventDescription={eventDescription}
-                  uidKey={uidKey}
+                  uid={uid}
                   setEvents={setEvents}
                   user={user}
                   setUser={setUser}
@@ -76,7 +76,7 @@ EventCards.propTypes = {
   eventName: PropTypes.string.isRequired,
   eventDate: PropTypes.string.isRequired,
   eventDescription: PropTypes.string.isRequired,
-  uidKey: PropTypes.string.isRequired
+  uid: PropTypes.string.isRequired
 };
 
 export default EventCards;

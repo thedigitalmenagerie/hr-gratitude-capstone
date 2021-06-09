@@ -16,7 +16,7 @@ export default function ItemView({
   };
 
   useEffect(() => {
-    getEvent().then((response) => setEvents(response));
+    getEvent(user.uid).then((response) => setEvents(response));
   }, []);
   return (
     <div className="itemView">
@@ -31,7 +31,7 @@ export default function ItemView({
             eventName={eventInfo.eventName}
             eventDate={eventInfo.eventDate}
             eventDescription={eventInfo.eventDescription}
-            uidKey={eventInfo.uidKey}
+            uid={eventInfo.uid}
             setEvents={setEvents}
             user={user}
             setUser={setUser}

@@ -9,7 +9,8 @@ const CategoryForm = ({
   categoryName,
   categoryImage,
   categoryDescription,
-  uidKey,
+  uid,
+  user,
   friendsOnly
 }) => {
   const [category, setCategory] = useState({
@@ -17,7 +18,7 @@ const CategoryForm = ({
     categoryImage: categoryImage || '',
     categoryDescription: categoryDescription || '',
     firebaseKey: firebaseKey || null,
-    uidKey: uidKey || '',
+    uid: uid || user.uid,
     friendsOnly: friendsOnly || true,
   });
 
@@ -40,7 +41,7 @@ const CategoryForm = ({
         categoryImage: '',
         categoryDescription: '',
         firebaseKey: null,
-        uidKey: '',
+        uid: '',
         friendsOnly: true,
       });
     }
@@ -94,7 +95,8 @@ CategoryForm.propTypes = {
   categoryImage: PropTypes.string,
   categoryDescription: PropTypes.string,
   friendsOnly: PropTypes.boolean,
-  uidKey: PropTypes.string,
+  uid: PropTypes.string,
+  user: PropTypes.string,
   category: PropTypes.any,
 };
 

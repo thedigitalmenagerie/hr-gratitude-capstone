@@ -19,7 +19,7 @@ const CategoryCards = ({
   where,
   used,
   purchased,
-  uidKey,
+  uid,
   categoryKey,
   friendsOnly,
   user,
@@ -43,7 +43,7 @@ const CategoryCards = ({
 
   return (
     <div className="itemContainer">
-      <Card className= "itemLeft" key={firebaseKey}>
+      <Card className= "itemLeft" key={firebaseKey} id={uid}>
         <div className="row no-gutters">
           <div className="col-5">
             <CardImg className="itemImg" src={itemImage} alt="Honey-Rae Swan" />
@@ -69,7 +69,7 @@ const CategoryCards = ({
                   where={where}
                   used={used}
                   purchased={purchased}
-                  uidKey={uidKey}
+                  uid={uid}
                   categoryKey={categoryKey}
                   friendsOnly={friendsOnly}
                   setItems={setItems}
@@ -94,7 +94,7 @@ CategoryCards.propTypes = {
   where: PropTypes.string,
   used: PropTypes.boolean,
   purchased: PropTypes.boolean,
-  uidKey: PropTypes.string,
+  uid: PropTypes.string,
   categoryKey: PropTypes.string,
   friendsOnly: PropTypes.boolean,
   user: PropTypes.any,

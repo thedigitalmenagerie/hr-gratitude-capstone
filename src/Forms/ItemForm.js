@@ -13,7 +13,8 @@ const ItemForm = ({
   where,
   used,
   purchased,
-  uidKey,
+  uid,
+  user,
   categoryKey,
   friendsOnly
 }) => {
@@ -26,7 +27,7 @@ const ItemForm = ({
     used: used || false,
     purchased: purchased || false,
     firebaseKey: firebaseKey || null,
-    uidKey: uidKey || '',
+    uid: uid || user.uid,
     categoryKey: categoryKey || '',
     friendsOnly: friendsOnly || true,
   });
@@ -54,7 +55,7 @@ const ItemForm = ({
         used: false,
         purchased: false,
         firebaseKey: null,
-        uidKey: '',
+        uid: '',
         categoryKey: '',
         friendsOnly: true,
       });
@@ -146,9 +147,10 @@ ItemForm.propTypes = {
   where: PropTypes.string,
   used: PropTypes.boolean,
   purchased: PropTypes.boolean,
-  uidKey: PropTypes.string,
+  uid: PropTypes.string,
   categoryKey: PropTypes.string,
   friendsOnly: PropTypes.boolean,
+  user: PropTypes.any,
 };
 
 export default ItemForm;

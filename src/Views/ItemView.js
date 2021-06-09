@@ -16,7 +16,7 @@ export default function ItemView({
   };
 
   useEffect(() => {
-    getItem().then((response) => setItems(response));
+    getItem(user.uid).then((response) => setItems(response));
   }, []);
   return (
     <div className="itemView">
@@ -35,7 +35,7 @@ export default function ItemView({
             where={itemInfo.where}
             used={itemInfo.used}
             purchased={itemInfo.purchased}
-            uidKey={itemInfo.uidKey}
+            uid={itemInfo.uid}
             categoryKey={itemInfo.categoryKey}
             friendsOnly={itemInfo.friendsOnly}
             setItems={setItems}
