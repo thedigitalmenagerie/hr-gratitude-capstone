@@ -5,6 +5,7 @@ import HomeView from '../Views/HomeView';
 import UsersView from '../Views/UsersView';
 import CategoryView from '../Views/CategoryView';
 import ItemView from '../Views/ItemView';
+import EventView from '../Views/EventView';
 
 const PrivateRoute = ({
   component: Component,
@@ -32,6 +33,13 @@ export default function Routes({
       <Switch>
         <Route exact path='/'
         component={() => <HomeView
+        user={user}
+        setUser={setUser}
+        />}
+        user={user}
+        />
+        <Route exact path='/myEvents'
+        component={() => <EventView
         user={user}
         setUser={setUser}
         />}
