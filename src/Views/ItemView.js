@@ -5,8 +5,9 @@ import ItemForm from '../Forms/ItemForm';
 import ItemCards from '../Components/ItemCardComponent';
 
 export default function ItemView({
-  user,
   setUser,
+  user,
+  categories,
 }) {
   const [items, setItems] = useState([]);
   const [showAddItemForm, setShowAddItemForm] = useState(false);
@@ -36,6 +37,7 @@ export default function ItemView({
             used={itemInfo.used}
             purchased={itemInfo.purchased}
             uid={itemInfo.uid}
+            categories={categories}
             categoryKey={itemInfo.categoryKey}
             friendsOnly={itemInfo.friendsOnly}
             setItems={setItems}
@@ -62,4 +64,5 @@ export default function ItemView({
 ItemView.propTypes = {
   user: PropTypes.any,
   setUser: PropTypes.func,
+  categories: PropTypes.any,
 };

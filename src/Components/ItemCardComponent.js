@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import ItemForm from '../Forms/ItemForm';
 import { deleteItem } from '../Helpers/Data/ItemData';
 
-const CategoryCards = ({
+const ItemCards = ({
   setItems,
   firebaseKey,
   itemName,
@@ -23,7 +23,7 @@ const CategoryCards = ({
   categoryKey,
   friendsOnly,
   user,
-  setUser
+  setUser,
 }) => {
   const [editingItems, setEditingItems] = useState(false);
 
@@ -84,7 +84,7 @@ const CategoryCards = ({
   );
 };
 
-CategoryCards.propTypes = {
+ItemCards.propTypes = {
   setItems: PropTypes.any,
   firebaseKey: PropTypes.string,
   itemName: PropTypes.string,
@@ -101,4 +101,4 @@ CategoryCards.propTypes = {
   setUser: PropTypes.any,
 };
 
-export default CategoryCards;
+export default ItemCards;

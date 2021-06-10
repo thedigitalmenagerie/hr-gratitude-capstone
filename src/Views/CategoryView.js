@@ -5,8 +5,8 @@ import CategoryForm from '../Forms/CategoryForm';
 import CategoryCards from '../Components/CategoryCardComponent';
 
 export default function CategoryView({
-  user,
   setUser,
+  user,
 }) {
   const [categories, setCategories] = useState([]);
   const [showAddCategoryForm, setShowAddCategoryForm] = useState(false);
@@ -57,4 +57,6 @@ export default function CategoryView({
 CategoryView.propTypes = {
   user: PropTypes.any,
   setUser: PropTypes.func,
+  categories: PropTypes.any,
+  setCategories: PropTypes.func,
 };

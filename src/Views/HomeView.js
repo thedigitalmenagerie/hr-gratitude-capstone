@@ -8,7 +8,6 @@ import './VStyles/HomeView.scss';
 export default function HomeView({
   user,
 }) {
-  console.warn(user);
   return (
     <div>
       {

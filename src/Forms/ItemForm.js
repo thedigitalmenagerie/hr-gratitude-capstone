@@ -16,7 +16,7 @@ const ItemForm = ({
   uid,
   user,
   categoryKey,
-  friendsOnly
+  friendsOnly,
 }) => {
   const [item, setItem] = useState({
     itemName: itemName || '',
@@ -96,6 +96,20 @@ const ItemForm = ({
         onChange={handleInputChange}
       >
       </input>
+      {/* <label></label>
+        <input
+          type='select'
+          name='categoryKey'
+          onChange={handleInputChange}
+        >
+        </input>
+        <option hidden value=''>Select Category</option>
+          {categories.length && categories.map((...categoryInfo) => <option
+              key={categoryInfo.firebaseKey}
+              value={categoryInfo.firebaseKey}
+            >
+          {categoryInfo.categoryName}
+        </option>)} */}
       <label>Price:</label>
       <input
         name='price'
@@ -114,22 +128,21 @@ const ItemForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <label>
-          Used:
-          <input
-            name='used'
-            type='checkbox'
-            checked={item.used}
-            onChange={handleInputChange} />
-      </label>
-      <label>
-          Purchased:
-          <input
-            name='purchased'
-            type='checkbox'
-            checked={item.purchased}
-            onChange={handleInputChange} />
-        </label>
+      <label>Used:</label>
+        <input
+          name='used'
+          type='checkbox'
+          checked={item.used}
+          onChange={handleInputChange}
+        >
+        </input>
+      <label>Purchased:</label>
+        <input
+          name='purchased'
+          type='checkbox'
+          checked={item.purchased}
+          onChange={handleInputChange} >
+        </input>
       <button type="submit">Add Item</button>
     </form>
 
@@ -151,6 +164,10 @@ ItemForm.propTypes = {
   categoryKey: PropTypes.string,
   friendsOnly: PropTypes.boolean,
   user: PropTypes.any,
+  categories: PropTypes.any,
+  categoryName: PropTypes.any,
+  categoryImage: PropTypes.any,
+  categoryDescription: PropTypes.any,
 };
 
 export default ItemForm;

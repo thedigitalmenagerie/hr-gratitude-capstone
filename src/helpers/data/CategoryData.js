@@ -9,6 +9,12 @@ const getCategory = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleCategory = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${DBURL}/categories/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const addCategory = (categories, user) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/categories.json`, categories)
     .then((response) => {
@@ -34,6 +40,7 @@ const updateCategory = (categories, user) => new Promise((resolve, reject) => {
 
 export {
   getCategory,
+  getSingleCategory,
   addCategory,
   deleteCategory,
   updateCategory,

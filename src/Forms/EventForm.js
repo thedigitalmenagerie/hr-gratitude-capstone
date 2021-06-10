@@ -39,6 +39,7 @@ const EventForm = ({
         eventDate: '',
         eventDescription: '',
         firebaseKey: null,
+        categoryKey: '',
         uid: '',
       });
     }

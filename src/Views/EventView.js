@@ -5,8 +5,8 @@ import EventForm from '../Forms/EventForm';
 import EventCards from '../Components/EventCardComponent';
 
 export default function ItemView({
-  user,
   setUser,
+  user,
 }) {
   const [events, setEvents] = useState([]);
   const [showAddEventForm, setShowAddEventForm] = useState(false);
