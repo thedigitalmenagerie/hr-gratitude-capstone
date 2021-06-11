@@ -1,63 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.userCards {
+.userCardContainer {
   display: flex;
-  justify-content: center;
-  width: 20em;
-  background-color: #001859;
-  color: #f8cd4c;
-  border-radius: 10%;
-  .top {
-    display: flex;
-    width: 20em;
-    background-color: #001859;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    .left {
-      padding-top: 1em;
-      padding-left: 1em;
-      .profileImage {
-        border-radius: 100%;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  margin-top: 5em;
+  margin-left: 7em;
+    .userCards {
+      width: 20em;
+      background-color: #001859;
+      color: #f8cd4c;
+      border-radius: 10px;
+        .top {
+          display: flex;
+          width: 20em;
+          background-color: #001859;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        .left {
+          padding-top: 1em;
+          padding-left: 1em;
+          .profileImage {
+            border-radius: 100%;
+          }
+        }
+        .right {
+          padding-left: 2em;
+          padding-right: 1em;
+          padding-top: 2em;
+            .fullName {
+              font-family: 'Bebas Neue', cursive;
+            }
+            .userEmail {
+              font-family: 'Bebas Neue', cursive;
+            }
+        }
       }
-    }
-    .right {
-      padding-left: 2em;
-      padding-right: 1em;
-      padding-top: 2em;
-      .fullName {
-        font-family: 'Bebas Neue', cursive;
-      }
-      .userEmail {
-        font-family: 'Bebas Neue', cursive;
-      }
-    }
-  }
-  .bottom {
-    width: 20em;
-    background-color: #001859;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    .hiddenFriendContent {
-      margin-left: 7em;
-      padding-bottom: 2em;
-      .addUserAsFriend {
-        background-color: #f8cd4c;
-        color: #001859;
-        border-radius: 5px;
-        font-family: 'Bebas Neue', cursive;
-        padding-left: 1em;
-        padding-right: 1em;
-        padding-top: .25em;
-      }
-      .addUserAsCloseFriend {
-        background-color: #f8cd4c;
-        color: #001859;
-        border-radius: 5px;
-        font-family: 'Bebas Neue', cursive;
-        padding-left: 1em;
-        padding-right: 1em;
-        padding-top: .25em;
-      }
-    }
-  }
+      .bottom {
+        width: 20em;
+        background-color: #001859;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+          .hiddenFriendContent {
+            margin-left: 7em;
+            padding-bottom: 2em;
+              .addUserAsFriend {
+                background-color: #f8cd4c;
+                color: #001859;
+                border-radius: 5px;
+                font-family: 'Bebas Neue', cursive;
+                padding-left: 1em;
+                padding-right: 1em;
+                padding-top: .25em;
+              }
+              .addUserAsCloseFriend {
+                background-color: #f8cd4c;
+                color: #001859;
+                border-radius: 5px;
+                font-family: 'Bebas Neue', cursive;
+                padding-left: 1em;
+                padding-right: 1em;
+                padding-top: .25em;
+                }
+            }
+        }
+    } 
 }

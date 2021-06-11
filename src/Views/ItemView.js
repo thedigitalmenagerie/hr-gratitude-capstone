@@ -1,50 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getItem } from '../Helpers/Data/ItemData';
+import StackGrid from 'react-stack-grid';
 import ItemForm from '../Forms/ItemForm';
 import ItemCards from '../Components/ItemCardComponent';
+import './VStyles/ItemView.scss';
 
 export default function ItemView({
-  setUser,
   user,
+  setUser,
+  items,
+  setItems,
   categories,
 }) {
-  const [items, setItems] = useState([]);
   const [showAddItemForm, setShowAddItemForm] = useState(false);
 
   const handleClick = () => {
     setShowAddItemForm((prevState) => !prevState);
+    console.warn(categories);
   };
 
-  useEffect(() => {
-    getItem(user.uid).then((response) => setItems(response));
-  }, []);
   return (
     <div className="itemView">
       <div className="innerContainer">
         {!showAddItemForm
           ? <div>
+              <form action="/" method="get" className="searchItems">
+                <label htmlFor="header-search"></label>
+                <input
+                  type="text"
+                  id="header-search"
+                  placeholder="Search Your Items"
+                  name="s"
+                  className="input"
+                />
+                <button className="searchItemsButton" type="submit">Search</button>
+              </form>
             <button id="addItem" onClick={handleClick}>Add Item</button>
-            {items.map((itemInfo) => (
-          <ItemCards
-            key={itemInfo.firebaseKey}
-            firebaseKey={itemInfo.firebaseKey}
-            itemImage={itemInfo.itemImage}
-            itemName={itemInfo.itemName}
-            itemDescription={itemInfo.itemDescription}
-            price={itemInfo.price}
-            where={itemInfo.where}
-            used={itemInfo.used}
-            purchased={itemInfo.purchased}
-            uid={itemInfo.uid}
-            categories={categories}
-            categoryKey={itemInfo.categoryKey}
-            friendsOnly={itemInfo.friendsOnly}
-            setItems={setItems}
-            user={user}
-            setUser={setUser}
-          />
-            ))}
+            <StackGrid className="stackGridItems">
+              {items.map((itemInfo) => (
+                <ItemCards
+                key={itemInfo.firebaseKey}
+                {...itemInfo}
+                setItems={setItems}
+                setUser={setUser}
+                user={user}
+                categories={categories}
+              />
+              ))}
+            </StackGrid>
             </div>
           : <div>
               <button id="closeForm" onClick={handleClick}>Close Form</button>
@@ -53,6 +56,7 @@ export default function ItemView({
                 setItems={setItems}
                 user={user}
                 setUser={setUser}
+                categories={categories}
               />
             </div>
         }
@@ -62,7 +66,9 @@ export default function ItemView({
 }
 
 ItemView.propTypes = {
+  items: PropTypes.array,
   user: PropTypes.any,
   setUser: PropTypes.func,
-  categories: PropTypes.any,
+  categories: PropTypes.array,
+  setItems: PropTypes.func,
 };

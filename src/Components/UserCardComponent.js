@@ -35,6 +35,7 @@ const UserCards = ({
   };
 
   return (
+    <div className="userCardContainer">
       <Card className="userCards" key={firebaseKey}>
         <div className="top">
           <div className="left">
@@ -72,6 +73,8 @@ const UserCards = ({
           }
         </div>
       </Card>
+    </div>
+
   );
 };
 

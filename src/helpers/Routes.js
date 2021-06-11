@@ -6,6 +6,7 @@ import UsersView from '../Views/UsersView';
 import CategoryView from '../Views/CategoryView';
 import ItemView from '../Views/ItemView';
 import EventView from '../Views/EventView';
+import SingleCategoryView from '../Views/SingleCategoryView';
 
 const PrivateRoute = ({
   component: Component,
@@ -27,6 +28,10 @@ PrivateRoute.propTypes = {
 export default function Routes({
   user,
   setUser,
+  categories,
+  setCategories,
+  items,
+  setItems,
 }) {
   return (
     <div>
@@ -37,6 +42,7 @@ export default function Routes({
         setUser={setUser}
         />}
         user={user}
+        setUser={setUser}
         />
         <Route exact path='/myEvents'
         component={() => <EventView
@@ -44,23 +50,38 @@ export default function Routes({
         setUser={setUser}
         />}
         user={user}
+        setUser={setUser}
         />
         <Route exact path='/myCategories'
         component={() => <CategoryView
         user={user}
         setUser={setUser}
+        categories={categories}
+        setCategories={setCategories}
         />}
         user={user}
+        setUser={setUser}
         />
         <Route exact path='/myItems'
         component={() => <ItemView
         user={user}
         setUser={setUser}
+        categories={categories}
+        setCategories={setCategories}
+        items={items}
+        setItems={setItems}
         />}
         user={user}
+        setUser={setUser}
+        />
+        <Route
+          path='/boards/:id'
+          user={user}
+          component={() => <SingleCategoryView user={user} setUser={setUser}/>}
         />
         <Route exact path='/friendView'
         user={user}
+        setUser={setUser}
         />
         <Route exact path='/userView'
         component={() => <UsersView
@@ -68,6 +89,7 @@ export default function Routes({
         setUser={setUser}
         />}
         user={user}
+        setUser={setUser}
         />
       </Switch>
     </div>
@@ -77,4 +99,8 @@ export default function Routes({
 Routes.propTypes = {
   user: PropTypes.any,
   setUser: PropTypes.func,
+  categories: PropTypes.array,
+  setCategories: PropTypes.func,
+  items: PropTypes.array,
+  setItems: PropTypes.func,
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getEvent } from '../Helpers/Data/EventData';
 import EventForm from '../Forms/EventForm';
 import EventCards from '../Components/EventCardComponent';
+import './VStyles/EventView.scss';
 
 export default function ItemView({
   setUser,
@@ -19,10 +20,21 @@ export default function ItemView({
     getEvent(user.uid).then((response) => setEvents(response));
   }, []);
   return (
-    <div className="itemView">
+    <div className="eventView">
       <div className="innerContainer">
         {!showAddEventForm
           ? <div>
+              <form action="/" method="get" className="searchEvents">
+                <label htmlFor="header-search" className="label"></label>
+                <input
+                  type="text"
+                  id="header-search"
+                  placeholder="Search Your Events"
+                  name="s"
+                  className="input"
+                />
+                <button className="searchEventsButton" type="submit">Search</button>
+              </form>
             <button id="addEvent" onClick={handleClick}>Add Event</button>
             {events.map((eventInfo) => (
           <EventCards

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { updateCategory, addCategory } from '../Helpers/Data/CategoryData';
 
 const CategoryForm = ({
@@ -29,12 +30,16 @@ const CategoryForm = ({
     }));
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (category.firebaseKey) {
       updateCategory(category).then((categoryArray) => setCategories(categoryArray));
+      history.push('myCategories');
     } else {
       addCategory(category).then((categoryArray) => setCategories(categoryArray));
+      history.push('myCategories');
 
       setCategory({
         categoryName: '',
@@ -89,14 +94,14 @@ const CategoryForm = ({
 
 CategoryForm.propTypes = {
   categoryFormTitle: PropTypes.string.isRequired,
-  setCategories: PropTypes.string,
+  setCategories: PropTypes.func,
   firebaseKey: PropTypes.string,
   categoryName: PropTypes.string,
   categoryImage: PropTypes.string,
   categoryDescription: PropTypes.string,
-  friendsOnly: PropTypes.boolean,
+  friendsOnly: PropTypes.bool,
   uid: PropTypes.string,
-  user: PropTypes.string,
+  user: PropTypes.object,
   category: PropTypes.any,
 };
 

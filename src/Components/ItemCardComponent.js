@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import ItemForm from '../Forms/ItemForm';
 import { deleteItem } from '../Helpers/Data/ItemData';
+import './CStyles/ItemCardComponent.scss';
 
 const ItemCards = ({
   setItems,
@@ -24,8 +25,11 @@ const ItemCards = ({
   friendsOnly,
   user,
   setUser,
+  categoryName,
+  categories,
 }) => {
   const [editingItems, setEditingItems] = useState(false);
+  const [flip, setFlip] = useState();
 
   const handleClick = (type) => {
     switch (type) {
@@ -36,6 +40,9 @@ const ItemCards = ({
       case 'edit':
         setEditingItems((prevState) => !prevState);
         break;
+      case 'flip':
+        setFlip((prevState) => !prevState);
+        break;
       default:
         console.warn('Nothing selected');
     }
@@ -43,15 +50,15 @@ const ItemCards = ({
 
   return (
     <div className="itemContainer">
-      <Card className= "itemLeft" key={firebaseKey} id={uid}>
-        <div className="row no-gutters">
-          <div className="col-5">
-            <CardImg className="itemImg" src={itemImage} alt="Honey-Rae Swan" />
+            <Card className= "itemCard" key={firebaseKey} id={uid} flip={flip} flipDirection="horizontal">
+          <div className="front" key="front">
+          <CardImg className="itemImg" src={itemImage} alt="Honey-Rae Swan" />
           </div>
-          <div className="col-5 right">
-              <CardTitle tag="h5" className="name">{itemName}</CardTitle>
+          <div className="back" key="back">
+          <CardTitle tag="h5" className="name">{itemName}</CardTitle>
               <CardText id="area">{itemDescription}</CardText>
               <CardText id="area">{price}</CardText>
+              <CardText id="area">{categories.categoryName}</CardText>
               <div>
                 <button id="deleteItem" onClick={() => handleClick('delete')}>Delete Item</button>
                 <button id="editItem" onClick={() => handleClick('edit')}>
@@ -70,17 +77,19 @@ const ItemCards = ({
                   used={used}
                   purchased={purchased}
                   uid={uid}
+                  categoryName={categoryName}
                   categoryKey={categoryKey}
                   friendsOnly={friendsOnly}
                   setItems={setItems}
                   user={user}
                   setUser={setUser}
+                  categories={categories}
                 />}
               </div>
           </div>
-        </div>
       </Card>
     </div>
+
   );
 };
 
@@ -92,13 +101,15 @@ ItemCards.propTypes = {
   itemDescription: PropTypes.string,
   price: PropTypes.string,
   where: PropTypes.string,
-  used: PropTypes.boolean,
-  purchased: PropTypes.boolean,
+  used: PropTypes.bool,
+  purchased: PropTypes.bool,
   uid: PropTypes.string,
+  categoryName: PropTypes.string,
   categoryKey: PropTypes.string,
-  friendsOnly: PropTypes.boolean,
+  friendsOnly: PropTypes.bool,
   user: PropTypes.any,
   setUser: PropTypes.any,
+  categories: PropTypes.array,
 };
 
 export default ItemCards;

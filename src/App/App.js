@@ -3,12 +3,16 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { addUser, getLoggedInUser, getSpecificUser } from '../Helpers/Data/UserData';
+import { getCategory } from '../Helpers/Data/CategoryData';
+import { getItem } from '../Helpers/Data/ItemData';
 import NavBar from '../Components/NavBarComponent';
 import Routes from '../Helpers/Routes';
 import './App.scss';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -27,6 +31,9 @@ function App() {
             getLoggedInUser(userInfoObj);
           }
         });
+        getCategory(authed.uid).then((categoryArray) => setCategories(categoryArray));
+        getItem(authed.uid).then((itemArray) => setItems(itemArray));
+        setUser(userInfoObj);
       } else if ((user || user === null)) {
         setUser(false);
       }
@@ -48,6 +55,10 @@ function App() {
           }
         <Routes
         user={user}
+        categories={categories}
+        setCategories={setCategories}
+        items={items}
+        setItems={setItems}
         />
       </Router>
     </div>

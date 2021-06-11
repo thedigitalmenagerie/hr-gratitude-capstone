@@ -7,6 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import EventForm from '../Forms/EventForm';
 import { deleteEvent } from '../Helpers/Data/EventData';
+import './CStyles/EventCardComponent.scss';
 
 const EventCards = ({
   setEvents,
@@ -36,13 +37,14 @@ const EventCards = ({
 
   return (
     <div className="eventContainer">
-      <Card className= "eventLeft" key={firebaseKey} id={uid}>
-        <div className="row no-gutters">
-          <div className="col-5 right">
-              <CardTitle tag="h5" className="name">{eventName}</CardTitle>
-              <CardText id="area">{eventDescription}</CardText>
-              <CardText className="eventDate">{eventDate}</CardText>
-              <div>
+      <Card className= "eventCard" key={firebaseKey} id={uid}>
+        <div className="eventLeft">
+          <CardTitle tag="h5" className="name">{eventName}</CardTitle>
+          <CardText className="eventDate">{eventDate}</CardText>
+        </div>
+        <div className="eventRight">
+          <CardText id="area">{eventDescription}</CardText>
+          <div>
                 <button id="deleteEvent" onClick={() => handleClick('delete')}>Delete Category</button>
                 <button id="editEvent" onClick={() => handleClick('edit')}>
                   {editingEvents ? 'Close Form' : 'Edit Event'}
@@ -61,7 +63,6 @@ const EventCards = ({
                   setUser={setUser}
                 />}
               </div>
-          </div>
         </div>
       </Card>
     </div>

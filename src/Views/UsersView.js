@@ -14,7 +14,18 @@ function UsersView({
     getUser().then((response) => setUsers(response));
   }, []);
   return (
-    <div className="UsersView">
+    <div className="usersView">
+      <form action="/" method="get" className="searchUsers">
+        <label htmlFor="header-search"></label>
+        <input
+          type="text"
+          id="header-search"
+          placeholder="Search Users"
+          name="s"
+          className="input"
+        />
+        <button className="searchUsersButton" type="submit">Search</button>
+      </form>
       {users.map((userInfo) => (
         <UserCards
           key={userInfo.firebaseKey}

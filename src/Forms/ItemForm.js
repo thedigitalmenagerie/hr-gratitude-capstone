@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import { Input } from 'reactstrap';
 import { updateItem, addItem } from '../Helpers/Data/ItemData';
 
 const ItemForm = ({
@@ -17,6 +19,7 @@ const ItemForm = ({
   user,
   categoryKey,
   friendsOnly,
+  categories,
 }) => {
   const [item, setItem] = useState({
     itemName: itemName || '',
@@ -39,12 +42,16 @@ const ItemForm = ({
     }));
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (item.firebaseKey) {
       updateItem(item).then((itemArray) => setItems(itemArray));
+      history.push('myItems');
     } else {
       addItem(item).then((itemArray) => setItems(itemArray));
+      history.push('myItems');
 
       setItem({
         itemName: '',
@@ -96,20 +103,19 @@ const ItemForm = ({
         onChange={handleInputChange}
       >
       </input>
-      {/* <label></label>
-        <input
-          type='select'
-          name='categoryKey'
+      <Input
+          type="select"
+          name="categoryKey"
+          placeholder="Category"
+          id="exampleSelect"
           onChange={handleInputChange}
         >
-        </input>
-        <option hidden value=''>Select Category</option>
-          {categories.length && categories.map((...categoryInfo) => <option
-              key={categoryInfo.firebaseKey}
-              value={categoryInfo.firebaseKey}
-            >
-          {categoryInfo.categoryName}
-        </option>)} */}
+          {categories?.map((category) => (
+            <option key={category.firebaseKey} value={category.firebaseKey}>
+              {category.categoryName}
+            </option>
+          ))}
+        </Input>
       <label>Price:</label>
       <input
         name='price'
@@ -151,20 +157,20 @@ const ItemForm = ({
 
 ItemForm.propTypes = {
   itemFormTitle: PropTypes.string.isRequired,
-  setItems: PropTypes.any,
+  setItems: PropTypes.func,
   firebaseKey: PropTypes.string,
   itemName: PropTypes.string,
   itemImage: PropTypes.string,
   itemDescription: PropTypes.string,
   price: PropTypes.string,
   where: PropTypes.string,
-  used: PropTypes.boolean,
-  purchased: PropTypes.boolean,
+  used: PropTypes.bool,
+  purchased: PropTypes.bool,
   uid: PropTypes.string,
   categoryKey: PropTypes.string,
-  friendsOnly: PropTypes.boolean,
+  friendsOnly: PropTypes.bool,
   user: PropTypes.any,
-  categories: PropTypes.any,
+  categories: PropTypes.array,
   categoryName: PropTypes.any,
   categoryImage: PropTypes.any,
   categoryDescription: PropTypes.any,
