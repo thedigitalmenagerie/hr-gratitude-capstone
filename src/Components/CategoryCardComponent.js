@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardImg,
@@ -7,7 +8,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import CategoryForm from '../Forms/CategoryForm';
-import { deleteCategory } from '../Helpers/Data/CategoryData';
+import { deleteCategoryItems } from '../Helpers/Data/CategoryItemData';
 import './CStyles/CategoryCardComponent.scss';
 
 const CategoryCards = ({
@@ -24,14 +25,19 @@ const CategoryCards = ({
   const [editingCategories, setEditingCategories] = useState(false);
   const [flip, setFlip] = useState();
 
+  const history = useHistory();
+
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteCategory(firebaseKey)
+        deleteCategoryItems(firebaseKey)
           .then((categoryArray) => setCategories(categoryArray));
         break;
       case 'edit':
         setEditingCategories((prevState) => !prevState);
+        break;
+      case 'view':
+        history.push(`myCategories/${firebaseKey}`);
         break;
       case 'flip':
         setFlip((prevState) => !prevState);
