@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormGroup } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { updateCategory, addCategory } from '../Helpers/Data/CategoryData';
+import './FStyles/CategoryForm.scss';
 
 const CategoryForm = ({
   categoryFormTitle,
@@ -20,13 +22,20 @@ const CategoryForm = ({
     categoryDescription: categoryDescription || '',
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid,
-    friendsOnly: friendsOnly || true,
+    friendsOnly: friendsOnly || false,
   });
 
   const handleInputChange = (e) => {
     setCategory((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleCheckboxChange = (e) => {
+    setCategory((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.name === 'friendsOnly' ? e.target.checked : e.target.value
     }));
   };
 
@@ -47,12 +56,13 @@ const CategoryForm = ({
         categoryDescription: '',
         firebaseKey: null,
         uid: '',
-        friendsOnly: true,
+        friendsOnly: false,
       });
     }
   };
 
   return (
+    <div className="categoryFormContainer">
     <form
       id="addCategoryForm"
       autoComplete='off'
@@ -86,9 +96,19 @@ const CategoryForm = ({
         onChange={handleInputChange}
       >
       </input>
+      <FormGroup check id="form-check">
+        <label check>Visible To Friends Only:</label>
+        <input
+          name='friendsOnly'
+          type='checkbox'
+          checked={category.friendsOnly}
+          value={category.friendsOnly}
+          onChange={handleCheckboxChange} >
+        </input>
+      </FormGroup>
       <button type="submit">Add Category</button>
     </form>
-
+    </div>
   );
 };
 

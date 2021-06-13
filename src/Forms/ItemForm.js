@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { Input } from 'reactstrap';
+import { FormGroup, Input } from 'reactstrap';
 import { updateItem, addItem } from '../Helpers/Data/ItemData';
 
 const ItemForm = ({
@@ -32,13 +32,20 @@ const ItemForm = ({
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid,
     categoryKey: categoryKey || '',
-    friendsOnly: friendsOnly || true,
+    friendsOnly: friendsOnly || false,
   });
 
   const handleInputChange = (e) => {
     setItem((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleCheckboxChange = (e) => {
+    setItem((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.name === 'used' || e.target.name === 'friendsOnly' ? e.target.checked : e.target.value
     }));
   };
 
@@ -64,7 +71,7 @@ const ItemForm = ({
         firebaseKey: null,
         uid: '',
         categoryKey: '',
-        friendsOnly: true,
+        friendsOnly: false,
       });
     }
   };
@@ -134,21 +141,38 @@ const ItemForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <label>Used:</label>
+      <FormGroup check id="form-check">
+        <label check>Used:</label>
         <input
           name='used'
           type='checkbox'
           checked={item.used}
-          onChange={handleInputChange}
+          value={item.used}
+          onChange={handleCheckboxChange}
         >
         </input>
-      <label>Purchased:</label>
+      </FormGroup>
+      <FormGroup check id="form-check">
+        <label check>Visible To Friends Only:</label>
+        <input
+          name='friendsOnly'
+          type='checkbox'
+          checked={item.friendsOnly}
+          value={item.friendsOnly}
+          onChange={handleCheckboxChange} >
+        </input>
+      </FormGroup>
+      <FormGroup check id="form-check">
         <input
           name='purchased'
           type='checkbox'
           checked={item.purchased}
-          onChange={handleInputChange} >
+          value={item.purchased}
+          onChange={handleCheckboxChange} >
         </input>
+      </FormGroup>
+      <label check>Purchased:</label>
+
       <button type="submit">Add Item</button>
     </form>
 

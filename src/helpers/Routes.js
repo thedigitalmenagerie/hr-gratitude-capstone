@@ -75,7 +75,7 @@ export default function Routes({
         setUser={setUser}
         />
         <Route
-          path='/mtCategories/:id'
+          path='/myCategories/:categoryKey'
           user={user}
           component={() => <SingleCategoryView user={user} setUser={setUser}/>}
         />

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import ItemCard from '../Components/ItemCardComponent';
-import { getCategoryItems } from '../Helpers/Data/CategoryItemData';
-import { getCategory } from '../Helpers/Data/CategoryData';
+import { showCategoryItems } from '../Helpers/Data/CategoryItemData';
+import { getSingleCategory } from '../Helpers/Data/CategoryData';
 
 export default function SingleCategoryView({ user }) {
   const [categoryItems, setCategoryItems] = useState([]);
   const [categories, setCategories] = useState([]);
-  const { id } = useParams();
+  const { categoryKey } = useParams();
   useEffect(() => {
-    getCategoryItems(id).then((response) => setCategoryItems(response.items));
-    getCategory(user.uid).then((response) => setCategories(response));
+    showCategoryItems(categoryKey).then((response) => setCategoryItems(response.items));
+    getSingleCategory(user).then((response) => setCategories(response));
   }, []);
   console.warn(categories);
   return (
@@ -20,7 +20,7 @@ export default function SingleCategoryView({ user }) {
           <ItemCard
             key={item.firebaseKey}
             items={categoryItems}
-            categoryKey={id}
+            categoryKey={categoryKey}
             categories={categories}
             user={user}
             {...item}
