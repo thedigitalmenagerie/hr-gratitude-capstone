@@ -1,0 +1,25 @@
+.itemContainer {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: flex-start;
+.itemCard {
+  display: flex;
+  color: #001859;
+  font-family: 'Bebas Neue', cursive;
+  min-height: auto;
+  max-height: fit-content;
+  #deleteItem {
+    background-color: #001859;
+    color: #f8cd4c;
+    font-family: 'Bebas Neue', cursive;
+    border-radius: 5px;
+  }
+  #editItem {
+    background-color: #001859;
+    color: #f8cd4c;
+    font-family: 'Bebas Neue', cursive;
+    border-radius: 5px;
+  }
+}
+}
