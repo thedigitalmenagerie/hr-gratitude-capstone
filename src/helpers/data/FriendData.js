@@ -29,8 +29,7 @@ const addFriend = () => new Promise((resolve, reject) => {
 const addUserFriend = () => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/userFriends.json`)
     .then((response) => {
-      const body = { firebaseKey: response.data.name };
-      axios.patch(`${DBURL}/friends/${response.data.name}.json`, body)
+      axios.patch(`${DBURL}/userFriends/${response.data.name}.json`)
         .then(() => {
           getUserFriend().then((userFriendArray) => resolve(userFriendArray));
         });

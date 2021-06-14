@@ -8,12 +8,10 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import FriendForm from '../Forms/FriendForm';
-// import {
-// getFriend,
-// getUserFriend,
-// addFriend,
-// addUserFriend
-// } from '../Helpers/Data/FriendData';
+import {
+  addFriend,
+  addUserFriend
+} from '../Helpers/Data/FriendData';
 import './CStyles/UserCardComponent.scss';
 
 const UserCards = ({
@@ -27,32 +25,27 @@ const UserCards = ({
   setUser,
 }) => {
   const [editingUsers, setEditingUsers] = useState(false);
-  // const [friend, setFriend] = useState(false);
-  // const [userFriend, setUserFriend] = useState(false);
+  const [friend, setFriend] = useState({
+    fullName,
+    profileImage,
+    uid,
+    userEmail,
+  });
+  const [userFriend, setUserFriend] = useState({
+    friendKey: firebaseKey,
+    uidKey: user.uid
+  });
 
   const handleClick = (type) => {
     switch (type) {
       case 'addFriend':
-        // if (user.uid !== uid) {
-        //   const friendInfoObj = {
-        //     fullName,
-        //     profileImage,
-        //     uid,
-        //     userEmail,
-        //   };
-        //   const userFriendObj = {
-        //     friendKey: uid,
-        //     uidKey: user.uid,
-        //   };
-        //   setFriend(friendInfoObj);
-        //   console.warn(friend);
-        //   setUserFriend(userFriendObj);
-        //   console.warn(userFriend);
-        //   getFriend(friendInfoObj).then((response) => addFriend(response.data));
-        //   getUserFriend(userFriendObj).then((response) => addUserFriend(response.data));
-        //   setEditingUsers((prevState) => !prevState);
-        // }
-        setEditingUsers((prevState) => !prevState);
+        if (user.uid !== uid) {
+          console.warn(userFriend);
+          console.warn(friend);
+          addFriend(friend).then((friendArray) => setFriend(friendArray));
+          addUserFriend(userFriend).then((userFriendArray) => setUserFriend(userFriendArray));
+          setEditingUsers((prevState) => !prevState);
+        }
         break;
       default:
         console.warn('Nothing selected');
