@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import StackGrid from 'react-stack-grid';
-import ItemForm from '../Forms/ItemForm';
-import ItemCards from '../Components/ItemCardComponent';
+import ItemForm from '../../Forms/ItemForm';
+import ItemCards from '../../Components/ItemCardComponent';
 import './VStyles/ItemView.scss';
 
 export default function ItemView({

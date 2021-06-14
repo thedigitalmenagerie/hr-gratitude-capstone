@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { signInUser } from '../Helpers/Authorization';
 import gratitude from '../Assets/gratitudeLogo.png';
 import signIn from '../Assets/signOut.png';
-import './VStyles/HomeView.scss';
+import './HomeView.scss';
 
 export default function HomeView({
   user,

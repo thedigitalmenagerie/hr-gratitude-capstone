@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getUser } from '../Helpers/Data/UserData';
-import UserCards from '../Components/UserCardComponent';
+import { getUser } from '../../Helpers/Data/UserData';
+import UserCards from '../../Components/UserCardComponent';
 import './VStyles/UsersView.scss';
 
 function UsersView({
@@ -29,11 +29,7 @@ function UsersView({
       {users.map((userInfo) => (
         <UserCards
           key={userInfo.firebaseKey}
-          firebaseKey={userInfo.firebaseKey}
-          fullName={userInfo.fullName}
-          profileImage={userInfo.profileImage}
-          uid={userInfo.uid}
-          userEmail={userInfo.userEmail}
+          {...userInfo}
           setUsers={setUsers}
           user={user}
           setUser={setUser}

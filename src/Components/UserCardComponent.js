@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'firebase/auth';
 import {
   Card,
   CardImg,
@@ -7,6 +8,12 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import FriendForm from '../Forms/FriendForm';
+// import {
+// getFriend,
+// getUserFriend,
+// addFriend,
+// addUserFriend
+// } from '../Helpers/Data/FriendData';
 import './CStyles/UserCardComponent.scss';
 
 const UserCards = ({
@@ -20,13 +27,31 @@ const UserCards = ({
   setUser,
 }) => {
   const [editingUsers, setEditingUsers] = useState(false);
+  // const [friend, setFriend] = useState(false);
+  // const [userFriend, setUserFriend] = useState(false);
 
   const handleClick = (type) => {
     switch (type) {
       case 'addFriend':
-        setEditingUsers((prevState) => !prevState);
-        break;
-      case 'addCloseFriend':
+        // if (user.uid !== uid) {
+        //   const friendInfoObj = {
+        //     fullName,
+        //     profileImage,
+        //     uid,
+        //     userEmail,
+        //   };
+        //   const userFriendObj = {
+        //     friendKey: uid,
+        //     uidKey: user.uid,
+        //   };
+        //   setFriend(friendInfoObj);
+        //   console.warn(friend);
+        //   setUserFriend(userFriendObj);
+        //   console.warn(userFriend);
+        //   getFriend(friendInfoObj).then((response) => addFriend(response.data));
+        //   getUserFriend(userFriendObj).then((response) => addUserFriend(response.data));
+        //   setEditingUsers((prevState) => !prevState);
+        // }
         setEditingUsers((prevState) => !prevState);
         break;
       default:

@@ -2,11 +2,11 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import HomeView from '../Views/HomeView';
-import UsersView from '../Views/UsersView';
-import CategoryView from '../Views/CategoryView';
-import ItemView from '../Views/ItemView';
-import EventView from '../Views/EventView';
-import SingleCategoryView from '../Views/SingleCategoryView';
+import UsersView from '../Views/PersonalViews/UsersView';
+import CategoryView from '../Views/PersonalViews/CategoryView';
+import ItemView from '../Views/PersonalViews/ItemView';
+import EventView from '../Views/PersonalViews/EventView';
+import SingleCategoryView from '../Views/PersonalViews/SingleCategoryView';
 
 const PrivateRoute = ({
   component: Component,

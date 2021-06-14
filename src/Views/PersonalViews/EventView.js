@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getEvent } from '../Helpers/Data/EventData';
-import EventForm from '../Forms/EventForm';
-import EventCards from '../Components/EventCardComponent';
+import { getEvent } from '../../Helpers/Data/EventData';
+import EventForm from '../../Forms/EventForm';
+import EventCards from '../../Components/EventCardComponent';
 import './VStyles/EventView.scss';
 
 export default function ItemView({

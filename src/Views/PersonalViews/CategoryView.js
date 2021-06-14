@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import StackGrid from 'react-stack-grid';
-import CategoryForm from '../Forms/CategoryForm';
-import CategoryCards from '../Components/CategoryCardComponent';
+import CategoryForm from '../../Forms/CategoryForm';
+import CategoryCards from '../../Components/CategoryCardComponent';
 import './VStyles/CategoryView.scss';
 
 export default function CategoryView({
