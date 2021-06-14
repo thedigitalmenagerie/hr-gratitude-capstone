@@ -25,25 +25,31 @@ const UserCards = ({
   setUser,
 }) => {
   const [editingUsers, setEditingUsers] = useState(false);
-  const [friend, setFriend] = useState({
-    fullName,
-    profileImage,
-    uid,
-    userEmail,
-  });
-  const [userFriend, setUserFriend] = useState({
-    friendKey: firebaseKey,
-    uidKey: user.uid
-  });
+  const [friend, setFriend] = useState([]);
+  const [userFriend, setUserFriend] = useState([]);
 
   const handleClick = (type) => {
     switch (type) {
       case 'addFriend':
         if (user.uid !== uid) {
-          console.warn(userFriend);
-          console.warn(friend);
-          addFriend(friend).then((friendArray) => setFriend(friendArray));
-          addUserFriend(userFriend).then((userFriendArray) => setUserFriend(userFriendArray));
+          const friendInfoObj = {
+            fullName,
+            profileImage,
+            uid,
+            userEmail,
+          };
+          const userFriendObj = {
+            friendKey: firebaseKey,
+            uidKey: user.uid
+          };
+          setFriend(friendInfoObj);
+          console.warn(friendInfoObj);
+          setUserFriend(userFriendObj);
+          console.warn(userFriendObj);
+          addFriend(friendInfoObj).then((friendArray) => setFriend(friendArray));
+          addUserFriend(userFriendObj).then((userFriendArray) => setUserFriend(userFriendArray));
+          setEditingUsers((prevState) => !prevState);
+        } else if (((friend || friend === null) || (userFriend || userFriend === null))) {
           setEditingUsers((prevState) => !prevState);
         }
         break;
