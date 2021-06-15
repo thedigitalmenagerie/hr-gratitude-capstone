@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import ItemForm from '../Forms/ItemForm';
-import { deleteItem } from '../Helpers/Data/ItemData';
+import { deleteItem } from '../helpers/data/ItemData';
 import './CStyles/ItemCardComponent.scss';
 
 const ItemCards = ({

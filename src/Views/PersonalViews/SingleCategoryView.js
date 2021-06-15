@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import ItemCard from '../../Components/ItemCardComponent';
-import { showCategoryItems } from '../../Helpers/Data/CategoryItemData';
-import { getSingleCategory } from '../../Helpers/Data/CategoryData';
+import { showCategoryItems } from '../../helpers/data/CategoryItemData';
+import { getSingleCategory } from '../../helpers/data/CategoryData';
 
 export default function SingleCategoryView({ user }) {
   const [categoryItems, setCategoryItems] = useState([]);

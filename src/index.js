@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase';
-import firebaseConfig from './Helpers/apiKeys';
+import firebaseConfig from './helpers/apiKeys';
 import './Styles/index.scss';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';

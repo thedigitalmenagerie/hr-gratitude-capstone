@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import EventForm from '../Forms/EventForm';
-import { deleteEvent } from '../Helpers/Data/EventData';
+import { deleteEvent } from '../helpers/data/EventData';
 import './CStyles/EventCardComponent.scss';
 
 const EventCards = ({

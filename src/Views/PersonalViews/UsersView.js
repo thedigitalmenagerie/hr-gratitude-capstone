@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getUser } from '../../Helpers/Data/UserData';
+import { getUser } from '../../helpers/data/UserData';
 import UserCards from '../../Components/UserCardComponent';
 import './VStyles/UsersView.scss';
 
