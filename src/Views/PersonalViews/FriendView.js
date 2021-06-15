@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getFriend } from '../../Helpers/Data/FriendData';
+import { getFriend } from '../../helpers/data/FriendData';
 import FriendCards from '../../Components/FriendCardComponent';
 import './VStyles/UsersView.scss';
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { updateEvent, addEvent } from '../Helpers/Data/EventData';
+import { updateEvent, addEvent } from '../helpers/data/EventData';
 
 const EventForm = ({
   eventFormTitle,
@@ -10,7 +11,7 @@ const EventForm = ({
   eventDescription,
   uid,
   user,
-  setEvents,
+  setEvents
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -19,6 +20,8 @@ const EventForm = ({
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid,
   });
+
+  const history = useHistory();
 
   const handleInputChange = (e) => {
     setEvent((prevState) => ({
@@ -30,10 +33,10 @@ const EventForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (event.firebaseKey) {
-      updateEvent(event).then((eventArray) => setEvents(eventArray));
+      updateEvent(event).then((eventArray) => setEvent(eventArray));
     } else {
       addEvent(event).then((eventArray) => setEvents(eventArray));
-
+      history.push('/myEvents');
       setEvent({
         eventName: '',
         eventDate: '',

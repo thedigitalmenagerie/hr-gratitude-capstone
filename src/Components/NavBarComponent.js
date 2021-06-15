@@ -9,7 +9,7 @@ import {
   Nav,
   NavItem,
 } from 'reactstrap';
-import { signOutUser } from '../Helpers/Authorization';
+import { signOutUser } from '../helpers/Authorization';
 import homeButton from '../Assets/homeButton.png';
 import date from '../Assets/date.png';
 import category from '../Assets/category.png';

@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import CategoryForm from '../Forms/CategoryForm';
-import { deleteCategoryItems } from '../Helpers/Data/CategoryItemData';
+import { deleteCategoryItems } from '../helpers/data/CategoryItemData';
 import './CStyles/CategoryCardComponent.scss';
 
 const CategoryCards = ({
@@ -32,12 +32,13 @@ const CategoryCards = ({
       case 'delete':
         deleteCategoryItems(firebaseKey)
           .then((categoryArray) => setCategories(categoryArray));
+        history.push('/myCategories');
         break;
       case 'edit':
         setEditingCategories((prevState) => !prevState);
         break;
       case 'view':
-        history.push(`myCategories/${firebaseKey}`);
+        history.push(`/myCategories/${firebaseKey}`);
         break;
       case 'flip':
         setFlip((prevState) => !prevState);

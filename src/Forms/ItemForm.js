@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
-import { updateItem, addItem } from '../Helpers/Data/ItemData';
+import { updateItem, addItem } from '../helpers/data/ItemData';
 
 const ItemForm = ({
   itemFormTitle,
-  setItems,
   firebaseKey,
   itemName,
   itemImage,
@@ -49,16 +47,12 @@ const ItemForm = ({
     }));
   };
 
-  const history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (item.firebaseKey) {
-      updateItem(item).then((itemArray) => setItems(itemArray));
-      history.push('myItems');
+      updateItem(item).then((itemArray) => setItem(itemArray));
     } else {
-      addItem(item).then((itemArray) => setItems(itemArray));
-      history.push('myItems');
+      addItem(item).then((itemArray) => setItem(itemArray));
 
       setItem({
         itemName: '',

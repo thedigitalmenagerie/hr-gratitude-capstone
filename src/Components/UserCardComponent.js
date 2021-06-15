@@ -11,7 +11,7 @@ import FriendForm from '../Forms/FriendForm';
 import {
   addFriend,
   addUserFriend
-} from '../Helpers/Data/FriendData';
+} from '../helpers/data/FriendData';
 import './CStyles/UserCardComponent.scss';
 
 const UserCards = ({

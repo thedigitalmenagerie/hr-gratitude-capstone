@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { signInUser } from '../Helpers/Authorization';
+import { signInUser } from '../helpers/Authorization';
 import gratitude from '../Assets/gratitudeLogo.png';
 import signIn from '../Assets/signOut.png';
 import './HomeView.scss';

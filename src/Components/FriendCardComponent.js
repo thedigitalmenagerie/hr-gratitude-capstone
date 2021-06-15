@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import 'firebase/auth';
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import FriendForm from '../Forms/FriendForm';
-import { deleteFriend, deleteUserFriend } from '../Helpers/Data/FriendData';
+import { deleteFriend, deleteUserFriend } from '../helpers/data/FriendData';
 import './CStyles/UserCardComponent.scss';
 
 const FriendCards = ({
@@ -24,8 +23,6 @@ const FriendCards = ({
 }) => {
   const [editingFriend, setEditingFriend] = useState(false);
 
-  const history = useHistory();
-
   const handleClick = (type) => {
     switch (type) {
       case 'deleteFriend':
@@ -35,7 +32,6 @@ const FriendCards = ({
           .then((userFriendArray) => setEditingFriend(userFriendArray));
         break;
       case 'view':
-        history.push(`friendView/${firebaseKey}`);
         break;
       default:
         console.warn('Nothing selected');

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { addUser, getLoggedInUser, getSpecificUser } from '../Helpers/Data/UserData';
-import { getCategory } from '../Helpers/Data/CategoryData';
-import { getItem } from '../Helpers/Data/ItemData';
+import { addUser, getLoggedInUser, getSpecificUser } from '../helpers/data/UserData';
+import { getCategory } from '../helpers/data/CategoryData';
+import { getItem } from '../helpers/data/ItemData';
 import NavBar from '../Components/NavBarComponent';
-import Routes from '../Helpers/Routes';
+import Routes from '../helpers/Routes';
 import './App.scss';
 
 function App() {
