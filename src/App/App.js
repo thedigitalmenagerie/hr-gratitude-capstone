@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { addUser, getLoggedInUser, getSpecificUser } from '../helpers/data/UserData';
 import { getCategory } from '../helpers/data/CategoryData';
 import { getItem } from '../helpers/data/ItemData';
-import NavBar from '../Components/NavBarComponent';
+import NavBar from '../Components/PersonalComponents/NavBarComponent';
 import Routes from '../helpers/Routes';
 import './App.scss';
 

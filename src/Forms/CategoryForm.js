@@ -14,6 +14,7 @@ const CategoryForm = ({
   uid,
   user,
   friendsOnly,
+  setCategories
 }) => {
   const [category, setCategory] = useState({
     categoryName: categoryName || '',
@@ -44,8 +45,9 @@ const CategoryForm = ({
     e.preventDefault();
     if (category.firebaseKey) {
       updateCategory(category).then((categoryArray) => setCategory(categoryArray));
+      history.push('/myCategories');
     } else {
-      addCategory(category).then((categoryArray) => setCategory(categoryArray));
+      addCategory(category).then((categoryArray) => setCategories(categoryArray));
       history.push('/myCategories');
 
       setCategory({
@@ -72,7 +74,7 @@ const CategoryForm = ({
         name='categoryName'
         type='text'
         placeholder='Category Name'
-        value={category.categoryName}
+        value={categoryName}
         onChange={handleInputChange}
       >
       </input>
@@ -81,7 +83,7 @@ const CategoryForm = ({
         name='categoryDescription'
         type='text'
         placeholder='Category Descpription'
-        value={category.categoryDescription}
+        value={categoryDescription}
         onChange={handleInputChange}
       >
       </input>
@@ -90,7 +92,7 @@ const CategoryForm = ({
         name='categoryImage'
         type='text'
         placeholder='Category Image URL'
-        value={category.categoryImage}
+        value={categoryImage}
         onChange={handleInputChange}
       >
       </input>
@@ -99,8 +101,8 @@ const CategoryForm = ({
         <input
           name='friendsOnly'
           type='checkbox'
-          checked={category.friendsOnly}
-          value={category.friendsOnly}
+          checked={friendsOnly}
+          value={friendsOnly}
           onChange={handleCheckboxChange} >
         </input>
       </FormGroup>

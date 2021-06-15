@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import StackGrid from 'react-stack-grid';
 import ItemForm from '../../Forms/ItemForm';
-import ItemCards from '../../Components/ItemCardComponent';
+import ItemCards from '../../Components/PersonalComponents/ItemCardComponent';
 import './VStyles/ItemView.scss';
 
 export default function ItemView({

@@ -8,7 +8,7 @@ import ItemView from '../Views/PersonalViews/ItemView';
 import EventView from '../Views/PersonalViews/EventView';
 import SingleCategoryView from '../Views/PersonalViews/SingleCategoryView';
 import FriendView from '../Views/PersonalViews/FriendView';
-import SingleFriendView from '../Views/FriendViews/SpecificUserView';
+import SingleFriendView from '../Views/FriendViews/SpecificFriendView';
 
 const PrivateRoute = ({
   component: Component,

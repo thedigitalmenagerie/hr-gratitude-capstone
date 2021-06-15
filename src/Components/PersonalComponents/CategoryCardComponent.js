@@ -7,8 +7,8 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import CategoryForm from '../Forms/CategoryForm';
-import { deleteCategoryItems } from '../helpers/data/CategoryItemData';
+import CategoryForm from '../../Forms/CategoryForm';
+import { deleteCategoryItems } from '../../helpers/data/CategoryItemData';
 import './CStyles/CategoryCardComponent.scss';
 
 const CategoryCards = ({

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import ItemCard from '../../Components/ItemCardComponent';
+import ItemCard from '../../Components/PersonalComponents/ItemCardComponent';
 import { showCategoryItems } from '../../helpers/data/CategoryItemData';
 import { getSingleCategory } from '../../helpers/data/CategoryData';
 

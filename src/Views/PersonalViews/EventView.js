@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getEvent } from '../../helpers/data/EventData';
 import EventForm from '../../Forms/EventForm';
-import EventCards from '../../Components/EventCardComponent';
+import EventCards from '../../Components/PersonalComponents/EventCardComponent';
 import './VStyles/EventView.scss';
 
 export default function ItemView({
@@ -36,7 +36,7 @@ export default function ItemView({
                 <button className="searchEventsButton" type="submit">Search</button>
               </form>
             <button id="addEvent" onClick={handleClick}>Add Event</button>
-            {events.map((eventInfo) => (
+            {events?.map((eventInfo) => (
           <EventCards
             key={eventInfo.firebaseKey}
             firebaseKey={eventInfo.firebaseKey}

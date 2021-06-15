@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getUser } from '../../helpers/data/UserData';
-import UserCards from '../../Components/UserCardComponent';
+import UserCards from '../../Components/PersonalComponents/UserCardComponent';
 import './VStyles/UsersView.scss';
 
 function UsersView({

@@ -28,13 +28,13 @@ const addCategory = (categories, user) => new Promise((resolve, reject) => {
 
 const deleteCategory = (firebaseKey, user) => new Promise((resolve, reject) => {
   axios.delete(`${DBURL}/categories/${firebaseKey}.json`)
-    .then(() => getCategory(user).then((categoryArray) => resolve(categoryArray)))
+    .then(() => getSingleCategory(user, firebaseKey).then((categoryArray) => resolve(categoryArray)))
     .catch((error) => reject(error));
 });
 
 const updateCategory = (categories, user) => new Promise((resolve, reject) => {
   axios.patch(`${DBURL}/categories/${categories.firebaseKey}.json`, categories)
-    .then(() => getCategory(user).then(resolve))
+    .then(() => getSingleCategory(user, categories.firebaseKey).then(resolve))
     .catch((error) => reject(error));
 });
 

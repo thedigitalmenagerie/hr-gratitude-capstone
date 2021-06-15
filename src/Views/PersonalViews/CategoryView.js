@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import StackGrid from 'react-stack-grid';
 import CategoryForm from '../../Forms/CategoryForm';
-import CategoryCards from '../../Components/CategoryCardComponent';
+import CategoryCards from '../../Components/PersonalComponents/CategoryCardComponent';
 import './VStyles/CategoryView.scss';
 
 export default function CategoryView({
@@ -36,10 +36,15 @@ export default function CategoryView({
               </form>
               <button id="addCategory" onClick={handleClick}>Add Category</button>
               <StackGrid className="stackGridCategories" gutterHeight={10}>
-                  {categories.map((categoryInfo) => (
+                  {categories?.map((categoryInfo) => (
                   <CategoryCards
                     key={categoryInfo.firebaseKey}
-                    {...categoryInfo}
+                    firebaseKey={categoryInfo.firebaseKey}
+                    categoryName={categoryInfo.categoryName}
+                    categoryImage={categoryInfo.categoryImage}
+                    categoryDescription={categoryInfo.categoryDescription}
+                    uid={categoryInfo.uid}
+                    friendsOnly={categoryInfo.friendsOnly}
                     setCategories={setCategories}
                     user={user}
                     setUser={setUser}

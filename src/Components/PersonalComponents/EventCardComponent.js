@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardTitle,
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import EventForm from '../Forms/EventForm';
-import { deleteEvent } from '../helpers/data/EventData';
+import EventForm from '../../Forms/EventForm';
+import { deleteEvent } from '../../helpers/data/EventData';
 import './CStyles/EventCardComponent.scss';
 
 const EventCards = ({
@@ -21,11 +22,14 @@ const EventCards = ({
 }) => {
   const [editingEvents, setEditingEvents] = useState(false);
 
+  const history = useHistory();
+
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteEvent(firebaseKey)
           .then((eventArray) => setEvents(eventArray));
+        history.push('/myEvents');
         break;
       case 'edit':
         setEditingEvents((prevState) => !prevState);

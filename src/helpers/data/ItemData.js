@@ -9,6 +9,12 @@ const getItem = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${DBURL}/items/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const addItem = (items, user) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/items.json`, items)
     .then((response) => {
@@ -22,13 +28,13 @@ const addItem = (items, user) => new Promise((resolve, reject) => {
 
 const deleteItem = (firebaseKey, user) => new Promise((resolve, reject) => {
   axios.delete(`${DBURL}/items/${firebaseKey}.json`)
-    .then(() => getItem(user).then((itemArray) => resolve(itemArray)))
+    .then(() => getSingleItem(user, firebaseKey).then((itemArray) => resolve(itemArray)))
     .catch((error) => reject(error));
 });
 
 const updateItem = (items, user) => new Promise((resolve, reject) => {
   axios.patch(`${DBURL}/items/${items.firebaseKey}.json`, items)
-    .then(() => getItem(user).then(resolve))
+    .then(() => getSingleItem(user, items.firebaseKey).then(resolve))
     .catch((error) => reject(error));
 });
 

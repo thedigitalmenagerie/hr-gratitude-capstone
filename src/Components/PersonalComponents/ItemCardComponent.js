@@ -6,8 +6,8 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import ItemForm from '../Forms/ItemForm';
-import { deleteItem } from '../helpers/data/ItemData';
+import ItemForm from '../../Forms/ItemForm';
+import { deleteItem } from '../../helpers/data/ItemData';
 import './CStyles/ItemCardComponent.scss';
 
 const ItemCards = ({

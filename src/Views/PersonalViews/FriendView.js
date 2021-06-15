@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getFriend } from '../../helpers/data/FriendData';
-import FriendCards from '../../Components/FriendCardComponent';
+import FriendCards from '../../Components/PersonalComponents/FriendCardComponent';
 import './VStyles/UsersView.scss';
 
 function FriendView({
@@ -11,7 +11,7 @@ function FriendView({
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
-    getFriend().then((response) => setFriends(response));
+    getFriend(user.uid).then((response) => setFriends(response));
   }, []);
   return (
     <div className="usersView">

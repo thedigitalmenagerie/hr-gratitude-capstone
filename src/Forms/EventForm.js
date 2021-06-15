@@ -34,6 +34,7 @@ const EventForm = ({
     e.preventDefault();
     if (event.firebaseKey) {
       updateEvent(event).then((eventArray) => setEvent(eventArray));
+      history.push('/myEvents');
     } else {
       addEvent(event).then((eventArray) => setEvents(eventArray));
       history.push('/myEvents');

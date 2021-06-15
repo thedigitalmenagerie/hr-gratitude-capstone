@@ -9,14 +9,14 @@ import {
   Nav,
   NavItem,
 } from 'reactstrap';
-import { signOutUser } from '../helpers/Authorization';
-import homeButton from '../Assets/homeButton.png';
-import date from '../Assets/date.png';
-import category from '../Assets/category.png';
-import giftView from '../Assets/giftView.png';
-import userView from '../Assets/userView.png';
-import signOut from '../Assets/signInBlue.png';
-import friend from '../Assets/friend.png';
+import { signOutUser } from '../../helpers/Authorization';
+import homeButton from '../../Assets/homeButton.png';
+import date from '../../Assets/date.png';
+import category from '../../Assets/category.png';
+import giftView from '../../Assets/giftView.png';
+import userView from '../../Assets/userView.png';
+import signOut from '../../Assets/signInBlue.png';
+import friend from '../../Assets/friend.png';
 import './CStyles/NavBarComponent.scss';
 
 const NavBar = ({ user }) => {
