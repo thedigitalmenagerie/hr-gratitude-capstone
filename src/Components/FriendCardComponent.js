@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import 'firebase/auth';
 import {
   Card,
@@ -8,13 +9,10 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import FriendForm from '../Forms/FriendForm';
-import {
-  addFriend,
-  addUserFriend
-} from '../Helpers/Data/FriendData';
+import { deleteFriend, deleteUserFriend } from '../Helpers/Data/FriendData';
 import './CStyles/UserCardComponent.scss';
 
-const UserCards = ({
+const FriendCards = ({
   firebaseKey,
   fullName,
   profileImage,
@@ -24,30 +22,20 @@ const UserCards = ({
   user,
   setUser,
 }) => {
-  const [editingUsers, setEditingUsers] = useState(false);
-  const [friend, setFriend] = useState([]);
-  const [userFriend, setUserFriend] = useState([]);
+  const [editingFriend, setEditingFriend] = useState(false);
+
+  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
-      case 'addFriend':
-        if (user.uid !== uid) {
-          const friendInfoObj = {
-            fullName,
-            profileImage,
-            uid,
-            userEmail,
-          };
-          const userFriendObj = {
-            friendKey: firebaseKey,
-            uidKey: user.uid
-          };
-          addFriend(friendInfoObj).then((friendArray) => setFriend(friendArray));
-          addUserFriend(userFriendObj).then((userFriendArray) => setUserFriend(userFriendArray));
-          setEditingUsers((prevState) => !prevState);
-        } else if (((friend || friend === null) || (userFriend || userFriend === null))) {
-          setEditingUsers((prevState) => !prevState);
-        }
+      case 'deleteFriend':
+        deleteFriend(firebaseKey)
+          .then((friendArray) => setEditingFriend(friendArray));
+        deleteUserFriend(firebaseKey)
+          .then((userFriendArray) => setEditingFriend(userFriendArray));
+        break;
+      case 'view':
+        history.push(`friendView/${firebaseKey}`);
         break;
       default:
         console.warn('Nothing selected');
@@ -72,9 +60,9 @@ const UserCards = ({
               && <div className="hiddenFriendContent">
                 { user
                   ? <div>
-                      <button className="addUserAsFriend" onClick={() => handleClick('addFriend')}>Friend</button>
+                      <button className="removeUserAsFriend" onClick={() => handleClick('deleteFriend')}>Delete Friend</button>
                         <div>
-                          {editingUsers && <FriendForm
+                          {editingFriend && <FriendForm
                             FriendFormTitle='Add Friend'
                             firebaseKey={firebaseKey}
                             fullName={fullName}
@@ -98,7 +86,7 @@ const UserCards = ({
   );
 };
 
-UserCards.propTypes = {
+FriendCards.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   profileImage: PropTypes.string.isRequired,
@@ -109,4 +97,4 @@ UserCards.propTypes = {
   setUser: PropTypes.func
 };
 
-export default UserCards;
+export default FriendCards;

@@ -7,6 +7,8 @@ import CategoryView from '../Views/PersonalViews/CategoryView';
 import ItemView from '../Views/PersonalViews/ItemView';
 import EventView from '../Views/PersonalViews/EventView';
 import SingleCategoryView from '../Views/PersonalViews/SingleCategoryView';
+import FriendView from '../Views/PersonalViews/FriendView';
+import SingleFriendView from '../Views/FriendViews/SpecificUserView';
 
 const PrivateRoute = ({
   component: Component,
@@ -80,8 +82,17 @@ export default function Routes({
           component={() => <SingleCategoryView user={user} setUser={setUser}/>}
         />
         <Route exact path='/friendView'
+        component={() => <FriendView
         user={user}
         setUser={setUser}
+        />}
+        user={user}
+        setUser={setUser}
+        />
+        <Route
+          path='/friendView/:firebaseKey'
+          user={user}
+          component={() => <SingleFriendView user={user} setUser={setUser}/>}
         />
         <Route exact path='/userView'
         component={() => <UsersView
