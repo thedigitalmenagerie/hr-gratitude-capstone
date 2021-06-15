@@ -8,7 +8,6 @@ import './VStyles/CategoryView.scss';
 export default function CategoryView({
   setUser,
   user,
-  setItems,
   categories,
   setCategories,
 }) {
@@ -39,16 +38,11 @@ export default function CategoryView({
                   {categories?.map((categoryInfo) => (
                   <CategoryCards
                     key={categoryInfo.firebaseKey}
-                    firebaseKey={categoryInfo.firebaseKey}
-                    categoryName={categoryInfo.categoryName}
-                    categoryImage={categoryInfo.categoryImage}
-                    categoryDescription={categoryInfo.categoryDescription}
-                    uid={categoryInfo.uid}
-                    friendsOnly={categoryInfo.friendsOnly}
+                    {...categoryInfo}
                     setCategories={setCategories}
                     user={user}
                     setUser={setUser}
-                    setItems={setItems}
+                    categories={categories}
                   />
                   ))}
               </StackGrid>
@@ -74,5 +68,4 @@ CategoryView.propTypes = {
   setUser: PropTypes.func,
   categories: PropTypes.any,
   setCategories: PropTypes.func,
-  setItems: PropTypes.func,
 };

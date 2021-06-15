@@ -26,7 +26,7 @@ function UsersView({
         />
         <button className="searchUsersButton" type="submit">Search</button>
       </form>
-      {users.map((userInfo) => (
+      {users?.map((userInfo) => (
         <UserCards
           key={userInfo.firebaseKey}
           {...userInfo}

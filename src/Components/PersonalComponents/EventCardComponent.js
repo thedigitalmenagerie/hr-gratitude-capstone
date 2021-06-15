@@ -30,8 +30,10 @@ const EventCards = ({
         deleteEvent(firebaseKey)
           .then((eventArray) => setEvents(eventArray));
         history.push('/myEvents');
+        setEditingEvents((prevState) => !prevState);
         break;
       case 'edit':
+        history.push('/myEvents');
         setEditingEvents((prevState) => !prevState);
         break;
       default:

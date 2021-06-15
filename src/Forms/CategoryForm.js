@@ -44,7 +44,8 @@ const CategoryForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (category.firebaseKey) {
-      updateCategory(category).then((categoryArray) => setCategory(categoryArray));
+      updateCategory(category).then((categoryArray) => setCategories(categoryArray));
+      console.warn(category.categoryName);
       history.push('/myCategories');
     } else {
       addCategory(category).then((categoryArray) => setCategories(categoryArray));
@@ -74,7 +75,7 @@ const CategoryForm = ({
         name='categoryName'
         type='text'
         placeholder='Category Name'
-        value={categoryName}
+        value={category.categoryName}
         onChange={handleInputChange}
       >
       </input>
@@ -83,7 +84,7 @@ const CategoryForm = ({
         name='categoryDescription'
         type='text'
         placeholder='Category Descpription'
-        value={categoryDescription}
+        value={category.categoryDescription}
         onChange={handleInputChange}
       >
       </input>
@@ -92,7 +93,7 @@ const CategoryForm = ({
         name='categoryImage'
         type='text'
         placeholder='Category Image URL'
-        value={categoryImage}
+        value={category.categoryImage}
         onChange={handleInputChange}
       >
       </input>
@@ -101,8 +102,8 @@ const CategoryForm = ({
         <input
           name='friendsOnly'
           type='checkbox'
-          checked={friendsOnly}
-          value={friendsOnly}
+          checked={category.friendsOnly}
+          value={category.friendsOnly}
           onChange={handleCheckboxChange} >
         </input>
       </FormGroup>

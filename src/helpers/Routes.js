@@ -59,6 +59,7 @@ export default function Routes({
         user={user}
         setUser={setUser}
         categories={categories}
+        items={items}
         setCategories={setCategories}
         />}
         user={user}

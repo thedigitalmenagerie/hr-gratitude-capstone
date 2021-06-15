@@ -39,11 +39,7 @@ export default function ItemView({
             {events?.map((eventInfo) => (
           <EventCards
             key={eventInfo.firebaseKey}
-            firebaseKey={eventInfo.firebaseKey}
-            eventName={eventInfo.eventName}
-            eventDate={eventInfo.eventDate}
-            eventDescription={eventInfo.eventDescription}
-            uid={eventInfo.uid}
+            {... eventInfo}
             setEvents={setEvents}
             user={user}
             setUser={setUser}
@@ -68,4 +64,5 @@ export default function ItemView({
 ItemView.propTypes = {
   user: PropTypes.any,
   setUser: PropTypes.func,
+  uid: PropTypes.any,
 };

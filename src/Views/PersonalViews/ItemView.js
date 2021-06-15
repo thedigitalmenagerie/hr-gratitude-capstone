@@ -37,7 +37,7 @@ export default function ItemView({
               </form>
             <button id="addItem" onClick={handleClick}>Add Item</button>
             <StackGrid className="stackGridItems">
-              {items.map((itemInfo) => (
+              {items?.map((itemInfo) => (
                 <ItemCards
                 key={itemInfo.firebaseKey}
                 {...itemInfo}

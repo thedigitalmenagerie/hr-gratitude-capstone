@@ -11,7 +11,6 @@ const EventForm = ({
   eventDescription,
   uid,
   user,
-  setEvents
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -36,7 +35,7 @@ const EventForm = ({
       updateEvent(event).then((eventArray) => setEvent(eventArray));
       history.push('/myEvents');
     } else {
-      addEvent(event).then((eventArray) => setEvents(eventArray));
+      addEvent(event).then((eventArray) => setEvent(eventArray));
       history.push('/myEvents');
       setEvent({
         eventName: '',
@@ -90,14 +89,14 @@ const EventForm = ({
 };
 
 EventForm.propTypes = {
-  eventFormTitle: PropTypes.string.isRequired,
+  eventFormTitle: PropTypes.string,
   setEvents: PropTypes.string,
   firebaseKey: PropTypes.string,
   eventName: PropTypes.string,
   eventDate: PropTypes.string,
   eventDescription: PropTypes.string,
-  friendsOnly: PropTypes.boolean,
-  uid: PropTypes.any,
+  friendsOnly: PropTypes.bool,
+  uid: PropTypes.string,
   user: PropTypes.any,
 };
 

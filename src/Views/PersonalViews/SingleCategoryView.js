@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import ItemCard from '../../Components/PersonalComponents/ItemCardComponent';
 import { showCategoryItems } from '../../helpers/data/CategoryItemData';
-import { getSingleCategory } from '../../helpers/data/CategoryData';
+import { getCategory } from '../../helpers/data/CategoryData';
 
-export default function SingleCategoryView({ user }) {
+export default function SingleCategoryView({
+  user,
+}) {
   const [categoryItems, setCategoryItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const { categoryKey } = useParams();
   useEffect(() => {
     showCategoryItems(categoryKey).then((response) => setCategoryItems(response.items));
-    getSingleCategory(user).then((response) => setCategories(response));
+    getCategory(user).then((response) => setCategories(response));
   }, []);
   console.warn(categories);
   return (
@@ -22,6 +24,7 @@ export default function SingleCategoryView({ user }) {
             items={categoryItems}
             categoryKey={categoryKey}
             categories={categories}
+            setCategories={setCategories}
             user={user}
             {...item}
           />
@@ -31,5 +34,5 @@ export default function SingleCategoryView({ user }) {
 }
 
 SingleCategoryView.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
 };

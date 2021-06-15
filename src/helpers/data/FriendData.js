@@ -9,8 +9,8 @@ const getFriend = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSpecificFriend = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${DBURL}/friends/${firebaseKey}.json`)
+const getSpecificFriend = (friend) => new Promise((resolve, reject) => {
+  axios.get(`${DBURL}/friends.json?orderBy="uid"&equalTo="${friend.uid}"`)
     .then((response) => resolve(response))
     .catch((err) => reject(err));
 });
@@ -21,11 +21,11 @@ const getUserFriend = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// const getSpecificUserFriend = (firebaseKey) => new Promise((resolve, reject) => {
-//   axios.get(`${DBURL}/userFriends/${firebaseKey}.json`)
-//     .then((response) => resolve(response))
-//     .catch((err) => reject(err));
-// });
+const getSpecificUserFriend = (userFriend) => new Promise((resolve, reject) => {
+  axios.get(`${DBURL}/userFriends.json?orderBy="uid"&equalTo="${userFriend.uidKey}"`)
+    .then((response) => resolve(response))
+    .catch((err) => reject(err));
+});
 
 const addFriend = (friend) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/friends.json`, friend)
@@ -65,7 +65,7 @@ export {
   getFriend,
   getSpecificFriend,
   getUserFriend,
-  // getSpecificUserFriend,
+  getSpecificUserFriend,
   addFriend,
   addUserFriend,
   deleteFriend,
