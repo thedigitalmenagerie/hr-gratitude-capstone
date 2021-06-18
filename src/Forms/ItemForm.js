@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormGroup, Input } from 'reactstrap';
 import { updateItem, addItem } from '../helpers/data/ItemData';
@@ -35,8 +34,6 @@ const ItemForm = ({
     friendsOnly: friendsOnly || false,
   });
 
-  const history = useHistory();
-
   const handleInputChange = (e) => {
     setItem((prevState) => ({
       ...prevState,
@@ -55,10 +52,8 @@ const ItemForm = ({
     e.preventDefault();
     if (item.firebaseKey) {
       updateItem(item).then((itemArray) => setItems(itemArray));
-      history.push('/myItems');
     } else {
       addItem(item).then((itemArray) => setItems(itemArray));
-      history.push('/myItems');
 
       setItem({
         itemName: '',

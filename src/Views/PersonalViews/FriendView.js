@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getFriend } from '../../helpers/data/FriendData';
+import { mergedUserFriendData } from '../../helpers/data/FriendData';
 import FriendCards from '../../Components/PersonalComponents/FriendCardComponent';
 import './VStyles/UsersView.scss';
 
@@ -11,22 +11,11 @@ function FriendView({
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
-    getFriend(user.uid).then((response) => setFriends(response));
+    mergedUserFriendData(friends.friendKey).then((response) => setFriends(response));
   }, []);
   return (
     <div className="usersView">
-      <form action="/" method="get" className="searchUsers">
-        <label htmlFor="header-search"></label>
-        <input
-          type="text"
-          id="header-search"
-          placeholder="Search Users"
-          name="s"
-          className="input"
-        />
-        <button className="searchUsersButton" type="submit">Search</button>
-      </form>
-      {friends.map((friendInfo) => (
+      {friends?.map((friendInfo) => (
         <FriendCards
           key={friendInfo.firebaseKey}
           {...friendInfo}

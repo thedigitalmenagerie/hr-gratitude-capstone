@@ -1,27 +1,37 @@
-// import React, { useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
-// import SpecificFriendCard from '../../Components/PersonalComponents/ItemCardComponent';
-// import { getSpecificFriend } from '../../helpers/data/FriendData';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { mergedUserFriendData } from '../../helpers/data/FriendData';
+import SpecificFriendCards from '../../Components/FriendComponents/SpecificFriendCardComponent';
 
-// export default function SingleCategoryView({ user }) {
-//   const [specificFriend, setSpecificFriend] = useState([]);
-//   useEffect(() => {
-//     getSpecificFriend(user).then((response) => setSpecificFriend(response));
-//   }, []);
-//   return (
-//     <div className="categoryItemView">
-//         {specificFriend.map((friend) => (
-//           <SpecificFriendCard
-//             key={friend.firebaseKey}
-//             specificFriend={specificFriend}
-//             user={user}
-//             {...friend}
-//           />
-//         ))}
-//       </div>
-//   );
-// }
+function SpecificFriendView({
+  user,
+  setUser,
+}) {
+  const [specificFriends, setSpecificFriends] = useState([]);
 
-// SingleCategoryView.propTypes = {
-//   user: PropTypes.any
-// };
+  useEffect(() => {
+    mergedUserFriendData(specificFriends.friendKey).then((response) => setSpecificFriends(response));
+  }, []);
+  return (
+    <div className="usersView">
+      {specificFriends?.map((friendInfo) => (
+        <SpecificFriendCards
+        key={friendInfo.firebaseKey}
+        {...friendInfo}
+        setSpecificFriends={setSpecificFriends}
+        friendKey={specificFriends.friendKey}
+        user={user}
+        setUser={setUser}
+      />
+      ))}
+    </div>
+  );
+}
+
+SpecificFriendView.propTypes = {
+  user: PropTypes.any,
+  setUser: PropTypes.func,
+  friendKey: PropTypes.string,
+};
+
+export default SpecificFriendView;

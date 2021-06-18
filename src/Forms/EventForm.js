@@ -11,6 +11,7 @@ const EventForm = ({
   eventDescription,
   uid,
   user,
+  setEvents,
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -32,11 +33,11 @@ const EventForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (event.firebaseKey) {
-      updateEvent(event).then((eventArray) => setEvent(eventArray));
-      history.push('/myEvents');
+      updateEvent(event).then((eventArray) => setEvents(eventArray));
     } else {
-      addEvent(event).then((eventArray) => setEvent(eventArray));
+      addEvent(event).then((eventArray) => setEvents(eventArray));
       history.push('/myEvents');
+
       setEvent({
         eventName: '',
         eventDate: '',
@@ -90,7 +91,7 @@ const EventForm = ({
 
 EventForm.propTypes = {
   eventFormTitle: PropTypes.string,
-  setEvents: PropTypes.string,
+  setEvents: PropTypes.func,
   firebaseKey: PropTypes.string,
   eventName: PropTypes.string,
   eventDate: PropTypes.string,

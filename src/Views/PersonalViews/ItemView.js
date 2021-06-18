@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import StackGrid from 'react-stack-grid';
 import ItemForm from '../../Forms/ItemForm';
 import ItemCards from '../../Components/PersonalComponents/ItemCardComponent';
+import { getItem } from '../../helpers/data/ItemData';
 import './VStyles/ItemView.scss';
 
 export default function ItemView({
   user,
   setUser,
-  items,
-  setItems,
   categories,
 }) {
+  const [items, setItems] = useState([]);
   const [showAddItemForm, setShowAddItemForm] = useState(false);
 
   const handleClick = () => {
     setShowAddItemForm((prevState) => !prevState);
     console.warn(categories);
   };
+
+  useEffect(() => {
+    getItem(user?.uid).then((response) => setItems(response));
+  }, []);
 
   return (
     <div className="itemView">
@@ -66,9 +70,7 @@ export default function ItemView({
 }
 
 ItemView.propTypes = {
-  items: PropTypes.array,
   user: PropTypes.any,
   setUser: PropTypes.func,
   categories: PropTypes.array,
-  setItems: PropTypes.func,
 };

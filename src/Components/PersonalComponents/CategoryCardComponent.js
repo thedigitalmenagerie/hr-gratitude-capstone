@@ -20,7 +20,6 @@ const CategoryCards = ({
   uid,
   friendsOnly,
   user,
-  setUser,
 }) => {
   const [editingCategories, setEditingCategories] = useState(false);
   const [flip, setFlip] = useState();
@@ -32,7 +31,6 @@ const CategoryCards = ({
       case 'delete':
         deleteCategoryItems(firebaseKey)
           .then((categoryArray) => setCategories(categoryArray));
-        history.push('/myCategories');
         break;
       case 'edit':
         setEditingCategories((prevState) => !prevState);
@@ -76,7 +74,6 @@ const CategoryCards = ({
                   friendsOnly={friendsOnly}
                   setCategories={setCategories}
                   user={user}
-                  setUser={setUser}
                 />}
               </div>
           </div>
@@ -89,7 +86,6 @@ CategoryCards.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   setCategories: PropTypes.func,
   user: PropTypes.any,
-  setUser: PropTypes.func,
   categoryName: PropTypes.string.isRequired,
   categoryImage: PropTypes.string.isRequired,
   categoryDescription: PropTypes.string.isRequired,

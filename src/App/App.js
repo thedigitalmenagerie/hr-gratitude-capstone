@@ -4,7 +4,6 @@ import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { addUser, getLoggedInUser, getSpecificUser } from '../helpers/data/UserData';
 import { getCategory } from '../helpers/data/CategoryData';
-import { getItem } from '../helpers/data/ItemData';
 import NavBar from '../Components/PersonalComponents/NavBarComponent';
 import Routes from '../helpers/Routes';
 import './App.scss';
@@ -12,7 +11,6 @@ import './App.scss';
 function App() {
   const [user, setUser] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [items, setItems] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -32,7 +30,6 @@ function App() {
           }
         });
         getCategory(authed.uid).then((categoryArray) => setCategories(categoryArray));
-        getItem(authed.uid).then((itemArray) => setItems(itemArray));
         setUser(userInfoObj);
       } else if ((user || user === null)) {
         setUser(false);
@@ -57,8 +54,6 @@ function App() {
         user={user}
         categories={categories}
         setCategories={setCategories}
-        items={items}
-        setItems={setItems}
         />
       </Router>
     </div>

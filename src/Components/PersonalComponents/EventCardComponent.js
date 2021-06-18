@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardTitle,
@@ -22,18 +21,13 @@ const EventCards = ({
 }) => {
   const [editingEvents, setEditingEvents] = useState(false);
 
-  const history = useHistory();
-
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteEvent(firebaseKey)
           .then((eventArray) => setEvents(eventArray));
-        history.push('/myEvents');
-        setEditingEvents((prevState) => !prevState);
         break;
       case 'edit':
-        history.push('/myEvents');
         setEditingEvents((prevState) => !prevState);
         break;
       default:

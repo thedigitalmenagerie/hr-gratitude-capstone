@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import 'firebase/auth';
 import {
@@ -8,32 +8,22 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import FriendForm from '../../Forms/FriendForm';
-import { deleteFriend, deleteUserFriend } from '../../helpers/data/FriendData';
 import './CStyles/UserCardComponent.scss';
 
 const FriendCards = ({
   firebaseKey,
   fullName,
   profileImage,
-  uid,
+  uidKey,
   userEmail,
-  setUsers,
   user,
-  setUser,
+  isFriend,
+  friendKey,
 }) => {
-  const [editingFriend, setEditingFriend] = useState(false);
-
   const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
-      case 'deleteFriend':
-        deleteFriend(firebaseKey)
-          .then((friendArray) => setEditingFriend(friendArray));
-        deleteUserFriend(firebaseKey)
-          .then((userFriendArray) => setEditingFriend(userFriendArray));
-        break;
       case 'viewFriend':
         history.push(`/friendView/${firebaseKey}`);
         break;
@@ -44,46 +34,21 @@ const FriendCards = ({
 
   return (
     <div className="userCardContainer">
-      <Card className="userCards" key={firebaseKey}>
-        <div className="top">
-          <div className="left">
-            <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
-          </div>
-          <div className="right">
-            <CardTitle className="fullName">{fullName}</CardTitle>
-            <CardText className="userEmail">{userEmail}</CardText>
-          </div>
-        </div>
-        <div className="bottom">
-          {
-            user
-              && <div className="hiddenFriendContent">
-                { user
-                  ? <div>
-                      <button className="viewFriend" onClick={() => handleClick('viewFriend')}>View Friend</button>
-                      <button className="removeUserAsFriend" onClick={() => handleClick('deleteFriend')}>Delete Friend</button>
-                        <div>
-                          {editingFriend && <FriendForm
-                            FriendFormTitle='Add Friend'
-                            firebaseKey={firebaseKey}
-                            fullName={fullName}
-                            profileImage={profileImage}
-                            uid={uid}
-                            userEmail={userEmail}
-                            setUsers={setUsers}
-                            user={user}
-                            setUser={setUser}
-                          />}
-                        </div>
-                    </div>
-                  : <div></div>
-                }
-              </div>
-          }
-        </div>
-      </Card>
+      {
+          isFriend === true
+                && <div>
+            { uidKey !== user?.uid
+              ? <Card className="userCards" key={firebaseKey} id={friendKey}>
+                  <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
+                  <CardTitle className="fullName">{fullName}</CardTitle>
+                  <CardText className="userEmail">{userEmail}</CardText>
+                  <button className="viewFriend" onClick={() => handleClick('viewFriend')}>View Friend</button>
+                </Card>
+              : <div></div>
+            }
+            </div>
+      }
     </div>
-
   );
 };
 
@@ -91,11 +56,11 @@ FriendCards.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   profileImage: PropTypes.string.isRequired,
-  uid: PropTypes.string.isRequired,
+  uidKey: PropTypes.string.isRequired,
   userEmail: PropTypes.string.isRequired,
-  setUsers: PropTypes.func,
+  isFriend: PropTypes.bool,
+  friendKey: PropTypes.string,
   user: PropTypes.any,
-  setUser: PropTypes.func
 };
 
 export default FriendCards;

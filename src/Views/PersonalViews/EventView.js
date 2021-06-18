@@ -5,8 +5,7 @@ import EventForm from '../../Forms/EventForm';
 import EventCards from '../../Components/PersonalComponents/EventCardComponent';
 import './VStyles/EventView.scss';
 
-export default function ItemView({
-  setUser,
+export default function EventView({
   user,
 }) {
   const [events, setEvents] = useState([]);
@@ -17,7 +16,7 @@ export default function ItemView({
   };
 
   useEffect(() => {
-    getEvent(user.uid).then((response) => setEvents(response));
+    getEvent(user?.uid).then((response) => setEvents(response));
   }, []);
   return (
     <div className="eventView">
@@ -42,7 +41,6 @@ export default function ItemView({
             {... eventInfo}
             setEvents={setEvents}
             user={user}
-            setUser={setUser}
           />
             ))}
             </div>
@@ -52,7 +50,6 @@ export default function ItemView({
                 itemFormTitle="Add Event"
                 setEvents={setEvents}
                 user={user}
-                setUser={setUser}
               />
             </div>
         }
@@ -61,8 +58,6 @@ export default function ItemView({
   );
 }
 
-ItemView.propTypes = {
+EventView.propTypes = {
   user: PropTypes.any,
-  setUser: PropTypes.func,
-  uid: PropTypes.any,
 };

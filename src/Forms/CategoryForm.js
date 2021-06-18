@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormGroup } from 'reactstrap';
 import { updateCategory, addCategory } from '../helpers/data/CategoryData';
@@ -25,8 +24,6 @@ const CategoryForm = ({
     friendsOnly: friendsOnly || false,
   });
 
-  const history = useHistory();
-
   const handleInputChange = (e) => {
     setCategory((prevState) => ({
       ...prevState,
@@ -45,11 +42,8 @@ const CategoryForm = ({
     e.preventDefault();
     if (category.firebaseKey) {
       updateCategory(category).then((categoryArray) => setCategories(categoryArray));
-      console.warn(category.categoryName);
-      history.push('/myCategories');
     } else {
       addCategory(category).then((categoryArray) => setCategories(categoryArray));
-      history.push('/myCategories');
 
       setCategory({
         categoryName: '',

@@ -54,6 +54,7 @@ export default function CategoryView({
                 categoryFormTitle="Add Category"
                 setCategories={setCategories}
                 user={user}
+                categories={categories}
                 setUser={setUser}
               />
             </div>
