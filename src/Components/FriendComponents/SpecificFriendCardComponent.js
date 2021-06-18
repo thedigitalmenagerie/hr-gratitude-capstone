@@ -28,13 +28,13 @@ const SpecificFriendCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'viewFriendCategories':
-        history.push(`/friendView/${firebaseKey}/${uid}`);
+        history.push(`/friendView/${firebaseKey}/Categories/${uid}`);
         break;
-      case 'viewFriendItems':
-        history.push(`/friendView/${firebaseKey}/Items`);
-        break;
+      // case 'viewFriendItems':
+      //   history.push(`/friendView/${firebaseKey}/Items/${uid}`);
+      //   break;
       case 'viewFriendEvents':
-        history.push(`/friendView/${firebaseKey}/Events`);
+        history.push(`/friendView/${firebaseKey}/Events/${uid}`);
         break;
       default:
         console.warn('Nothing selected');

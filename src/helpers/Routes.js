@@ -11,8 +11,8 @@ import FriendView from '../Views/PersonalViews/FriendView';
 import SingleFriendView from '../Views/FriendViews/SpecificFriendView';
 import SpecificFriendCategoryView from '../Views/FriendViews/SpecificFriendCategoryView';
 import SingleFriendCategoryItemView from '../Views/FriendViews/SpecificFriendSingleCategoryView';
-import SingleFriendItemView from '../Views/FriendViews/SpecificFriendItemView';
-import SingleFriendEventView from '../Views/FriendViews/SpecificFriendEventView';
+// import SingleFriendItemView from '../Views/FriendViews/SpecificFriendItemView';
+import SpecificFriendEventView from '../Views/FriendViews/SpecificFriendEventView';
 
 const PrivateRoute = ({
   component: Component,
@@ -92,7 +92,7 @@ export default function Routes({
           component={() => <SingleFriendView user={user} setUser={setUser}/>}
         />
         <Route
-          exact path='/friendView/:firebaseKey/:uid/'
+          exact path='/friendView/:firebaseKey/Categories/:uid/'
           user={user}
           component={() => <SpecificFriendCategoryView user={user} setUser={setUser} categories={categories} setCategories={setCategories}/>}
         />
@@ -101,15 +101,15 @@ export default function Routes({
           user={user}
           component={() => <SingleFriendCategoryItemView user={user} setUser={setUser}/>}
         />
-        <Route
-          exact path='/friendView/:firebaseKey/:uid/'
+        {/* <Route
+          exact path='/friendView/:firebaseKey/Items/:uid/'
           user={user}
           component={() => <SingleFriendItemView user={user} setUser={setUser}/>}
-        />
+        /> */}
         <Route
-          path='/friendView/:firebaseKey/:uid/'
+          exact path='/friendView/:firebaseKey/Events/:uid/'
           user={user}
-          component={() => <SingleFriendEventView user={user} setUser={setUser}/>}
+          component={() => <SpecificFriendEventView user={user} setUser={setUser}/>}
         />
         <Route exact path='/userView'
         component={() => <UsersView
@@ -129,4 +129,6 @@ Routes.propTypes = {
   setUser: PropTypes.func,
   categories: PropTypes.array,
   setCategories: PropTypes.func,
+  events: PropTypes.array,
+  setEvents: PropTypes.func,
 };

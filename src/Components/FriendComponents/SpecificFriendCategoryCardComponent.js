@@ -31,7 +31,7 @@ const SpecificFriendCategoryCards = ({
 
   return (
     <div className="categoryContainer">
-            { uid !== user.uid
+            { uid !== user?.uid
               ? <Card className= "categoryCard" key={firebaseKey} id={uid} flipDirection="horizontal">
                   <CardImg className="categoryImg" src={categoryImage} alt="Honey-Rae Swan"/>
                   <CardTitle tag="h5" className="name">{categoryName}</CardTitle>

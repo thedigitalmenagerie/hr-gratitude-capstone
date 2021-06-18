@@ -21,17 +21,6 @@ export default function SpecificFriendCategoryView({
 
   return (
     <div className="categoryView">
-        <form action="/" method="get" className="searchCategories">
-          <label htmlFor="header-search"></label>
-          <input
-            type="text"
-            id="header-search"
-            placeholder="Search Your Categories"
-            name="s"
-            className="input"
-          />
-          <button className="searchCategoriesButton" type="submit">Search</button>
-        </form>
         <StackGrid className="stackGridCategories" gutterHeight={10}>
               {categories?.map((friendCategoryInfo) => (
               <SpecificFriendCategoryCards
