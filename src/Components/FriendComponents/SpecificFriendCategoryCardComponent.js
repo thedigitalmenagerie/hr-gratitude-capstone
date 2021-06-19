@@ -7,6 +7,8 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import greenView from '../../Assets/greenView.png';
+import './CStyles/SpecificFriendCategoryCardComponent.scss';
 
 const SpecificFriendCategoryCards = ({
   firebaseKey,
@@ -16,13 +18,15 @@ const SpecificFriendCategoryCards = ({
   uid,
   friendsOnly,
   user,
+  categoryKey,
 }) => {
   const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/myCategories/${firebaseKey}`);
+        // history.push(`/myCategories/${firebaseKey}`);
+        history.push(`/friendView/${firebaseKey}/Categories/${uid}/CategoryItems/${categoryKey}`);
         break;
       default:
         console.warn('Nothing selected');
@@ -34,11 +38,11 @@ const SpecificFriendCategoryCards = ({
             { uid !== user?.uid
               ? <Card className= "categoryCard" key={firebaseKey} id={uid} flipDirection="horizontal">
                   <CardImg className="categoryImg" src={categoryImage} alt="Honey-Rae Swan"/>
-                  <CardTitle tag="h5" className="name">{categoryName}</CardTitle>
+                  <CardTitle tag="h5" className="categoryName">{categoryName}</CardTitle>
                   <CardText id="area">{categoryDescription}</CardText>
                   <CardText id="area">{friendsOnly}</CardText>
                   <div className="buttonContainer">
-                    <button id="viewCategoryItems" onClick={() => handleClick('view')}>View Items</button>
+                    <button id="viewCategoryItems" onClick={() => handleClick('view')}><img className="greenView" src={greenView}/></button>
                   </div>
                 </Card>
               : <div></div>
@@ -55,7 +59,8 @@ SpecificFriendCategoryCards.propTypes = {
   categoryImage: PropTypes.string.isRequired,
   categoryDescription: PropTypes.string.isRequired,
   friendsOnly: PropTypes.bool,
-  uid: PropTypes.string.isRequired
+  uid: PropTypes.string.isRequired,
+  categoryKey: PropTypes.string
 };
 
 export default SpecificFriendCategoryCards;

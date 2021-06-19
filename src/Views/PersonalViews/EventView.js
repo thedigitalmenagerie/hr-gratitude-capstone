@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { animations } from 'react-animation';
+import { AnimationWrapper } from 'react-hover-animation';
 import { getEvent } from '../../helpers/data/EventData';
 import EventForm from '../../Forms/EventForm';
 import EventCards from '../../Components/PersonalComponents/EventCardComponent';
@@ -19,7 +21,7 @@ export default function EventView({
     getEvent(user?.uid).then((response) => setEvents(response));
   }, []);
   return (
-    <div className="eventView">
+    <div className="eventView" style={{ animation: animations.fadeIn }}>
       <div className="innerContainer">
         {!showAddEventForm
           ? <div>
@@ -32,20 +34,22 @@ export default function EventView({
                   name="s"
                   className="input"
                 />
-                <button className="searchEventsButton" type="submit">Search</button>
               </form>
-            <button id="addEvent" onClick={handleClick}>Add Event</button>
-            {events?.map((eventInfo) => (
+            <AnimationWrapper><button id="addEvent" onClick={handleClick}>Add Event</button></AnimationWrapper>
+            <div className="eventCardContainer">
+              {events?.map((eventInfo) => (
           <EventCards
             key={eventInfo.firebaseKey}
             {... eventInfo}
             setEvents={setEvents}
             user={user}
           />
-            ))}
+              ))}
+            </div>
+
             </div>
           : <div>
-              <button id="closeForm" onClick={handleClick}>Close Form</button>
+              <AnimationWrapper><button id="closeForm" onClick={handleClick}>Close Form</button></AnimationWrapper>
               <EventForm
                 itemFormTitle="Add Event"
                 setEvents={setEvents}

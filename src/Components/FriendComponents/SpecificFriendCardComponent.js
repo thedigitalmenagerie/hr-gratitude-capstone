@@ -8,9 +8,10 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import date from '../../Assets/date.png';
-import category from '../../Assets/category.png';
-import giftView from '../../Assets/giftView.png';
+import greenEvents from '../../Assets/greenEvents.png';
+import greenCategory from '../../Assets/greenCategory.png';
+import greenItems from '../../Assets/greenItems.png';
+import './CStyles/SpecificFriendCardComponent.scss';
 
 const SpecificFriendCards = ({
   firebaseKey,
@@ -30,9 +31,9 @@ const SpecificFriendCards = ({
       case 'viewFriendCategories':
         history.push(`/friendView/${firebaseKey}/Categories/${uid}`);
         break;
-      // case 'viewFriendItems':
-      //   history.push(`/friendView/${firebaseKey}/Items/${uid}`);
-      //   break;
+      case 'viewFriendItems':
+        history.push(`/friendView/${firebaseKey}/Items/${uid}`);
+        break;
       case 'viewFriendEvents':
         history.push(`/friendView/${firebaseKey}/Events/${uid}`);
         break;
@@ -42,18 +43,19 @@ const SpecificFriendCards = ({
   };
 
   return (
-    <div className="userCardContainer">
+    <div className="friendCards">
             {
           isFriend === true
                 && <div>
             { uidKey !== user?.uid
-              ? <Card className="userCards" key={firebaseKey} id={friendKey}>
+              ? <Card className="friendCard" key={firebaseKey} id={friendKey}>
                   <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
                   <CardTitle className="fullName">{fullName}</CardTitle>
                   <CardText className="userEmail">{userEmail}</CardText>
-                  <button><img className="navImg" src={date} onClick={() => handleClick('viewFriendEvents')}></img></button>
-                  <button><img className="navImg" src={category} onClick={() => handleClick('viewFriendCategories')}></img></button>
-                  <button><img className="navImg" src={giftView} onClick={() => handleClick('viewFriendItems')}></img></button>
+                  <div className="specificFriendButtonDiv">
+                  <button className="viewFriend"><img className="viewFriendButton" src={greenEvents} onClick={() => handleClick('viewFriendEvents')}></img></button>
+                  <button className="viewFriend"><img className="viewFriendButton" src={greenCategory} onClick={() => handleClick('viewFriendCategories')}></img></button>
+                  <button className="viewFriend"><img className="viewFriendButton" src={greenItems} onClick={() => handleClick('viewFriendItems')}></img></button></div>
                 </Card>
               : <div></div>
             }

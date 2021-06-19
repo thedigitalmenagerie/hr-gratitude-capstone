@@ -5,8 +5,12 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { AnimationWrapper } from 'react-hover-animation';
 import EventForm from '../../Forms/EventForm';
 import { deleteEvent } from '../../helpers/data/EventData';
+import whiteSolidCircle from '../../Assets/whiteSolidCircle.png';
+import greenDelete from '../../Assets/greenDelete.png';
+import greenUpdate from '../../Assets/greenUpdate.png';
 import './CStyles/EventCardComponent.scss';
 
 const EventCards = ({
@@ -36,21 +40,15 @@ const EventCards = ({
   };
 
   return (
-    <div className="eventContainer">
       <Card className= "eventCard" key={firebaseKey} id={uid}>
-        <div className="eventLeft">
-          <CardTitle tag="h5" className="name">{eventName}</CardTitle>
+          <CardTitle tag="h5" className="name"><img className="calenderHole" src={whiteSolidCircle}/>{eventName}<img className="calenderHole" src={whiteSolidCircle}/></CardTitle>
           <CardText className="eventDate">{eventDate}</CardText>
-        </div>
-        <div className="eventRight">
-          <CardText id="area">{eventDescription}</CardText>
-          <div>
-                <button id="deleteEvent" onClick={() => handleClick('delete')}>Delete Category</button>
-                <button id="editEvent" onClick={() => handleClick('edit')}>
-                  {editingEvents ? 'Close Form' : 'Edit Event'}
-                </button>
-              </div>
-              <div>
+          <CardText className="eventDescription">{eventDescription}</CardText>
+          <div className="eventButtonRow">
+                <AnimationWrapper><button id="deleteEvent" onClick={() => handleClick('delete')}><img className="deleteEventImg" src={greenDelete}/></button></AnimationWrapper>
+                <AnimationWrapper><button id="editEvent" onClick={() => handleClick('edit')}>
+                  {editingEvents ? 'Close Form' : <img className="editEventImg" src={greenUpdate}/>}
+                </button></AnimationWrapper>
                 {editingEvents && <EventForm
                   categoryFormTitle='Edit Event'
                   firebaseKey={firebaseKey}
@@ -61,11 +59,8 @@ const EventCards = ({
                   setEvents={setEvents}
                   user={user}
                   setUser={setUser}
-                />}
-              </div>
-        </div>
+                />}</div>
       </Card>
-    </div>
   );
 };
 

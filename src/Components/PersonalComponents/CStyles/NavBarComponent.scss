@@ -1,38 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .NavBar {
-  background-color: #001859;
-}
-
-.navImg {
-  width: 1.75em;
-  margin-left: 1em;
-}
-
-.loggedInRight {
-  display: flex;
-  flex-flow: row;
-  .loggedInProfilePic {
-  width: 2em;
-  margin-right: 1em;
-  margin-bottom: 1em;
+  background-color: #B6B34B;
+  .nav-link {
+    color: white;
+    font-size: x-small;
+    font-family: 'Bebas Neue', cursive;
+    .navImg {
+      width: 2em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
   }
-  .wordInfo {
-    color: #f8cd4c;
-    margin-right: 1em;
-    margin-bottom: 1em;
-    font-size: xx-small;
+  .collapse {
+    color: white;
   }
-  #signOut {
-  background-color: #f8cd4c;
-  color: #001859;
-  border-radius: 5px;
-  font-family: 'Bebas Neue', cursive;
-  padding-left: 1em;
-  padding-right: 1em;
-  height: 2em;
-    #signOutButton {
-    width: 1em;
+  #authButtons {
+  padding-top: 1.25em;  
+    .loggedInRight {
+      display: flex;
+      flex-flow: row;
+      .loggedInProfilePic {
+        width: 2em;
+        margin-right: 1em;
+        margin-bottom: 1em;
+      }
+      .wordInfo {
+        color: white;
+        margin-right: 1em;
+        font-size: xx-small;
+        font-family: 'Bebas Neue', cursive;
+      }
+      #signOut {
+        background-color: white;
+        color: #B6B34B;
+        border-radius: 5px;
+        font-size: small;
+        font-family: 'Bebas Neue', cursive;
+        padding-left: 1em;
+        padding-right: 1em;
+        height: 2.25em;
+        border-color: #B6B34B;
+        padding-bottom: .5em;
+        margin-bottom: 1em;
+        #signOutButton {
+          width: 1em;
+          margin-right: .5em;
+        }
+      }
     }
   }
 }

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import StackGrid from 'react-stack-grid';
 import ItemCard from '../../Components/PersonalComponents/ItemCardComponent';
 import { showCategoryItems } from '../../helpers/data/CategoryItemData';
 import { getCategory } from '../../helpers/data/CategoryData';
+import './VStyles/SingleCategoryView.scss';
 
 export default function SingleCategoryView({
   user,
@@ -18,6 +20,7 @@ export default function SingleCategoryView({
   console.warn(categories);
   return (
     <div className="categoryItemView">
+      <StackGrid>
         {categoryItems.map((item) => (
           <ItemCard
             key={item.firebaseKey}
@@ -28,7 +31,7 @@ export default function SingleCategoryView({
             user={user}
             {...item}
           />
-        ))}
+        ))}</StackGrid>
       </div>
   );
 }

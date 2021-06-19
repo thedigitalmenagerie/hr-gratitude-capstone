@@ -10,6 +10,9 @@ import PropTypes from 'prop-types';
 import CategoryForm from '../../Forms/CategoryForm';
 import { deleteCategoryItems } from '../../helpers/data/CategoryItemData';
 import './CStyles/CategoryCardComponent.scss';
+import greenView from '../../Assets/greenView.png';
+import greenDelete from '../../Assets/greenDelete.png';
+import greenUpdate from '../../Assets/greenUpdate.png';
 
 const CategoryCards = ({
   setCategories,
@@ -22,7 +25,6 @@ const CategoryCards = ({
   user,
 }) => {
   const [editingCategories, setEditingCategories] = useState(false);
-  const [flip, setFlip] = useState();
 
   const history = useHistory();
 
@@ -38,29 +40,22 @@ const CategoryCards = ({
       case 'view':
         history.push(`/myCategories/${firebaseKey}`);
         break;
-      case 'flip':
-        setFlip((prevState) => !prevState);
-        break;
       default:
         console.warn('Nothing selected');
     }
   };
 
   return (
-    <div className="categoryContainer">
-        <Card className= "categoryCard" key={firebaseKey} id={uid} flip={flip} flipDirection="horizontal">
-          <div className="front" key="front">
+        <Card className= "categoryCard" key={firebaseKey} id={uid}>
           <CardImg className="categoryImg" src={categoryImage} alt="Honey-Rae Swan"/>
-          </div>
-          <div className="back" key="back">
-          <CardTitle tag="h5" className="name">{categoryName}</CardTitle>
+          <CardTitle tag="h5" className="categoryName">{categoryName}</CardTitle>
               <CardText id="area">{categoryDescription}</CardText>
               <CardText id="area">{friendsOnly}</CardText>
               <div className="buttonContainer">
-                <button id="deleteCategory" onClick={() => handleClick('delete')}>Delete Category</button>
-                <button id="viewCategoryItems" onClick={() => handleClick('view')}>View Items</button>
+                <button id="deleteCategory" onClick={() => handleClick('delete')}><img className="buttonCategoryImage" src={greenDelete}/></button>
+                <button id="viewCategoryItems" onClick={() => handleClick('view')}><img className="buttonCategoryImage" src={greenView}/></button>
                 <button id="editCategory" onClick={() => handleClick('edit')}>
-                  {editingCategories ? 'Close Form' : 'Edit Category'}
+                  {editingCategories ? 'Close Form' : <img className="buttonCategoryImage" src={greenUpdate}/>}
                 </button>
               </div>
               <div className="displayEdit">
@@ -76,9 +71,7 @@ const CategoryCards = ({
                   user={user}
                 />}
               </div>
-          </div>
       </Card>
-    </div>
   );
 };
 

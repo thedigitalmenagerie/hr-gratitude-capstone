@@ -25,7 +25,6 @@ export default function ItemView({
 
   return (
     <div className="itemView">
-      <div className="innerContainer">
         {!showAddItemForm
           ? <div>
               <form action="/" method="get" className="searchItems">
@@ -37,7 +36,6 @@ export default function ItemView({
                   name="s"
                   className="input"
                 />
-                <button className="searchItemsButton" type="submit">Search</button>
               </form>
             <button id="addItem" onClick={handleClick}>Add Item</button>
             <StackGrid className="stackGridItems">
@@ -65,7 +63,6 @@ export default function ItemView({
             </div>
         }
       </div>
-    </div>
   );
 }
 

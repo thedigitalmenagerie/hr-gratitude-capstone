@@ -1,61 +1,71 @@
-// import React from 'react';
-// import { useHistory } from 'react-router-dom';
-// import {
-//   Card,
-//   CardImg,
-//   CardTitle,
-//   CardText,
-// } from 'reactstrap';
-// import PropTypes from 'prop-types';
+import React from 'react';
+import {
+  Card,
+  CardImg,
+  CardTitle,
+  CardText,
+} from 'reactstrap';
+import PropTypes from 'prop-types';
+import greenPrice from '../../Assets/greenPrice.png';
+import './CStyles/SpecificFriendItemCardComponent.scss';
 
-// const SpecificFriendCategoryCards = ({
-//   firebaseKey,
-//   categoryName,
-//   categoryImage,
-//   categoryDescription,
-//   uid,
-//   friendsOnly,
-//   user,
-// }) => {
-//   const history = useHistory();
+const SpecificFriendItemCards = ({
+  firebaseKey,
+  itemName,
+  itemImage,
+  itemDescription,
+  price,
+  used,
+  where,
+  uid,
+  user,
+  categoryKey
+}) => {
+  const handleClick = (type) => {
+    switch (type) {
+      case 'purchase':
+        // history.push(`/myCategories/${firebaseKey}`);
+        break;
+      default:
+        console.warn('Nothing selected');
+    }
+  };
 
-//   const handleClick = (type) => {
-//     switch (type) {
-//       case 'view':
-//         history.push(`/myCategories/${firebaseKey}`);
-//         break;
-//       default:
-//         console.warn('Nothing selected');
-//     }
-//   };
+  return (
+    <div className="itemsContainer">
+            { uid !== user?.uid
+              ? <Card className= "itemCard" key={firebaseKey} id={categoryKey} flipDirection="horizontal">
+              <div className="front" key="front">
+              <CardImg className="itemImg" src={itemImage} alt="Honey-Rae Swan" />
+              </div>
+              <div className="back" key="back">
+              <CardTitle tag="h5" className="name">{itemName}</CardTitle>
+                  <CardText id="area">{itemDescription}</CardText>
+                  { used === true
+                    ? <div>Can be used</div>
+                    : <div>New Only</div>
+                  }
+                  <CardText id="area">{used}</CardText>
+                  <button id="purchaseItem" onClick={() => handleClick('purchase')}><a href={where} target="_blank" rel="noopener noreferrer"><img className="greenPrice" src={greenPrice} /></a>{price}</button>
+              </div>
+          </Card>
+              : console.warn('Nothing')
+            }
+            </div>
+  );
+};
 
-//   return (
-//     <div className="categoryContainer">
-//             { uid !== user.uid
-//               ? <Card className= "categoryCard" key={firebaseKey} id={uid} flipDirection="horizontal">
-//                   <CardImg className="categoryImg" src={categoryImage} alt="Honey-Rae Swan"/>
-//                   <CardTitle tag="h5" className="name">{categoryName}</CardTitle>
-//                   <CardText id="area">{categoryDescription}</CardText>
-//                   <CardText id="area">{friendsOnly}</CardText>
-//                   <div className="buttonContainer">
-//                     <button id="viewCategoryItems" onClick={() => handleClick('view')}>View Items</button>
-//                   </div>
-//                 </Card>
-//               : <div></div>
-//             }
-//             </div>
-//   );
-// };
+SpecificFriendItemCards.propTypes = {
+  firebaseKey: PropTypes.string.isRequired,
+  user: PropTypes.any,
+  itemName: PropTypes.string.isRequired,
+  itemImage: PropTypes.string.isRequired,
+  itemDescription: PropTypes.string.isRequired,
+  price: PropTypes.string,
+  used: PropTypes.bool,
+  where: PropTypes.string,
+  uid: PropTypes.string.isRequired,
+  categoryKey: PropTypes.string,
+};
 
-// SpecificFriendCategoryCards.propTypes = {
-//   firebaseKey: PropTypes.string.isRequired,
-//   setCategories: PropTypes.func,
-//   user: PropTypes.any,
-//   categoryName: PropTypes.string.isRequired,
-//   categoryImage: PropTypes.string.isRequired,
-//   categoryDescription: PropTypes.string.isRequired,
-//   friendsOnly: PropTypes.bool,
-//   uid: PropTypes.string.isRequired
-// };
-
-// export default SpecificFriendCategoryCards;
+export default SpecificFriendItemCards;

@@ -8,6 +8,9 @@ import {
 import PropTypes from 'prop-types';
 import ItemForm from '../../Forms/ItemForm';
 import { deleteItem } from '../../helpers/data/ItemData';
+import greenPrice from '../../Assets/greenPrice.png';
+import greenDelete from '../../Assets/greenDelete.png';
+import greenUpdate from '../../Assets/greenUpdate.png';
 import './CStyles/ItemCardComponent.scss';
 
 const ItemCards = ({
@@ -29,7 +32,6 @@ const ItemCards = ({
   categories,
 }) => {
   const [editingItems, setEditingItems] = useState(false);
-  const [flip, setFlip] = useState();
 
   const handleClick = (type) => {
     switch (type) {
@@ -40,9 +42,6 @@ const ItemCards = ({
       case 'edit':
         setEditingItems((prevState) => !prevState);
         break;
-      case 'flip':
-        setFlip((prevState) => !prevState);
-        break;
       default:
         console.warn('Nothing selected');
     }
@@ -50,19 +49,16 @@ const ItemCards = ({
 
   return (
     <div className="itemContainer">
-            <Card className= "itemCard" key={firebaseKey} id={uid} flip={flip} flipDirection="horizontal">
-          <div className="front" key="front">
+            <Card className= "itemCard" key={firebaseKey} id={uid}>
           <CardImg className="itemImg" src={itemImage} alt="Honey-Rae Swan" />
-          </div>
-          <div className="back" key="back">
-          <CardTitle tag="h5" className="name">{itemName}</CardTitle>
+          <CardTitle tag="h5" className="itemName">{itemName}</CardTitle>
               <CardText id="area">{itemDescription}</CardText>
-              <CardText id="area">{price}</CardText>
+              <CardText id="price"><img className="greenPrice" src={greenPrice}/>{price}</CardText>
               <CardText id="area">{categories.categoryName}</CardText>
               <div>
-                <button id="deleteItem" onClick={() => handleClick('delete')}>Delete Item</button>
+                <button id="deleteItem" onClick={() => handleClick('delete')}><img className="greenDelete" src={greenDelete}/></button>
                 <button id="editItem" onClick={() => handleClick('edit')}>
-                  {editingItems ? 'Close Form' : 'Edit Item'}
+                  {editingItems ? 'Close Form' : <img className="greenUpdate" src={greenUpdate}/>}
                 </button>
               </div>
               <div>
@@ -86,10 +82,8 @@ const ItemCards = ({
                   categories={categories}
                 />}
               </div>
-          </div>
       </Card>
     </div>
-
   );
 };
 

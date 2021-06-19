@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { AnimationWrapper } from 'react-hover-animation';
 import { Link } from 'react-router-dom';
 import {
+  Button,
   Collapse,
   Navbar,
   NavbarToggler,
@@ -10,13 +12,13 @@ import {
   NavItem,
 } from 'reactstrap';
 import { signOutUser } from '../../helpers/Authorization';
-import homeButton from '../../Assets/homeButton.png';
-import date from '../../Assets/date.png';
-import category from '../../Assets/category.png';
-import giftView from '../../Assets/giftView.png';
-import userView from '../../Assets/userView.png';
-import signOut from '../../Assets/signInBlue.png';
-import friend from '../../Assets/friend.png';
+import whiteHomeButton from '../../Assets/whiteHomeButton.png';
+import whiteEvents from '../../Assets/whiteEvents.png';
+import whiteCategory from '../../Assets/whiteCategory.png';
+import whiteItems from '../../Assets/whiteItems.png';
+import whiteUser from '../../Assets/whiteUser.png';
+import greenSignOut from '../../Assets/greenSignOut.png';
+import whiteFriend from '../../Assets/whiteFriend.png';
 import './CStyles/NavBarComponent.scss';
 
 const NavBar = ({ user }) => {
@@ -26,46 +28,46 @@ const NavBar = ({ user }) => {
 
   return (
     <div className="NavBar">
-      <Navbar id="Navbar" light expand="md" >
+      <Navbar id="Navbar" expand="md" >
         <NavbarBrand>
-           <Link className="nav-link" to="/"><img className="navImg" src={homeButton}></img></Link>
+           <AnimationWrapper><Link className="nav-link" to="/"><img className="navImg" src={whiteHomeButton}></img></Link></AnimationWrapper>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <Collapse className="collapse" isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <Link className="nav-link" to="/myEvents"><img className="navImg" src={date}></img></Link>
+            <AnimationWrapper><Link className="nav-link" to="/myEvents"><img className="navImg" src={whiteEvents}></img>Events</Link></AnimationWrapper>
           </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/myCategories"><img className="navImg" src={category}></img></Link>
+            <AnimationWrapper><Link className="nav-link" to="/myCategories"><img className="navImg" src={whiteCategory}></img>Categories</Link></AnimationWrapper>
           </NavItem>
           <NavItem>
-           <Link className="nav-link" to="/myItems"><img className="navImg" src={giftView}></img></Link>
+           <AnimationWrapper><Link className="nav-link" to="/myItems"><img className="navImg" src={whiteItems}></img>Items</Link></AnimationWrapper>
           </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/friendView"><img className="navImg" src={friend}></img></Link>
+            <AnimationWrapper><Link className="nav-link" to="/friendView"><img className="navImg" src={whiteFriend}></img>Friends</Link></AnimationWrapper>
          </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/userView"><img className="navImg" src={userView}></img></Link>
+            <AnimationWrapper><Link className="nav-link" to="/userView"><img className="navImg" src={whiteUser}></img>Other Users</Link></AnimationWrapper>
          </NavItem>
         </Nav>
         </Collapse>
         {
             user !== null
-            && <NavItem id="authButtons">
+            && <div id="authButtons">
               {
                 user
-                  ? <div className="loggedInRight">
+                  ? <AnimationWrapper><div className="loggedInRight">
                       <img className="loggedInProfilePic" src={user.profileImage}></img>
                       <div className="wordInfo">
                         <div>{user.fullName}</div>
                         <div>{user.userEmail}</div>
                       </div>
-                      <button id="signOut" onClick={signOutUser}><img id="signOutButton" src={signOut}></img>  SIGN OUT</button>
-                    </div>
+                      <Button id="signOut" onClick={signOutUser}><img id="signOutButton" src={greenSignOut}></img>SIGN OUT</Button>
+                    </div></AnimationWrapper>
                   : <div></div>
               }
-            </NavItem>
+            </div>
           }
       </Navbar>
     </div>

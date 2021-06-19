@@ -7,38 +7,25 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const SpecificFriendEventCards = ({
+export default function SpecificFriendEventCards({
   firebaseKey,
   eventName,
   eventDate,
   eventDescription,
   uid,
   user,
-}) => {
-  // const history = useHistory();
-
-  const handleClick = (type) => {
-    switch (type) {
-      case 'view':
-        // history.push(`/myCategories/${firebaseKey}`);
-        break;
-      default:
-        console.warn('Nothing selected');
-    }
-  };
-
+}) {
   return (
-    <div className="eventContainer">
+    <div className="friendEventContainer">
             { uid !== user?.uid
               ? <Card className= "eventCard" key={firebaseKey} id={uid}>
-              <div className="eventLeft">
+              <div className="friendEventLeft">
                 <CardTitle tag="h5" className="name">{eventName}</CardTitle>
                 <CardText className="eventDate">{eventDate}</CardText>
               </div>
-              <div className="eventRight">
+              <div className="eventDescription">
                 <CardText id="area">{eventDescription}</CardText>
                 <div>
-                      <button id="deleteEvent" onClick={() => handleClick('delete')}>Delete Category</button>
                     </div>
               </div>
             </Card>
@@ -46,7 +33,7 @@ const SpecificFriendEventCards = ({
             }
             </div>
   );
-};
+}
 
 SpecificFriendEventCards.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
@@ -56,5 +43,3 @@ SpecificFriendEventCards.propTypes = {
   eventDescription: PropTypes.string.isRequired,
   uid: PropTypes.string.isRequired
 };
-
-export default SpecificFriendEventCards;

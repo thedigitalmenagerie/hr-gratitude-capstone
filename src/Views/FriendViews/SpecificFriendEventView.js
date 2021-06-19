@@ -5,6 +5,7 @@ import StackGrid from 'react-stack-grid';
 import { getEvent } from '../../helpers/data/EventData';
 import { mergedUserFriendData } from '../../helpers/data/FriendData';
 import SpecificFriendEventCards from '../../Components/FriendComponents/SpecificFriendEventCardComponent';
+import './VStyles/SpecificFriendEventView.scss';
 
 export default function SpecificFriendEventView({
   user,
@@ -20,7 +21,17 @@ export default function SpecificFriendEventView({
   }, []);
 
   return (
-    <div className="eventView">
+    <div className="friendEventView">
+      <form action="/" method="get" className="searchFriendsEvents">
+        <label htmlFor="header-search"></label>
+        <input
+          type="text"
+          id="header-search"
+          placeholder="Search Your Friends' Events"
+          name="s"
+          className="input"
+        />
+      </form>
         <StackGrid className="stackGridEvents" gutterHeight={10}>
               {events?.map((friendEventInfo) => (
               <SpecificFriendEventCards

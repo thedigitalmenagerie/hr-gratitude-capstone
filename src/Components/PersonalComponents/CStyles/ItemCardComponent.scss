@@ -5,21 +5,31 @@
   align-items: flex-start;
 .itemCard {
   display: flex;
-  color: #001859;
+  color: #B6b34b;
   font-family: 'Bebas Neue', cursive;
   min-height: auto;
   max-height: fit-content;
+
+ #area {
+   color: gray;
+ }
+ .greenPrice {
+   width: 1em;
+ }
+
+ .greenDelete {
+  width: 1.5em;
+}
+.greenUpdate {
+  width: 1.5em;
+}
   #deleteItem {
-    background-color: #001859;
-    color: #f8cd4c;
-    font-family: 'Bebas Neue', cursive;
-    border-radius: 5px;
+    border: 0px solid transparent;
+    background-color: transparent;
   }
   #editItem {
-    background-color: #001859;
-    color: #f8cd4c;
-    font-family: 'Bebas Neue', cursive;
-    border-radius: 5px;
+    border: 0px solid transparent;
+    background-color: transparent;
   }
 }
 }

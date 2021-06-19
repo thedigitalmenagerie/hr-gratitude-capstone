@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updateEvent, addEvent } from '../helpers/data/EventData';
+import './FStyles/EventForm.scss';
 
 const EventForm = ({
   eventFormTitle,
@@ -56,8 +57,9 @@ const EventForm = ({
       onSubmit={handleSubmit}
     >
       <h3 id="eventFormTitle">{eventFormTitle}</h3>
-      <label>Name:</label>
+      <label className="eventNameLabel">Name:</label>
       <input
+        className="eventName"
         name='eventName'
         type='text'
         placeholder='Event Name'
@@ -65,8 +67,9 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <label>Description: </label>
+      <label className="eventFormDescriptionLabel">Description: </label>
       <input
+        className="eventFormDescription"
         name='eventDescription'
         type='text'
         placeholder='Event Descpription'
@@ -74,8 +77,9 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <label>Image: </label>
+      <label className="eventFormDateLabel">Image: </label>
       <input
+        className="eventFormDate"
         name='eventDate'
         type='text'
         placeholder='Event Date'
@@ -83,7 +87,7 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <button type="submit">Add Event</button>
+      <button className="addEvent" type="submit">Add Event</button>
     </form>
 
   );

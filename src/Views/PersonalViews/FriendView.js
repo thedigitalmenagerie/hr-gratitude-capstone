@@ -15,6 +15,16 @@ function FriendView({
   }, []);
   return (
     <div className="usersView">
+      <form action="/" method="get" className="searchUsers">
+        <label htmlFor="header-search"></label>
+        <input
+          type="text"
+          id="header-search"
+          placeholder="Search Your Friends"
+          name="s"
+          className="input"
+        />
+      </form>
       {friends?.map((friendInfo) => (
         <FriendCards
           key={friendInfo.firebaseKey}

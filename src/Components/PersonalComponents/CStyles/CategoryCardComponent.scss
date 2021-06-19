@@ -1,50 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.categoryContainer {
     .categoryCard {
       display: flex;
-      color: #001859;
+      color: gray;
       font-family: 'Bebas Neue', cursive;
-      .front {
-        .imgButton {
-          .categoryImg {
 
-          }
-        }
+    }
+    .categoryName {
+      color: #B6B34B;
+    }   
+    .buttonCategoryImage {
+      width: 1.5em;
+      border: 0px solid transparent;
+      background-color: transparent;
+    }
+    .buttonContainer {
+      border: 0px solid transparent;
+      background-color: transparent;
+      #deleteCategory {
+        border: 0px solid transparent;
+        background-color: transparent;
       }
-      .back {
-        padding: 1em;
-        .backFlip {
-          .name {
-
-          }
-          #area {
-
-          }
-        }
-        .buttonContainer {
-          #deleteCategory {
-            background-color: #001859;
-            color: #f8cd4c;
-            font-family: 'Bebas Neue', cursive;
-            border-radius: 5px;
-          }
-          #editCategory {
-            background-color: #001859;
-            color: #f8cd4c;
-            font-family: 'Bebas Neue', cursive;
-            border-radius: 5px;
-          }
-          #viewCategoryItems {
-            background-color: #001859;
-            color: #f8cd4c;
-            font-family: 'Bebas Neue', cursive;
-            border-radius: 5px;
-          }
-        }
-        .displayEdit {
-
-        }
+      #editCategory {
+        border: 0px solid transparent;
+        background-color: transparent;
+      }
+      #viewCategoryItems {
+        border: 0px solid transparent;
+        background-color: transparent;
       }
     }
-}
+

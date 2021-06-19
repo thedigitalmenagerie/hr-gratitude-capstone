@@ -8,7 +8,8 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import './CStyles/UserCardComponent.scss';
+import './CStyles/FriendCardComponent.scss';
+import greenView from '../../Assets/greenView.png';
 
 const FriendCards = ({
   firebaseKey,
@@ -33,16 +34,16 @@ const FriendCards = ({
   };
 
   return (
-    <div className="userCardContainer">
+    <div className="friendCardContainer">
       {
           isFriend === true
                 && <div>
             { uidKey !== user?.uid
-              ? <Card className="userCards" key={firebaseKey} id={friendKey}>
+              ? <Card className="friendCards" key={firebaseKey} id={friendKey}>
                   <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
                   <CardTitle className="fullName">{fullName}</CardTitle>
                   <CardText className="userEmail">{userEmail}</CardText>
-                  <button className="viewFriend" onClick={() => handleClick('viewFriend')}>View Friend</button>
+                  <button className="viewFriend" onClick={() => handleClick('viewFriend')}><img className="viewFriendButton" src={greenView}/></button>
                 </Card>
               : <div></div>
             }

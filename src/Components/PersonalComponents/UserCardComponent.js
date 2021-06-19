@@ -4,20 +4,20 @@ import {
   Card,
   CardImg,
   CardTitle,
-  CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { AnimationWrapper } from 'react-hover-animation';
 import {
   addUserFriend
 } from '../../helpers/data/FriendData';
 import './CStyles/UserCardComponent.scss';
+import greenAddButton from '../../Assets/greenAddButton.png';
 
 const UserCards = ({
   firebaseKey,
   fullName,
   profileImage,
   uid,
-  userEmail,
   user,
 }) => {
   const [editingUsers, setEditingUsers] = useState(false);
@@ -43,7 +43,7 @@ const UserCards = ({
   };
 
   return (
-    <div className="userCardContainer">
+    <AnimationWrapper><div className="userCardContainer">
         {
           user?.uid !== uid
                 && <div>
@@ -51,11 +51,9 @@ const UserCards = ({
               ? <Card className="userCards" key={firebaseKey} id={uid}>
                   <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
                   <CardTitle className="fullName">{fullName}</CardTitle>
-                  <CardText className="userEmail">{userEmail}</CardText>
                   {!editingUsers
-                    ? <button className="addUserAsFriend" onClick={() => handleClick('addFriend')}>Add Friend</button>
+                    ? <button className="addUserAsFriend" onClick={() => handleClick('addFriend')}><img className="addUserButton" src={greenAddButton}/></button>
                     : <div>
-                      <button className="removeUserAsFriend" onClick={() => handleClick('addFriend')}>Remove Friend</button>
                   </div>
                   }
                 </Card>
@@ -63,7 +61,7 @@ const UserCards = ({
             }
             </div>
           }
-  </div>
+  </div></AnimationWrapper>
   );
 };
 

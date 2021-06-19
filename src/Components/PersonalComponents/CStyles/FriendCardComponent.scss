@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.friendCards {
+.friendCardContainer {
   border: 0px solid transparent;
   align-items: center;
   align-self: center;
   margin-top: 7em;
-  .friendCard {
+  .friendCards {
     display: flex;
     align-items: center;
     font-size: small;
@@ -26,19 +26,14 @@
       color: gray;
       margin: 0;
     }
-    .specificFriendButtonDiv {
-      display: flex;
-      flex-flow: row wrap;
-    }
     .viewFriend {
+      border-radius: 100%;
       border: 0px solid transparent;
       background-color: transparent;
-      margin-top: 1em;
-    }
-    .viewFriendButton {
-      width: 2em;
-      border: 0px solid transparent;
-      background-color: transparent;
+      .viewFriendButton {
+        width: 4em;
+        margin: 0;
+      }
     }
     .removeUserAsFriend {
       border-radius: 100%;

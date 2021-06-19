@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import StackGrid from 'react-stack-grid';
 import { getUser } from '../../helpers/data/UserData';
 import UserCards from '../../Components/PersonalComponents/UserCardComponent';
 import './VStyles/UsersView.scss';
@@ -24,8 +25,8 @@ function UsersView({
           name="s"
           className="input"
         />
-        <button className="searchUsersButton" type="submit">Search</button>
       </form>
+      <StackGrid className="userCardContainer">
       {users?.map((userInfo) => (
         <UserCards
           key={userInfo.firebaseKey}
@@ -35,6 +36,7 @@ function UsersView({
           setUser={setUser}
         />
       ))}
+      </StackGrid>
     </div>
   );
 }

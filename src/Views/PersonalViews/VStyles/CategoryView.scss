@@ -1,35 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .categoryView {
-  .innerContainer {
     .searchCategories {
       margin-top: 2em;
       font-family: 'Bebas Neue', cursive;
       .label {
-        color: #001859;
+        color: lightgray;
       }
       .input {
         width: 20em;
-        color: #001859;
+        color: black;
         border-radius: 5px;
         margin-right: 1em;
       }
-      .searchCategoriesButton {
-        background-color: #F8CD4C;
-        color: #001859;
-        border-radius: 5px;
-      }
+
     }
     #addCategory {
-      background-color: #F8CD4C;
-      color: #001859;
+      background-color: #B6b34b;
+      color: white;
       border-radius: 5px;
       margin-top: 2em;
       font-family: 'Bebas Neue', cursive;
     }
     #closeForm {
-      background-color: #F8CD4C;
-      color: #001859;
+      background-color: #B6b34b;
+      color: white;
       border-radius: 5px;
       margin-top: 2em;
       font-family: 'Bebas Neue', cursive;
@@ -42,4 +37,3 @@
       justify-content: space-around;
     }
   }
-}

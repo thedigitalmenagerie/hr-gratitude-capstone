@@ -19,7 +19,6 @@ export default function CategoryView({
 
   return (
     <div className="categoryView">
-      <div className="innerContainer">
         {!showAddCategoryForm
           ? <div>
               <form action="/" method="get" className="searchCategories">
@@ -31,7 +30,6 @@ export default function CategoryView({
                   name="s"
                   className="input"
                 />
-                <button className="searchCategoriesButton" type="submit">Search</button>
               </form>
               <button id="addCategory" onClick={handleClick}>Add Category</button>
               <StackGrid className="stackGridCategories" gutterHeight={10}>
@@ -60,7 +58,6 @@ export default function CategoryView({
             </div>
         }
       </div>
-    </div>
   );
 }
 
