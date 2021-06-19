@@ -15,13 +15,13 @@ const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const addEvent = (events, user) => new Promise((resolve, reject) => {
+const addEvent = (events, uid) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/events.json`, events)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${DBURL}/events/${response.data.name}.json`, body)
         .then(() => {
-          getEvent(user).then((eventArray) => resolve(eventArray));
+          getEvent(uid).then(resolve);
         });
     }).catch((error) => reject(error));
 });
@@ -32,9 +32,9 @@ const deleteEvent = (firebaseKey, user) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateEvent = (events, user) => new Promise((resolve, reject) => {
+const updateEvent = (events, uid) => new Promise((resolve, reject) => {
   axios.patch(`${DBURL}/events/${events.firebaseKey}.json`, events)
-    .then(() => getEvent(user, events.firebaseKey).then(resolve))
+    .then(() => getEvent(uid).then(resolve))
     .catch((error) => reject(error));
 });
 

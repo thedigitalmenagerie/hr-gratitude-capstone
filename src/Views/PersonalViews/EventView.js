@@ -54,6 +54,7 @@ export default function EventView({
                 itemFormTitle="Add Event"
                 setEvents={setEvents}
                 user={user}
+                setShowAddEventForm={setShowAddEventForm}
               />
             </div>
         }

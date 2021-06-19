@@ -12,11 +12,11 @@ export default function SpecificFriendSingleCategoryView({
 }) {
   const [friendsForCategoryItems, setFriendsForCategoryItems] = useState([]);
   const [categoryItems, setCategoryItems] = useState([]);
-  const { uid, categoryKey } = useParams();
+  const { categoryKey } = useParams();
 
   useEffect(() => {
     mergedUserFriendData(friendsForCategoryItems.friendKey).then((response) => setFriendsForCategoryItems(response));
-    getCategoryItems(uid, categoryKey).then((response) => setCategoryItems(response));
+    getCategoryItems(categoryKey).then((response) => setCategoryItems(response));
   }, []);
 
   return (

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updateEvent, addEvent } from '../helpers/data/EventData';
 import './FStyles/EventForm.scss';
@@ -13,6 +12,7 @@ const EventForm = ({
   uid,
   user,
   setEvents,
+  setShowAddEventForm,
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -21,8 +21,6 @@ const EventForm = ({
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid,
   });
-
-  const history = useHistory();
 
   const handleInputChange = (e) => {
     setEvent((prevState) => ({
@@ -34,10 +32,11 @@ const EventForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (event.firebaseKey) {
-      updateEvent(event).then((eventArray) => setEvents(eventArray));
+      updateEvent(event, uid).then((eventArray) => setEvents(eventArray));
     } else {
-      addEvent(event).then((eventArray) => setEvents(eventArray));
-      history.push('/myEvents');
+      e.preventDefault();
+      addEvent(event, user.uid).then((eventArray) => setEvents(eventArray));
+      setShowAddEventForm(false);
 
       setEvent({
         eventName: '',
@@ -103,6 +102,7 @@ EventForm.propTypes = {
   friendsOnly: PropTypes.bool,
   uid: PropTypes.string,
   user: PropTypes.any,
+  setShowAddEventForm: PropTypes.func
 };
 
 export default EventForm;

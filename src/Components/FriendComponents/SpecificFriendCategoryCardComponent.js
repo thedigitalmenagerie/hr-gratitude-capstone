@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
   Card,
   CardImg,
@@ -18,15 +18,14 @@ const SpecificFriendCategoryCards = ({
   uid,
   friendsOnly,
   user,
-  categoryKey,
 }) => {
   const history = useHistory();
+  const location = useLocation();
 
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        // history.push(`/myCategories/${firebaseKey}`);
-        history.push(`/friendView/${firebaseKey}/Categories/${uid}/CategoryItems/${categoryKey}`);
+        history.push(`${location.pathname}/CategoryItems/${firebaseKey}`);
         break;
       default:
         console.warn('Nothing selected');
