@@ -20,6 +20,11 @@ https://www.figma.com/file/mwLaSXorzEtfc6FRArlGks/Gratitude
 
 <img width="953" alt="Screen Shot 2021-06-01 at 8 14 05 PM" src="https://user-images.githubusercontent.com/76716670/120405212-11303180-c316-11eb-8c5b-ad1497c4b3e0.png">
 
+### Flow Chart
+
+<img width="988" alt="Screen Shot 2021-06-21 at 7 04 32 PM" src="https://user-images.githubusercontent.com/76716670/122838240-a2664880-d2c3-11eb-81e6-6ab944e8c726.png">
+
+
 ### ERD:
 
 <img width="1440" alt="Screen Shot 2021-06-01 at 8 08 38 PM" src="https://user-images.githubusercontent.com/76716670/120404864-47b97c80-c315-11eb-81d7-b0e2e13fb62b.png">
