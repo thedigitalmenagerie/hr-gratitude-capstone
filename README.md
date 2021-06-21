@@ -32,6 +32,7 @@ https://www.figma.com/file/mwLaSXorzEtfc6FRArlGks/Gratitude
 
 ### Link to the deployed project:
 
+https://hr-gratitude-capstone.netlify.app/
 
 ### User Stories:
 
@@ -55,6 +56,31 @@ Other Features :
 * As an authenticated user viewing another user's page, I should be able to mark an item as purchased without notifying the user and allowing other users to see the item has already been purchased. 
 
 ### Screenshots of project:
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 50 29 PM" src="https://user-images.githubusercontent.com/76716670/122841793-055ade00-d2ca-11eb-88d4-c862d0e5efa9.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 51 17 PM" src="https://user-images.githubusercontent.com/76716670/122841842-20c5e900-d2ca-11eb-86ba-ca68529c971a.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 52 08 PM" src="https://user-images.githubusercontent.com/76716670/122841878-363b1300-d2ca-11eb-838e-13a2fd8bdcf0.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 52 48 PM" src="https://user-images.githubusercontent.com/76716670/122841914-4eab2d80-d2ca-11eb-9c11-08f3accdc4ed.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 53 20 PM" src="https://user-images.githubusercontent.com/76716670/122841960-61256700-d2ca-11eb-84f6-e9dfc691d551.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 53 54 PM" src="https://user-images.githubusercontent.com/76716670/122841997-75696400-d2ca-11eb-8e27-0034cf552708.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 54 27 PM" src="https://user-images.githubusercontent.com/76716670/122842041-8ca85180-d2ca-11eb-906d-cd9712316558.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 55 05 PM" src="https://user-images.githubusercontent.com/76716670/122842089-a0ec4e80-d2ca-11eb-9c4c-2d52eeb47761.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 56 15 PM" src="https://user-images.githubusercontent.com/76716670/122842174-cc6f3900-d2ca-11eb-9ef2-cef28922dcdb.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 56 54 PM" src="https://user-images.githubusercontent.com/76716670/122842204-e01a9f80-d2ca-11eb-866b-607041272ff4.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 57 35 PM" src="https://user-images.githubusercontent.com/76716670/122842238-f58fc980-d2ca-11eb-8092-2fc29557efea.png">
+
+<img width="1440" alt="Screen Shot 2021-06-21 at 7 58 09 PM" src="https://user-images.githubusercontent.com/76716670/122842295-11936b00-d2cb-11eb-89f8-ba63e391107e.png">
+
 
 ### List of contributors and links to GH profiles:
 
