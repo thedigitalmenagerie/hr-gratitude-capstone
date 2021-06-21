@@ -15,26 +15,26 @@ const getSingleCategory = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const addCategory = (categories, user) => new Promise((resolve, reject) => {
+const addCategory = (categories, uid) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/categories.json`, categories)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${DBURL}/categories/${response.data.name}.json`, body)
         .then(() => {
-          getCategory(user).then((categoryArray) => resolve(categoryArray));
+          getCategory(uid).then(resolve);
         });
     }).catch((error) => reject(error));
 });
 
-const deleteCategory = (firebaseKey, user) => new Promise((resolve, reject) => {
+const deleteCategory = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${DBURL}/categories/${firebaseKey}.json`)
-    .then(() => getSingleCategory(user, firebaseKey).then((categoryArray) => resolve(categoryArray)))
+    .then(() => getSingleCategory(uid).then((categoryArray) => resolve(categoryArray)))
     .catch((error) => reject(error));
 });
 
-const updateCategory = (categories, user) => new Promise((resolve, reject) => {
+const updateCategory = (categories, uid) => new Promise((resolve, reject) => {
   axios.patch(`${DBURL}/categories/${categories.firebaseKey}.json`, categories)
-    .then(() => getSingleCategory(user, categories.firebaseKey).then(resolve))
+    .then(() => getCategory(uid).then(resolve))
     .catch((error) => reject(error));
 });
 

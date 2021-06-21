@@ -28,7 +28,7 @@ const EventCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteEvent(firebaseKey)
+        deleteEvent(firebaseKey, uid)
           .then((eventArray) => setEvents(eventArray));
         break;
       case 'edit':
@@ -72,7 +72,8 @@ EventCards.propTypes = {
   eventName: PropTypes.string.isRequired,
   eventDate: PropTypes.string.isRequired,
   eventDescription: PropTypes.string.isRequired,
-  uid: PropTypes.string.isRequired
+  uid: PropTypes.string.isRequired,
+  setShowAddEventForm: PropTypes.string,
 };
 
 export default EventCards;

@@ -31,7 +31,7 @@ const CategoryCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteCategoryItems(firebaseKey)
+        deleteCategoryItems(firebaseKey, uid)
           .then((categoryArray) => setCategories(categoryArray));
         break;
       case 'edit':

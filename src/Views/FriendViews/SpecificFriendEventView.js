@@ -14,26 +14,34 @@ export default function SpecificFriendEventView({
   const [friendsForEvents, setFriendsForEvents] = useState([]);
   const [events, setEvents] = useState([]);
   const { uid } = useParams();
+  const [search, setSearch] = useState('');
+  const [filteredData, setFilteredData] = useState('');
 
   useEffect(() => {
     mergedUserFriendData(friendsForEvents.friendKey).then((response) => setFriendsForEvents(response));
     getEvent(uid).then((response) => setEvents(response));
   }, []);
 
+  useEffect(() => {
+    setFilteredData(
+      events.filter((event) => event.eventName.toLowerCase().includes(search.toLowerCase()))
+    );
+  }, [search, events]);
+
   return (
     <div className="friendEventView">
-      <form action="/" method="get" className="searchFriendsEvents">
-        <label htmlFor="header-search"></label>
-        <input
-          type="text"
-          id="header-search"
-          placeholder="Search Your Friends' Events"
-          name="s"
-          className="input"
-        />
-      </form>
-        <StackGrid className="stackGridEvents" gutterHeight={10}>
-              {events?.map((friendEventInfo) => (
+      { filteredData.length === 0
+        ? <div className="d-flex flex-column justify-content-center">
+            <h5 className="text-center my-3">No items found with that name!</h5>
+          </div>
+        : <div>
+            <div className="d-flex flex-column justify-content-center">
+              <h1 className="text-center my-3">All Events</h1>
+              <div className="form-group mb-4 d-flex justify-content-center">
+                <input type="search" id="search" placeholder="Search by event name..." aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
+              </div>
+              <StackGrid className="stackGridEvents" gutterHeight={10}>
+              {filteredData?.map((friendEventInfo) => (
               <SpecificFriendEventCards
                 key={friendEventInfo.firebaseKey}
                 {...friendEventInfo}
@@ -45,6 +53,9 @@ export default function SpecificFriendEventView({
               />
               ))}
           </StackGrid>
+            </div>
+          </div>
+      }
             </div>
   );
 }

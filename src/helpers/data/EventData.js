@@ -9,12 +9,6 @@ const getEvent = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${DBURL}/events/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
-});
-
 const addEvent = (events, uid) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/events.json`, events)
     .then((response) => {
@@ -26,9 +20,9 @@ const addEvent = (events, uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteEvent = (firebaseKey, user) => new Promise((resolve, reject) => {
+const deleteEvent = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${DBURL}/events/${firebaseKey}.json`)
-    .then(() => getSingleEvent(user, firebaseKey).then((eventArray) => resolve(eventArray)))
+    .then(() => getEvent(uid).then((eventArray) => resolve(eventArray)))
     .catch((error) => reject(error));
 });
 

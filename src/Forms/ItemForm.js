@@ -18,7 +18,8 @@ const ItemForm = ({
   categoryKey,
   friendsOnly,
   categories,
-  setItems
+  setItems,
+  setShowAddItemForm,
 }) => {
   const [item, setItem] = useState({
     itemName: itemName || '',
@@ -51,9 +52,10 @@ const ItemForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (item.firebaseKey) {
-      updateItem(item).then((itemArray) => setItems(itemArray));
+      updateItem(item, uid).then((itemArray) => setItems(itemArray));
     } else {
-      addItem(item).then((itemArray) => setItems(itemArray));
+      addItem(item, user.uid).then((itemArray) => setItems(itemArray));
+      setShowAddItemForm(false);
 
       setItem({
         itemName: '',
@@ -193,6 +195,7 @@ ItemForm.propTypes = {
   categoryName: PropTypes.any,
   categoryImage: PropTypes.any,
   categoryDescription: PropTypes.any,
+  setShowAddItemForm: PropTypes.any
 };
 
 export default ItemForm;

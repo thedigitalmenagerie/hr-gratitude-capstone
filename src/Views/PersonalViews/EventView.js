@@ -12,10 +12,18 @@ export default function EventView({
 }) {
   const [events, setEvents] = useState([]);
   const [showAddEventForm, setShowAddEventForm] = useState(false);
+  const [search, setSearch] = useState('');
+  const [filteredData, setFilteredData] = useState('');
 
   const handleClick = () => {
     setShowAddEventForm((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    setFilteredData(
+      events.filter((event) => event.eventName.toLowerCase().includes(search.toLowerCase()))
+    );
+  }, [search, events]);
 
   useEffect(() => {
     getEvent(user?.uid).then((response) => setEvents(response));
@@ -25,29 +33,31 @@ export default function EventView({
       <div className="innerContainer">
         {!showAddEventForm
           ? <div>
-              <form action="/" method="get" className="searchEvents">
-                <label htmlFor="header-search" className="label"></label>
-                <input
-                  type="text"
-                  id="header-search"
-                  placeholder="Search Your Events"
-                  name="s"
-                  className="input"
-                />
-              </form>
-            <AnimationWrapper><button id="addEvent" onClick={handleClick}>Add Event</button></AnimationWrapper>
-            <div className="eventCardContainer">
-              {events?.map((eventInfo) => (
-          <EventCards
-            key={eventInfo.firebaseKey}
-            {... eventInfo}
-            setEvents={setEvents}
-            user={user}
-          />
-              ))}
-            </div>
-
-            </div>
+            { filteredData.length === 0
+              ? <div className="d-flex flex-column justify-content-center">
+                    <h5 className="text-center my-3">No events found with that name!</h5>
+                  </div>
+              : <div>
+                    <div className="d-flex flex-column justify-content-center">
+                      <h1 className="text-center my-3">All Events</h1>
+                      <div className="form-group mb-4 d-flex justify-content-center">
+                        <input type="search" id="search" placeholder="Search by event name..." aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
+                      </div>
+                      <AnimationWrapper><button id="addEvent" onClick={handleClick}>Add Event</button></AnimationWrapper>
+                      <div className="eventCardContainer">
+                        {filteredData?.map((eventInfo) => (
+                          <EventCards
+                            key={eventInfo.firebaseKey}
+                            {... eventInfo}
+                            setEvents={setEvents}
+                            user={user}
+                            setShowAddEventForm={setShowAddEventForm}
+                          />
+                        ))}
+                      </div>
+                  </div>
+                </div>
+            } </div>
           : <div>
               <AnimationWrapper><button id="closeForm" onClick={handleClick}>Close Form</button></AnimationWrapper>
               <EventForm

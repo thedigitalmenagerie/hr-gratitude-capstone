@@ -36,7 +36,7 @@ const ItemCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteItem(firebaseKey)
+        deleteItem(firebaseKey, uid)
           .then((itemArray) => setItems(itemArray));
         break;
       case 'edit':

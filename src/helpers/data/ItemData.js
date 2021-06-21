@@ -9,32 +9,32 @@ const getItem = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${DBURL}/items/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
-});
+// const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
+//   axios.get(`${DBURL}/items/${firebaseKey}.json`)
+//     .then((response) => resolve(response.data))
+//     .catch((error) => reject(error));
+// });
 
-const addItem = (items, user) => new Promise((resolve, reject) => {
+const addItem = (items, uid) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/items.json`, items)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${DBURL}/items/${response.data.name}.json`, body)
         .then(() => {
-          getItem(user).then((categoryArray) => resolve(categoryArray));
+          getItem(uid).then(resolve);
         });
     }).catch((error) => reject(error));
 });
 
-const deleteItem = (firebaseKey, user) => new Promise((resolve, reject) => {
+const deleteItem = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${DBURL}/items/${firebaseKey}.json`)
-    .then(() => getSingleItem(user, firebaseKey).then((itemArray) => resolve(itemArray)))
+    .then(() => getItem(uid).then((itemArray) => resolve(itemArray)))
     .catch((error) => reject(error));
 });
 
-const updateItem = (items, user) => new Promise((resolve, reject) => {
+const updateItem = (items, uid) => new Promise((resolve, reject) => {
   axios.patch(`${DBURL}/items/${items.firebaseKey}.json`, items)
-    .then(() => getSingleItem(user, items.firebaseKey).then(resolve))
+    .then(() => getItem(uid).then(resolve))
     .catch((error) => reject(error));
 });
 

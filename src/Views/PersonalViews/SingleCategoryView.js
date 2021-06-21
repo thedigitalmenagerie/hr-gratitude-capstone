@@ -13,15 +13,34 @@ export default function SingleCategoryView({
   const [categoryItems, setCategoryItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const { categoryKey } = useParams();
+  const [search, setSearch] = useState('');
+  const [filteredData, setFilteredData] = useState('');
+
   useEffect(() => {
     showCategoryItems(categoryKey).then((response) => setCategoryItems(response.items));
     getCategory(user).then((response) => setCategories(response));
   }, []);
-  console.warn(categories);
+
+  useEffect(() => {
+    setFilteredData(
+      categoryItems.filter((categoryItem) => categoryItem.itemName.toLowerCase().includes(search.toLowerCase()))
+    );
+  }, [search, categoryItems]);
+
   return (
     <div className="categoryItemView">
-      <StackGrid>
-        {categoryItems.map((item) => (
+                { filteredData.length === 0
+                  ? <div className="d-flex flex-column justify-content-center">
+                  <h5 className="text-center my-3">No items found with that name!</h5>
+                </div>
+                  : <div>
+                  <div className="d-flex flex-column justify-content-center">
+                    <h1 className="text-center my-3">All Items</h1>
+                    <div className="form-group mb-4 d-flex justify-content-center">
+                      <input type="search" id="search" placeholder="Search by item name..." aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
+                    </div>
+                    <StackGrid>
+        {filteredData.map((item) => (
           <ItemCard
             key={item.firebaseKey}
             items={categoryItems}
@@ -32,6 +51,9 @@ export default function SingleCategoryView({
             {...item}
           />
         ))}</StackGrid>
+                </div>
+              </div>
+          }
       </div>
   );
 }

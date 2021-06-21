@@ -13,7 +13,8 @@ const CategoryForm = ({
   uid,
   user,
   friendsOnly,
-  setCategories
+  setCategories,
+  setShowAddCategoryForm,
 }) => {
   const [category, setCategory] = useState({
     categoryName: categoryName || '',
@@ -41,9 +42,10 @@ const CategoryForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (category.firebaseKey) {
-      updateCategory(category).then((categoryArray) => setCategories(categoryArray));
+      updateCategory(category, uid).then((categoryArray) => setCategories(categoryArray));
     } else {
-      addCategory(category).then((categoryArray) => setCategories(categoryArray));
+      addCategory(category, user.uid).then((categoryArray) => setCategories(categoryArray));
+      setShowAddCategoryForm(false);
 
       setCategory({
         categoryName: '',
@@ -118,6 +120,7 @@ CategoryForm.propTypes = {
   uid: PropTypes.string,
   user: PropTypes.object,
   category: PropTypes.any,
+  setShowAddCategoryForm: PropTypes.any,
 };
 
 export default CategoryForm;
