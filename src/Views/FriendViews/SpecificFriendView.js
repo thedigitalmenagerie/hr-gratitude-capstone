@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { mergedUserFriendData } from '../../helpers/data/FriendData';
 import SpecificFriendCards from '../../Components/FriendComponents/SpecificFriendCardComponent';
-import './VStyles/SpecificFriendView.scss';
 
 function SpecificFriendView({
   user,
@@ -14,7 +13,7 @@ function SpecificFriendView({
     mergedUserFriendData(specificFriends.friendKey).then((response) => setSpecificFriends(response));
   }, []);
   return (
-    <div className="specificFriedView">
+    <div className="specificFriendView">
       {specificFriends?.map((friendInfo) => (
         <SpecificFriendCards
         key={friendInfo.firebaseKey}
