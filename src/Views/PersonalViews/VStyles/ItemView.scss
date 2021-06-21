@@ -1,35 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .itemView {
-  .innerContainer {
     .searchItems {
       margin-top: 2em;
       font-family: 'Bebas Neue', cursive;
       .label {
-        color: #001859;
+        color: #b6b34b;
       }
       .input {
         width: 20em;
-        color: #001859;
+        color: gray;
         border-radius: 5px;
         margin-right: 1em;
       }
       .searchItemsButton {
-        background-color: #F8CD4C;
-        color: #001859;
+        background-color: #b6b34b;
+        color: white;
         border-radius: 5px;
       }
     }
     #addItem {
-      background-color: #F8CD4C;
-      color: #001859;
+      background-color: #b6b34b;
+      color: white;
       border-radius: 5px;
       margin-top: 2em;
       font-family: 'Bebas Neue', cursive;
     }
     #closeForm {
-      background-color: #F8CD4C;
-      color: #001859;
+      background-color: #b6b34b;
+      color: white;
       border-radius: 5px;
       margin-top: 2em;
       font-family: 'Bebas Neue', cursive;
@@ -44,4 +43,4 @@
       align-items: flex-start;
     }
   }
-}
+

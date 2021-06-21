@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.friendEventView {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  margin-left: 7em;
+    .searchFriendsEvents {
+      margin-top: 2em;
+      font-family: 'Bebas Neue', cursive;
+      .label {
+        color: black;
+      }
+      .input {
+        width: 20em;
+        color: black;
+        border-radius: 5px;
+        margin-right: 1em;
+      }
+      .searchEventsButton {
+        background-color: #B6B34B;
+        color: white;
+        border-radius: 5px;
+        margin-top: 1em;
+      }
+    }
+    #addEvent {
+      background-color: #B6B34B;
+      color: white;
+      border-radius: 5px;
+      margin-top: 2em;
+      font-family: 'Bebas Neue', cursive;
+    }
+    #closeForm {
+      background-color: #F8CD4C;
+      color: black;
+      border-radius: 5px;
+      margin-top: 2em;
+      font-family: 'Bebas Neue', cursive;
+    }
+    .eventCardContainer {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      align-self: center;
+    }
+  }

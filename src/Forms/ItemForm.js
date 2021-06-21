@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormGroup, Input } from 'reactstrap';
 import { updateItem, addItem } from '../helpers/data/ItemData';
@@ -19,6 +18,8 @@ const ItemForm = ({
   categoryKey,
   friendsOnly,
   categories,
+  setItems,
+  setShowAddItemForm,
 }) => {
   const [item, setItem] = useState({
     itemName: itemName || '',
@@ -33,8 +34,6 @@ const ItemForm = ({
     categoryKey: categoryKey || '',
     friendsOnly: friendsOnly || false,
   });
-
-  const history = useHistory();
 
   const handleInputChange = (e) => {
     setItem((prevState) => ({
@@ -53,11 +52,10 @@ const ItemForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (item.firebaseKey) {
-      updateItem(item).then((itemArray) => setItem(itemArray));
-      history.push('/myItems');
+      updateItem(item, uid).then((itemArray) => setItems(itemArray));
     } else {
-      addItem(item).then((itemArray) => setItem(itemArray));
-      history.push('/myItems');
+      addItem(item, user.uid).then((itemArray) => setItems(itemArray));
+      setShowAddItemForm(false);
 
       setItem({
         itemName: '',
@@ -197,6 +195,7 @@ ItemForm.propTypes = {
   categoryName: PropTypes.any,
   categoryImage: PropTypes.any,
   categoryDescription: PropTypes.any,
+  setShowAddItemForm: PropTypes.any
 };
 
 export default ItemForm;

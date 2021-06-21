@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updateEvent, addEvent } from '../helpers/data/EventData';
+import './FStyles/EventForm.scss';
 
 const EventForm = ({
   eventFormTitle,
@@ -11,7 +11,8 @@ const EventForm = ({
   eventDescription,
   uid,
   user,
-  setEvents
+  setEvents,
+  setShowAddEventForm,
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -20,8 +21,6 @@ const EventForm = ({
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid,
   });
-
-  const history = useHistory();
 
   const handleInputChange = (e) => {
     setEvent((prevState) => ({
@@ -33,10 +32,12 @@ const EventForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (event.firebaseKey) {
-      updateEvent(event).then((eventArray) => setEvent(eventArray));
+      updateEvent(event, uid).then((eventArray) => setEvents(eventArray));
     } else {
-      addEvent(event).then((eventArray) => setEvents(eventArray));
-      history.push('/myEvents');
+      e.preventDefault();
+      addEvent(event, user.uid).then((eventArray) => setEvents(eventArray));
+      setShowAddEventForm(false);
+
       setEvent({
         eventName: '',
         eventDate: '',
@@ -55,8 +56,9 @@ const EventForm = ({
       onSubmit={handleSubmit}
     >
       <h3 id="eventFormTitle">{eventFormTitle}</h3>
-      <label>Name:</label>
+      <label className="eventNameLabel">Name:</label>
       <input
+        className="eventName"
         name='eventName'
         type='text'
         placeholder='Event Name'
@@ -64,8 +66,9 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <label>Description: </label>
+      <label className="eventFormDescriptionLabel">Description: </label>
       <input
+        className="eventFormDescription"
         name='eventDescription'
         type='text'
         placeholder='Event Descpription'
@@ -73,8 +76,9 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <label>Image: </label>
+      <label className="eventFormDateLabel">Image: </label>
       <input
+        className="eventFormDate"
         name='eventDate'
         type='text'
         placeholder='Event Date'
@@ -82,22 +86,23 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <button type="submit">Add Event</button>
+      <button className="addEvent" type="submit">Add Event</button>
     </form>
 
   );
 };
 
 EventForm.propTypes = {
-  eventFormTitle: PropTypes.string.isRequired,
-  setEvents: PropTypes.string,
+  eventFormTitle: PropTypes.string,
+  setEvents: PropTypes.func,
   firebaseKey: PropTypes.string,
   eventName: PropTypes.string,
   eventDate: PropTypes.string,
   eventDescription: PropTypes.string,
-  friendsOnly: PropTypes.boolean,
-  uid: PropTypes.any,
+  friendsOnly: PropTypes.bool,
+  uid: PropTypes.string,
   user: PropTypes.any,
+  setShowAddEventForm: PropTypes.func
 };
 
 export default EventForm;

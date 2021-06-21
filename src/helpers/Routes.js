@@ -8,7 +8,11 @@ import ItemView from '../Views/PersonalViews/ItemView';
 import EventView from '../Views/PersonalViews/EventView';
 import SingleCategoryView from '../Views/PersonalViews/SingleCategoryView';
 import FriendView from '../Views/PersonalViews/FriendView';
-import SingleFriendView from '../Views/FriendViews/SpecificUserView';
+import SingleFriendView from '../Views/FriendViews/SpecificFriendView';
+import SpecificFriendCategoryView from '../Views/FriendViews/SpecificFriendCategoryView';
+import SingleFriendCategoryItemView from '../Views/FriendViews/SpecificFriendSingleCategoryView';
+import SpecificFriendItemView from '../Views/FriendViews/SpecificFriendItemView';
+import SpecificFriendEventView from '../Views/FriendViews/SpecificFriendEventView';
 
 const PrivateRoute = ({
   component: Component,
@@ -32,8 +36,6 @@ export default function Routes({
   setUser,
   categories,
   setCategories,
-  items,
-  setItems,
 }) {
   return (
     <div>
@@ -49,10 +51,8 @@ export default function Routes({
         <Route exact path='/myEvents'
         component={() => <EventView
         user={user}
-        setUser={setUser}
         />}
         user={user}
-        setUser={setUser}
         />
         <Route exact path='/myCategories'
         component={() => <CategoryView
@@ -69,15 +69,12 @@ export default function Routes({
         user={user}
         setUser={setUser}
         categories={categories}
-        setCategories={setCategories}
-        items={items}
-        setItems={setItems}
         />}
         user={user}
         setUser={setUser}
         />
         <Route
-          path='/myCategories/:categoryKey'
+          exact path='/myCategories/:categoryKey'
           user={user}
           component={() => <SingleCategoryView user={user} setUser={setUser}/>}
         />
@@ -90,9 +87,29 @@ export default function Routes({
         setUser={setUser}
         />
         <Route
-          path='/friendView/:firebaseKey'
+          exact path='/friendView/:firebaseKey'
           user={user}
           component={() => <SingleFriendView user={user} setUser={setUser}/>}
+        />
+        <Route
+          exact path='/friendView/:firebaseKey/Categories/:uid/'
+          user={user}
+          component={() => <SpecificFriendCategoryView user={user} setUser={setUser} categories={categories} setCategories={setCategories}/>}
+        />
+        <Route
+          exact path='/friendView/:firebaseKey/Categories/:uid/CategoryItems/:categoryKey/'
+          user={user}
+          component={() => <SingleFriendCategoryItemView user={user} setUser={setUser}/>}
+        />
+        <Route
+          exact path='/friendView/:firebaseKey/Items/:uid/'
+          user={user}
+          component={() => <SpecificFriendItemView user={user} setUser={setUser}/>}
+        />
+        <Route
+          exact path='/friendView/:firebaseKey/Events/:uid/'
+          user={user}
+          component={() => <SpecificFriendEventView user={user} setUser={setUser}/>}
         />
         <Route exact path='/userView'
         component={() => <UsersView
@@ -112,6 +129,6 @@ Routes.propTypes = {
   setUser: PropTypes.func,
   categories: PropTypes.array,
   setCategories: PropTypes.func,
-  items: PropTypes.array,
-  setItems: PropTypes.func,
+  events: PropTypes.array,
+  setEvents: PropTypes.func,
 };

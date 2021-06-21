@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.userCardContainer {
+  border: 0px solid transparent;
+  align-items: center;
+  margin-top: 3em;
+  .userCards {
+    display: flex;
+    align-items: center;
+    font-size: x-small;
+    font-family: 'Bebas Neue', cursive;
+    width: 20em;
+    border: 0px solid transparent;
+    // margin: 10em;
+    .profileImage {
+      border-radius: 100%;
+      width: 7em;
+      margin: 0;
+    }
+    .fullName {
+      color: gray;
+      margin: 0;
+    }
+    .userEmail {
+      color: gray;
+      margin: 0;
+    }
+    .addUserAsFriend {
+      border-radius: 100%;
+      border: 0px solid transparent;
+      background-color: transparent;
+      .addUserButton {
+        width: 2em;
+        margin: 0;
+      }
+    }
+    .removeUserAsFriend {
+      border-radius: 100%;
+      border: 0px solid transparent;
+      background-color: transparent;
+    }
+  }
+}

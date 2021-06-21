@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+#addEventForm {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  .eventNameLabel {
+    color: #B6B34B;
+    font-family: 'Bebas Neue', cursive;
+    margin-top: .25em;
+  }
+  .eventName {
+    color: gray;
+  }
+  .eventFormDescriptionLabel {
+    color: #B6B34B;
+    font-family: 'Bebas Neue', cursive;
+    margin-top: .25em;
+  }
+  .eventFormDescription {
+    color: gray;
+  }
+
+  .eventFormDateLabel {
+    color: #B6B34B;
+    font-family: 'Bebas Neue', cursive;
+    margin-top: .25em;
+  }
+
+  .eventFormDate {
+    color: gray;
+  }
+  .addEvent {
+    background-color: white;
+    color: #B6B34B;
+    font-family: 'Bebas Neue', cursive;
+    border-radius: 5px;
+    border-color: white;
+    width: 10em;
+    align-self: center;
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+}

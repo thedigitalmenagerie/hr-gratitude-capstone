@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.NavBar {
+  background-color: #B6B34B;
+  .nav-link {
+    color: white;
+    font-size: x-small;
+    font-family: 'Bebas Neue', cursive;
+    .navImg {
+      width: 2em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+  }
+  .collapse {
+    color: white;
+  }
+  #authButtons {
+    margin-top: .75em;
+    .loggedIn {
+    .loggedInRight {
+      display: flex;
+      flex-flow: row;
+      .loggedInProfilePic {
+        width: 1.5em;
+        height: 1.5em;
+      }
+      .wordInfo {
+        color: white;
+        font-size: xx-small;
+        font-family: 'Bebas Neue', cursive;
+        margin-left: .5em;
+        #signOut {
+          border-radius: 5px;
+          font-size: small;
+          height: 2em;
+          border: 0px solid transparent;
+          background-color: transparent;
+          #signOutButton {
+            width: .9em;
+            padding-bottom: 1.1em;
+          }
+        }
+      }
+    }
+    }
+  }
+}

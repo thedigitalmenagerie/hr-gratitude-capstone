@@ -1,38 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .eventView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Bebas Neue', cursive;
+  margin-top: 2em;
   .innerContainer {
-    .searchEvents {
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-      .label {
-        color: #001859;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .searchAndCardContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+      h6 {
+        color: #b6b34b;
       }
-      .input {
-        width: 20em;
-        color: #001859;
-        border-radius: 5px;
-        margin-right: 1em;
+      .searchBarContainer {
+        width: 40%;
       }
-      .searchEventsButton {
-        background-color: #F8CD4C;
-        color: #001859;
-        border-radius: 5px;
+      #addEvent {
+        margin-top: 2em;
+        background-color: #b6b34b;
+        color: white;
+        border-radius: .3em;
+      }
+      .eventCardContainer {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        width: 100%;
       }
     }
-    #addEvent {
-      background-color: #F8CD4C;
-      color: #001859;
-      border-radius: 5px;
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-    }
-    #closeForm {
-      background-color: #F8CD4C;
-      color: #001859;
-      border-radius: 5px;
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-    }
+  }
+  #closeForm {
+
   }
 }

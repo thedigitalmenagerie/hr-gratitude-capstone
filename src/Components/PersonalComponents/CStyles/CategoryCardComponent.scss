@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+    .categoryCard {
+      display: flex;
+      color: gray;
+      font-family: 'Bebas Neue', cursive;
+
+    }
+    .categoryName {
+      color: #B6B34B;
+    }   
+    .buttonCategoryImage {
+      width: 1.5em;
+      border: 0px solid transparent;
+      background-color: transparent;
+    }
+    .buttonContainer {
+      border: 0px solid transparent;
+      background-color: transparent;
+      #deleteCategory {
+        border: 0px solid transparent;
+        background-color: transparent;
+      }
+      #editCategory {
+        border: 0px solid transparent;
+        background-color: transparent;
+      }
+      #viewCategoryItems {
+        border: 0px solid transparent;
+        background-color: transparent;
+      }
+    }
+

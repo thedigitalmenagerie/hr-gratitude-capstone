@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getFriend } from '../../helpers/data/FriendData';
-import FriendCards from '../../Components/FriendCardComponent';
+import { mergedUserFriendData } from '../../helpers/data/FriendData';
+import FriendCards from '../../Components/PersonalComponents/FriendCardComponent';
 import './VStyles/UsersView.scss';
 
 function FriendView({
@@ -9,24 +9,32 @@ function FriendView({
   setUser,
 }) {
   const [friends, setFriends] = useState([]);
+  const [search, setSearch] = useState('');
+  const [filteredData, setFilteredData] = useState('');
 
   useEffect(() => {
-    getFriend().then((response) => setFriends(response));
+    mergedUserFriendData(friends.friendKey).then((response) => setFriends(response));
   }, []);
+
+  useEffect(() => {
+    setFilteredData(
+      friends.filter((friend) => friend.fullName.toLowerCase().includes(search.toLowerCase()))
+    );
+  }, [search, friends]);
+
   return (
     <div className="usersView">
-      <form action="/" method="get" className="searchUsers">
-        <label htmlFor="header-search"></label>
-        <input
-          type="text"
-          id="header-search"
-          placeholder="Search Users"
-          name="s"
-          className="input"
-        />
-        <button className="searchUsersButton" type="submit">Search</button>
-      </form>
-      {friends.map((friendInfo) => (
+      { filteredData.length === 0
+        ? <div className="d-flex flex-column justify-content-center">
+            <h5 className="text-center my-3">No items found with that name!</h5>
+          </div>
+        : <div>
+            <div className="d-flex flex-column justify-content-center">
+              <h1 className="text-center my-3">All Items</h1>
+              <div className="form-group mb-4 d-flex justify-content-center">
+                <input type="search" id="search" placeholder="Search by user's name..." aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
+              </div>
+              {filteredData?.map((friendInfo) => (
         <FriendCards
           key={friendInfo.firebaseKey}
           {...friendInfo}
@@ -34,7 +42,10 @@ function FriendView({
           user={user}
           setUser={setUser}
         />
-      ))}
+              ))}
+            </div>
+          </div>
+      }
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormGroup } from 'reactstrap';
 import { updateCategory, addCategory } from '../helpers/data/CategoryData';
@@ -14,6 +13,8 @@ const CategoryForm = ({
   uid,
   user,
   friendsOnly,
+  setCategories,
+  setShowAddCategoryForm,
 }) => {
   const [category, setCategory] = useState({
     categoryName: categoryName || '',
@@ -23,8 +24,6 @@ const CategoryForm = ({
     uid: uid || user.uid,
     friendsOnly: friendsOnly || false,
   });
-
-  const history = useHistory();
 
   const handleInputChange = (e) => {
     setCategory((prevState) => ({
@@ -43,10 +42,10 @@ const CategoryForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (category.firebaseKey) {
-      updateCategory(category).then((categoryArray) => setCategory(categoryArray));
+      updateCategory(category, uid).then((categoryArray) => setCategories(categoryArray));
     } else {
-      addCategory(category).then((categoryArray) => setCategory(categoryArray));
-      history.push('/myCategories');
+      addCategory(category, user.uid).then((categoryArray) => setCategories(categoryArray));
+      setShowAddCategoryForm(false);
 
       setCategory({
         categoryName: '',
@@ -121,6 +120,7 @@ CategoryForm.propTypes = {
   uid: PropTypes.string,
   user: PropTypes.object,
   category: PropTypes.any,
+  setShowAddCategoryForm: PropTypes.any,
 };
 
 export default CategoryForm;

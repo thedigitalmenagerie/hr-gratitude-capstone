@@ -1,0 +1,40 @@
+.itemsContainer {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: flex-start;
+.itemCard {
+  display: flex;
+  color: #B6b34b;
+  font-family: 'Bebas Neue', cursive;
+  min-height: auto;
+  max-height: fit-content;
+
+ #area {
+   color: gray;
+ }
+ .greenPrice {
+   width: 1.5em;
+   margin-right: .3em;
+   border: 0px solid transparent;
+   background-color: transparent;
+ }
+
+ .greenDelete {
+  width: 1.5em;
+}
+.greenUpdate {
+  width: 1.5em;
+  margin-right: .5em;
+}
+  #purchaseItem {
+    color: #B6b34b;
+    border: 0px solid transparent;
+    background-color: transparent;
+  }
+  #editItem {
+    border: 0px solid transparent;
+    background-color: transparent;
+  }
+}
+}
