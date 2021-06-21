@@ -30,35 +30,31 @@ export default function EventView({
   }, []);
   return (
     <div className="eventView" style={{ animation: animations.fadeIn }}>
-      <div className="innerContainer">
         {!showAddEventForm
-          ? <div>
+          ? <div className="innerContainer">
             { filteredData.length === 0
-              ? <div className="d-flex flex-column justify-content-center">
-                    <h5 className="text-center my-3">No events found with that name!</h5>
+              ? <h6 className="header">Event not found!</h6>
+              : <div className="searchAndCardContainer">
+                  <h6>Your Events</h6>
+                  <div className="searchBarContainer">
+                    <input type="search" id="search" placeholder="Search" aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
                   </div>
-              : <div>
-                    <div className="d-flex flex-column justify-content-center">
-                      <h1 className="text-center my-3">All Events</h1>
-                      <div className="form-group mb-4 d-flex justify-content-center">
-                        <input type="search" id="search" placeholder="Search by event name..." aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
-                      </div>
-                      <AnimationWrapper><button id="addEvent" onClick={handleClick}>Add Event</button></AnimationWrapper>
-                      <div className="eventCardContainer">
-                        {filteredData?.map((eventInfo) => (
-                          <EventCards
-                            key={eventInfo.firebaseKey}
-                            {... eventInfo}
-                            setEvents={setEvents}
-                            user={user}
-                            setShowAddEventForm={setShowAddEventForm}
-                          />
-                        ))}
-                      </div>
+                  <AnimationWrapper><button id="addEvent" onClick={handleClick}>Add Event</button></AnimationWrapper>
+                  <div className="eventCardContainer">
+                    {filteredData?.map((eventInfo) => (
+                      <EventCards
+                        key={eventInfo.firebaseKey}
+                        {... eventInfo}
+                        setEvents={setEvents}
+                        user={user}
+                        setShowAddEventForm={setShowAddEventForm}
+                      />
+                    ))}
                   </div>
                 </div>
-            } </div>
-          : <div>
+            }
+            </div>
+          : <div className="formContainer">
               <AnimationWrapper><button id="closeForm" onClick={handleClick}>Close Form</button></AnimationWrapper>
               <EventForm
                 itemFormTitle="Add Event"
@@ -68,7 +64,6 @@ export default function EventView({
               />
             </div>
         }
-      </div>
     </div>
   );
 }

@@ -2,13 +2,13 @@
 
 #authButtonsHome {
   #loggedInLogo {
-    width: 30em;
+    width: 40%;
   }
 }
 
 .welcomeMessage {
   font-family: 'Bebas Neue', cursive;
-  margin-top: 5em;
+  margin-top: 2em;
   color: gray;
 }
   #loggedOutView {
@@ -17,7 +17,7 @@
     align-items: center;
     flex-flow: column;
     #loggedOutLogo {
-      width: 40em;
+      width: 50%;
     }
     #signIn {
       background-color: #B6B34B;

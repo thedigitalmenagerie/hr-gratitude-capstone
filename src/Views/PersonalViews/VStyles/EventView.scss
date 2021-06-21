@@ -2,50 +2,41 @@
 
 .eventView {
   display: flex;
+  justify-content: center;
   align-items: center;
-  align-self: center;
-  margin-left: 7em;
+  font-family: 'Bebas Neue', cursive;
+  margin-top: 2em;
   .innerContainer {
     display: flex;
+    justify-content: center;
     align-items: center;
-    .searchEvents {
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-      .label {
-        color: black;
-      }
-      .input {
-        width: 20em;
-        color: black;
-        border-radius: 5px;
-        margin-right: 1em;
-      }
-      .searchEventsButton {
-        background-color: #B6B34B;
-        color: white;
-        border-radius: 5px;
-        margin-top: 1em;
-      }
-    }
-    #addEvent {
-      background-color: #B6B34B;
-      color: white;
-      border-radius: 5px;
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-    }
-    #closeForm {
-      background-color: #F8CD4C;
-      color: black;
-      border-radius: 5px;
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-    }
-    .eventCardContainer {
+    width: 100%;
+    .searchAndCardContainer {
       display: flex;
-      flex-flow: row wrap;
+      justify-content: center;
       align-items: center;
-      align-self: center;
+      flex-flow: column;
+      h6 {
+        color: #b6b34b;
+      }
+      .searchBarContainer {
+        width: 40%;
+      }
+      #addEvent {
+        margin-top: 2em;
+        background-color: #b6b34b;
+        color: white;
+        border-radius: .3em;
+      }
+      .eventCardContainer {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        width: 100%;
+      }
     }
+  }
+  #closeForm {
+
   }
 }

@@ -17,7 +17,7 @@ import whiteEvents from '../../Assets/whiteEvents.png';
 import whiteCategory from '../../Assets/whiteCategory.png';
 import whiteItems from '../../Assets/whiteItems.png';
 import whiteUser from '../../Assets/whiteUser.png';
-import greenSignOut from '../../Assets/greenSignOut.png';
+import whiteSignOut from '../../Assets/whiteSignOut.png';
 import whiteFriend from '../../Assets/whiteFriend.png';
 import './CStyles/NavBarComponent.scss';
 
@@ -30,11 +30,31 @@ const NavBar = ({ user }) => {
     <div className="NavBar">
       <Navbar id="Navbar" expand="md" >
         <NavbarBrand>
-           <AnimationWrapper><Link className="nav-link" to="/"><img className="navImg" src={whiteHomeButton}></img></Link></AnimationWrapper>
+        {
+            user !== null
+            && <div id="authButtons">
+              {
+                user
+                  ? <div className="loggedIn">
+                      <div className="loggedInRight">
+                        <img className="loggedInProfilePic" src={user.profileImage}></img>
+                        <div className="wordInfo">
+                          <div>{user.fullName}</div>
+                          <AnimationWrapper><Button id="signOut" onClick={signOutUser}><img id="signOutButton" src={whiteSignOut}></img></Button></AnimationWrapper>
+                        </div>
+                      </div>
+                    </div>
+                  : <div></div>
+              }
+            </div>
+          }
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse className="collapse" isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
+        <NavItem>
+        <AnimationWrapper><Link className="nav-link" to="/"><img className="navImg" src={whiteHomeButton}></img></Link></AnimationWrapper>
+          </NavItem>
           <NavItem>
             <AnimationWrapper><Link className="nav-link" to="/myEvents"><img className="navImg" src={whiteEvents}></img>Events</Link></AnimationWrapper>
           </NavItem>
@@ -52,23 +72,6 @@ const NavBar = ({ user }) => {
          </NavItem>
         </Nav>
         </Collapse>
-        {
-            user !== null
-            && <div id="authButtons">
-              {
-                user
-                  ? <AnimationWrapper><div className="loggedInRight">
-                      <img className="loggedInProfilePic" src={user.profileImage}></img>
-                      <div className="wordInfo">
-                        <div>{user.fullName}</div>
-                        <div>{user.userEmail}</div>
-                      </div>
-                      <Button id="signOut" onClick={signOutUser}><img id="signOutButton" src={greenSignOut}></img>SIGN OUT</Button>
-                    </div></AnimationWrapper>
-                  : <div></div>
-              }
-            </div>
-          }
       </Navbar>
     </div>
   );

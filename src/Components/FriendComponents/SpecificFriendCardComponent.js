@@ -20,9 +20,9 @@ const SpecificFriendCards = ({
   userEmail,
   friendKey,
   isFriend,
-  uidKey,
-  user,
   uid,
+  specificFriends,
+  user
 }) => {
   const history = useHistory();
 
@@ -47,7 +47,7 @@ const SpecificFriendCards = ({
             {
           isFriend === true
                 && <div>
-            { uidKey !== user?.uid
+            { specificFriends.friendKey === user.firebaseKey
               ? <Card className="friendCard" key={firebaseKey} id={friendKey}>
                   <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
                   <CardTitle className="fullName">{fullName}</CardTitle>
@@ -74,6 +74,7 @@ SpecificFriendCards.propTypes = {
   uidKey: PropTypes.string,
   user: PropTypes.any,
   uid: PropTypes.any,
+  specificFriends: PropTypes.any,
 };
 
 export default SpecificFriendCards;

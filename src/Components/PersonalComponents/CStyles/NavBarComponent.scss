@@ -16,38 +16,33 @@
     color: white;
   }
   #authButtons {
-  padding-top: 1.25em;  
+    margin-top: .75em;
+    .loggedIn {
     .loggedInRight {
       display: flex;
       flex-flow: row;
       .loggedInProfilePic {
-        width: 2em;
-        margin-right: 1em;
-        margin-bottom: 1em;
+        width: 1.5em;
+        height: 1.5em;
       }
       .wordInfo {
         color: white;
-        margin-right: 1em;
         font-size: xx-small;
         font-family: 'Bebas Neue', cursive;
-      }
-      #signOut {
-        background-color: white;
-        color: #B6B34B;
-        border-radius: 5px;
-        font-size: small;
-        font-family: 'Bebas Neue', cursive;
-        padding-left: 1em;
-        padding-right: 1em;
-        height: 2.25em;
-        border-color: #B6B34B;
-        padding-bottom: .5em;
-        margin-bottom: 1em;
-        #signOutButton {
-          width: 1em;
-          margin-right: .5em;
+        margin-left: .5em;
+        #signOut {
+          border-radius: 5px;
+          font-size: small;
+          height: 2em;
+          border: 0px solid transparent;
+          background-color: transparent;
+          #signOutButton {
+            width: .9em;
+            padding-bottom: 1.1em;
+          }
         }
       }
+    }
     }
   }
 }

@@ -23,6 +23,7 @@ function SpecificFriendView({
         friendKey={specificFriends.friendKey}
         user={user}
         setUser={setUser}
+        specificFriends={specificFriends}
       />
       ))}
     </div>
@@ -33,6 +34,7 @@ SpecificFriendView.propTypes = {
   user: PropTypes.any,
   setUser: PropTypes.func,
   friendKey: PropTypes.string,
+  specificFriends: PropTypes.any,
 };
 
 export default SpecificFriendView;
