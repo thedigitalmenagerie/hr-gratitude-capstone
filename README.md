@@ -12,7 +12,7 @@ The need for this application became clear when I realized most online registrie
 
 When a user logs into the application, they can create a reoccuring event like a birthday or a special event like a promotion or house-warming! They can also create categories like skincare, music, movies, etc. 
 
-The user can then store gifts in categories or events. Gifts will include information like images, description, price, purchase options, and options to share with the public or only close friends.
+The user can then store gifts in categories or events. Gifts will include information like images, description, price, purchase options, and options to share.
 
 ### Link to Figma Board:
 
@@ -34,56 +34,87 @@ https://www.figma.com/file/mwLaSXorzEtfc6FRArlGks/Gratitude
 
 https://hr-gratitude-capstone.netlify.app/
 
+### List of contributors and links to GH profiles:
+
+https://github.com/thedigitalmenagerie
+
+### Link to Loom video walkthrough of application:
+
+### Link to Capstone Prezi:
+https://prezi.com/view/qu3WHIOsGz0MrXr6T097/
+
 ### User Stories:
 
 Authentication
 
 * As an unauthenticated user, I can see the home page and a button to authenticate and log in via Google authorization.
 * As an authenticated user, I can see my profile information generated via Google authorization. 
-* As an authenticated user, I can see a list of users on the user page, given that the user has made their profile public or that the user has added me as a friend or close friend. 
-* As an authenticated user, I can see a specific users events, categories and gifts, given that the user has provided me access based on my status as public, friend, or close friend. 
+* As an authenticated user, I can see a list of users on the user page. 
+* As an authenticated user, I can see a specific user's events, categories and gifts, given the user is my friend.
 
 CRUD 
 
 * As an authenticated user, I can CREATE events, categories, and gifts specific to me. 
-* As an authenticated user, I can READ my own user information and other user information based on my status as public, friend, or close friend.
+* As an authenticated user, I can READ my own user information and other user is CREATED as a friend.
 * As an authenticated user, I can UPDATE events, categories, and gifts specific to me.
 * As an authenticated user, I can DELETE events, categories, and gifts specific to me. 
 
 Other Features :
 
-* As an authenticated user viewing another user's page, I should be able to search a category or item. 
+* As an authenticated user viewing another user's page, I should be able to search a category or item.
 * As an authenticated user viewing another user's page, I should be able to mark an item as purchased without notifying the user and allowing other users to see the item has already been purchased. 
 
 ### Screenshots of project:
 
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 50 29 PM" src="https://user-images.githubusercontent.com/76716670/122841793-055ade00-d2ca-11eb-88d4-c862d0e5efa9.png">
+Before Authentication:
+<img width="352" alt="Screen Shot 2021-06-24 at 6 58 00 PM" src="https://user-images.githubusercontent.com/76716670/123343119-1c463e00-d51f-11eb-9036-c299d17c8c35.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 37 20 PM" src="https://user-images.githubusercontent.com/76716670/123342011-f029bd80-d51c-11eb-99f6-af182bfd046a.png">
 
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 51 17 PM" src="https://user-images.githubusercontent.com/76716670/122841842-20c5e900-d2ca-11eb-86ba-ca68529c971a.png">
+After Authentication:
+<img width="349" alt="Screen Shot 2021-06-24 at 6 58 28 PM" src="https://user-images.githubusercontent.com/76716670/123343208-54e61780-d51f-11eb-8e11-f87e76a5e7b6.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 37 31 PM" src="https://user-images.githubusercontent.com/76716670/123342032-fddf4300-d51c-11eb-8ada-e1e3ac418a0a.png">
 
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 52 08 PM" src="https://user-images.githubusercontent.com/76716670/122841878-363b1300-d2ca-11eb-838e-13a2fd8bdcf0.png">
+Events:
+<img width="355" alt="Screen Shot 2021-06-24 at 6 58 56 PM" src="https://user-images.githubusercontent.com/76716670/123343253-6af3d800-d51f-11eb-8379-47240ab33a94.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 37 38 PM" src="https://user-images.githubusercontent.com/76716670/123342053-0c2d5f00-d51d-11eb-95c6-74e7c799baca.png">
 
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 52 48 PM" src="https://user-images.githubusercontent.com/76716670/122841914-4eab2d80-d2ca-11eb-9c11-08f3accdc4ed.png">
+Category:
+<img width="360" alt="Screen Shot 2021-06-24 at 6 59 17 PM" src="https://user-images.githubusercontent.com/76716670/123343269-734c1300-d51f-11eb-849b-71cc568982d3.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 37 45 PM" src="https://user-images.githubusercontent.com/76716670/123342128-2f580e80-d51d-11eb-92be-329ce726396e.png">
 
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 53 20 PM" src="https://user-images.githubusercontent.com/76716670/122841960-61256700-d2ca-11eb-84f6-e9dfc691d551.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 53 54 PM" src="https://user-images.githubusercontent.com/76716670/122841997-75696400-d2ca-11eb-8e27-0034cf552708.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 54 27 PM" src="https://user-images.githubusercontent.com/76716670/122842041-8ca85180-d2ca-11eb-906d-cd9712316558.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 55 05 PM" src="https://user-images.githubusercontent.com/76716670/122842089-a0ec4e80-d2ca-11eb-9c4c-2d52eeb47761.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 56 15 PM" src="https://user-images.githubusercontent.com/76716670/122842174-cc6f3900-d2ca-11eb-9ef2-cef28922dcdb.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 56 54 PM" src="https://user-images.githubusercontent.com/76716670/122842204-e01a9f80-d2ca-11eb-866b-607041272ff4.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 57 35 PM" src="https://user-images.githubusercontent.com/76716670/122842238-f58fc980-d2ca-11eb-8092-2fc29557efea.png">
-
-<img width="1440" alt="Screen Shot 2021-06-21 at 7 58 09 PM" src="https://user-images.githubusercontent.com/76716670/122842295-11936b00-d2cb-11eb-89f8-ba63e391107e.png">
+Category Items:
+<img width="342" alt="Screen Shot 2021-06-24 at 6 59 57 PM" src="https://user-images.githubusercontent.com/76716670/123343291-7a732100-d51f-11eb-8e92-a8c6bf52b0a0.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 37 53 PM" src="https://user-images.githubusercontent.com/76716670/123342150-3a12a380-d51d-11eb-94b8-61b9da6bbda4.png">
 
 
-### List of contributors and links to GH profiles:
+Items:
+<img width="350" alt="Screen Shot 2021-06-24 at 7 00 28 PM" src="https://user-images.githubusercontent.com/76716670/123343315-82cb5c00-d51f-11eb-8c32-fa960a367200.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 38 00 PM" src="https://user-images.githubusercontent.com/76716670/123342191-4f87cd80-d51d-11eb-9b08-4aaa3c010b75.png">
 
-https://github.com/thedigitalmenagerie
+Users:
+<img width="355" alt="Screen Shot 2021-06-24 at 7 08 37 PM" src="https://user-images.githubusercontent.com/76716670/123343372-a5f60b80-d51f-11eb-965e-d71c4b80f7f0.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 54 53 PM" src="https://user-images.githubusercontent.com/76716670/123342390-b4dbbe80-d51d-11eb-99cb-1adf125529d2.png">
 
-### Link to Loom video walkthrough of application:
+Friends:
+<img width="350" alt="Screen Shot 2021-06-24 at 7 01 12 PM" src="https://user-images.githubusercontent.com/76716670/123343396-aee6dd00-d51f-11eb-9ff1-2720ed451029.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 42 56 PM" src="https://user-images.githubusercontent.com/76716670/123342422-c2914400-d51d-11eb-9bf2-c077ece7468f.png">
+
+Specific Friend:
+<img width="351" alt="Screen Shot 2021-06-24 at 7 01 39 PM" src="https://user-images.githubusercontent.com/76716670/123343421-b8704500-d51f-11eb-879f-bb37a6cf2519.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 43 02 PM" src="https://user-images.githubusercontent.com/76716670/123342430-c4f39e00-d51d-11eb-8faa-3b07aafee866.png">
+
+Friend Events:
+<img width="351" alt="Screen Shot 2021-06-24 at 7 01 56 PM" src="https://user-images.githubusercontent.com/76716670/123343432-bdcd8f80-d51f-11eb-8d60-8433c598a706.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 43 07 PM" src="https://user-images.githubusercontent.com/76716670/123342454-d046c980-d51d-11eb-919e-9147d77bf710.png">
+
+Friend Categories:
+<img width="345" alt="Screen Shot 2021-06-24 at 7 02 20 PM" src="https://user-images.githubusercontent.com/76716670/123343444-c58d3400-d51f-11eb-8b3f-56404c41dffa.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 43 22 PM" src="https://user-images.githubusercontent.com/76716670/123342485-da68c800-d51d-11eb-8fa4-0961955f005f.png">
+
+Friend Category Items:
+<img width="349" alt="Screen Shot 2021-06-24 at 7 02 43 PM" src="https://user-images.githubusercontent.com/76716670/123343454-ccb44200-d51f-11eb-8673-eed3bcff8c50.png">
+<img width="1440" alt="Screen Shot 2021-06-24 at 6 44 33 PM" src="https://user-images.githubusercontent.com/76716670/123342524-eb193e00-d51d-11eb-932f-354ebc165651.png">
+
+Friend Items:
+<img width="349" alt="Screen Shot 2021-06-24 at 7 03 17 PM" src="https://user-images.githubusercontent.com/76716670/123343465-d2aa2300-d51f-11eb-861a-e2665bc29780.png">
+<img width="349" alt="Screen Shot 2021-06-24 at 6 58 28 PM" src="https://user-images.githubusercontent.com/76716670/123343166-3bdd6680-d51f-11eb-9619-f7472ac024e2.png">
