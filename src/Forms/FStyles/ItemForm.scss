@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+#addItemForm {
+  border: 0px solid transparent;
+  background-color: white;
+  color: #b6b34b;
+  display: flex; 
+  flex-flow: column;
+  width: 50%;
+  align-items: center;
+  border-radius: 1em;
+  font-family: 'Bebas Neue', cursive;
+  padding: .5em;
+  .itemNameLabel {
+    margin-top: 2em;
+  }
+  label  {
+    margin-top: 1em;
+  }
+  .item {
+    width: 50%;
+    border-radius: .25em;
+    font-family: 'Bebas Neue', cursive;
+    // margin-top: 1em;
+  }
+  .addItem {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-items: center;
+    background-color: #b6b34b;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Bebas Neue', cursive;
+  }
+  }
+
+  #exampleSelect {
+    width: 50%;
+    margin-top: 1em;
+  }

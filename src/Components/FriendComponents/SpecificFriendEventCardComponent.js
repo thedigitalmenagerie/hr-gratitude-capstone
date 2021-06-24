@@ -6,6 +6,8 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import whiteSolidCircle from '../../Assets/whiteSolidCircle.png';
+import './CStyles/SpecificFriendEventCardComponent.scss';
 
 export default function SpecificFriendEventCards({
   firebaseKey,
@@ -18,17 +20,11 @@ export default function SpecificFriendEventCards({
   return (
     <div className="friendEventContainer">
             { uid !== user?.uid
-              ? <Card className= "eventCard" key={firebaseKey} id={uid}>
-              <div className="friendEventLeft">
-                <CardTitle tag="h5" className="name">{eventName}</CardTitle>
-                <CardText className="eventDate">{eventDate}</CardText>
-              </div>
-              <div className="eventDescription">
-                <CardText id="area">{eventDescription}</CardText>
-                <div>
-                    </div>
-              </div>
-            </Card>
+              ? <Card className= "friendEventCard" key={firebaseKey} id={uid}>
+              <CardTitle tag="h5" className="name"><img className="calenderHole" src={whiteSolidCircle}/>{eventName}<img className="calenderHole" src={whiteSolidCircle}/></CardTitle>
+              <CardText className="eventDate">{eventDate}</CardText>
+              <CardText className="eventDescription">{eventDescription}</CardText>
+          </Card>
               : <div></div>
             }
             </div>

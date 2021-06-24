@@ -1,23 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .usersView {
+  display: flex;
+  justify-content: center;
   align-items: center;
-    .searchUsers {
-      margin-top: 2em;
-      font-family: 'Bebas Neue', cursive;
-      .label {
-        color: #001859;
-      }
-      .input {
-        width: 20em;
-        color: #001859;
-        border-radius: 5px;
-        margin-right: 1em;
-      }
-      .searchUsersButton {
-        background-color: #F8CD4C;
-        color: #001859;
-        border-radius: 5px;
-      }
-    }
+  font-family: 'Bebas Neue', cursive;
+  margin-top: 2em;
+  background-color: transparent;
+  padding-bottom: 20em;
 }
+  .innerContainer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 90%;
+  }
+    .searchAndCardContainer {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2em;
+    }
+      .searchContainer {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        width: 40%;
+        margin-top: 1em;
+      }
+        h1 {
+        color: gray;
+        }
+        #search {
+          display: flex;
+          justify-content: center;
+        }
+        #addItem {
+        margin-top: 2em;
+        background-color: #b6b34b;
+        color: white;
+        border-radius: .3em;
+      }
+      .cardContainer {
+        padding-top: 2em;
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        margin-bottom: 2em;
+        align-items: center;
+        justify-content: center;
+      }

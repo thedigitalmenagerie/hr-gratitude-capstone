@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup } from 'reactstrap';
+import { AnimationWrapper } from 'react-hover-animation';
 import { updateCategory, addCategory } from '../helpers/data/CategoryData';
 import './FStyles/CategoryForm.scss';
 
@@ -14,7 +15,7 @@ const CategoryForm = ({
   user,
   friendsOnly,
   setCategories,
-  setShowAddCategoryForm,
+  // setShowAddCategoryForm,
 }) => {
   const [category, setCategory] = useState({
     categoryName: categoryName || '',
@@ -45,7 +46,7 @@ const CategoryForm = ({
       updateCategory(category, uid).then((categoryArray) => setCategories(categoryArray));
     } else {
       addCategory(category, user.uid).then((categoryArray) => setCategories(categoryArray));
-      setShowAddCategoryForm(false);
+      // setShowAddCategoryForm(false);
 
       setCategory({
         categoryName: '',
@@ -59,15 +60,15 @@ const CategoryForm = ({
   };
 
   return (
-    <div className="categoryFormContainer">
     <form
       id="addCategoryForm"
       autoComplete='off'
       onSubmit={handleSubmit}
     >
       <h3 id="categoryFormTitle">{categoryFormTitle}</h3>
-      <label>Name:</label>
+      <label className="categoryNameLabel">Name:</label>
       <input
+        className="category"
         name='categoryName'
         type='text'
         placeholder='Category Name'
@@ -77,6 +78,7 @@ const CategoryForm = ({
       </input>
       <label>Description: </label>
       <input
+        className="category"
         name='categoryDescription'
         type='text'
         placeholder='Category Descpription'
@@ -86,6 +88,7 @@ const CategoryForm = ({
       </input>
       <label>Image: </label>
       <input
+        className="category"
         name='categoryImage'
         type='text'
         placeholder='Category Image URL'
@@ -96,6 +99,7 @@ const CategoryForm = ({
       <FormGroup check id="form-check">
         <label check>Visible To Friends Only:</label>
         <input
+          className="category"
           name='friendsOnly'
           type='checkbox'
           checked={category.friendsOnly}
@@ -103,9 +107,8 @@ const CategoryForm = ({
           onChange={handleCheckboxChange} >
         </input>
       </FormGroup>
-      <button type="submit">Add Category</button>
+      <AnimationWrapper><button className="addCategory" type="submit">Add Category</button></AnimationWrapper>
     </form>
-    </div>
   );
 };
 
@@ -120,7 +123,7 @@ CategoryForm.propTypes = {
   uid: PropTypes.string,
   user: PropTypes.object,
   category: PropTypes.any,
-  setShowAddCategoryForm: PropTypes.any,
+  // setShowAddCategoryForm: PropTypes.any,
 };
 
 export default CategoryForm;

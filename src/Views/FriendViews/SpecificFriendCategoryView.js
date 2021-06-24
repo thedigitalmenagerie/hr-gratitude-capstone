@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Typing from 'react-typing-animation';
+import { animations } from 'react-animation';
 import { useParams } from 'react-router-dom';
-import StackGrid from 'react-stack-grid';
 import { getCategory } from '../../helpers/data/CategoryData';
 import { mergedUserFriendData } from '../../helpers/data/FriendData';
 import SpecificFriendCategoryCards from '../../Components/FriendComponents/SpecificFriendCategoryCardComponent';
+import './VStyles/SpecificFriendCategoryView.scss';
 
 export default function SpecificFriendCategoryView({
   user,
@@ -28,18 +30,18 @@ export default function SpecificFriendCategoryView({
   }, [search, categories]);
 
   return (
-    <div className="categoryView">
-      { filteredData.length === 0
+    <div className="friendCategoryView" style={{ animation: animations.fadeIn }}>
+      { categories.length === 0
         ? <div className="d-flex flex-column justify-content-center">
-            <h5 className="text-center my-3">No items found with that name!</h5>
+            <Typing><h5 className="text-center my-3">No items found with that name!</h5></Typing>
           </div>
-        : <div>
-            <div className="d-flex flex-column justify-content-center">
-              <h1 className="text-center my-3">All Categories</h1>
-              <div className="form-group mb-4 d-flex justify-content-center">
-                <input type="search" id="search" placeholder="Search by category name..." aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
+        : <div className="innerContainer">
+            <div className="searchAndCardContainer">
+              <Typing><h1 className="text-center my-3">Friend Categories</h1></Typing>
+                <div className="searchContainer">
+                <input type="search" id="search" placeholder="Search" aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
               </div>
-              <StackGrid className="stackGridCategories" gutterHeight={10}>
+              <div className="categoryCardContainer">
               {filteredData?.map((friendCategoryInfo) => (
               <SpecificFriendCategoryCards
                 key={friendCategoryInfo.firebaseKey}
@@ -51,9 +53,9 @@ export default function SpecificFriendCategoryView({
                 friendsForCategories={friendsForCategories}
               />
               ))}
-          </StackGrid>
-            </div>
           </div>
+              </div>
+            </div>
       }
             </div>
   );

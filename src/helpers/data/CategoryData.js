@@ -28,7 +28,7 @@ const addCategory = (categories, uid) => new Promise((resolve, reject) => {
 
 const deleteCategory = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${DBURL}/categories/${firebaseKey}.json`)
-    .then(() => getSingleCategory(uid).then((categoryArray) => resolve(categoryArray)))
+    .then(() => getCategory(uid).then((categoryArray) => resolve(categoryArray)))
     .catch((error) => reject(error));
 });
 

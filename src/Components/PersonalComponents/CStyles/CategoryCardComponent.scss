@@ -4,7 +4,9 @@
       display: flex;
       color: gray;
       font-family: 'Bebas Neue', cursive;
-
+      width: 10rem;
+      height: max-content;
+      margin: .25em;
     }
     .categoryName {
       color: #B6B34B;
@@ -17,6 +19,9 @@
     .buttonContainer {
       border: 0px solid transparent;
       background-color: transparent;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
       #deleteCategory {
         border: 0px solid transparent;
         background-color: transparent;
@@ -25,9 +30,34 @@
         border: 0px solid transparent;
         background-color: transparent;
       }
-      #viewCategoryItems {
+      #viewCategory {
         border: 0px solid transparent;
         background-color: transparent;
       }
     }
 
+    .modalClose {
+      color: white;
+      border-radius: 5px;
+      margin-top: 2em;
+      font-family: 'Bebas Neue', cursive;
+      align-self: center;
+      border: 0px solid transparent;
+      background-color: transparent;
+      margin-bottom: 2em;
+      img {
+        width: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+    }
+    
+    .Modal {
+    background-color: #b6b34b;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    }

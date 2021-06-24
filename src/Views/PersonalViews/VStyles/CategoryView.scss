@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.categoryView {
+#categoryView {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Bebas Neue', cursive;
   margin-top: 2em;
+  background-color: transparent;
   .innerContainer {
     display: flex;
     flex-flow: column;
@@ -14,8 +15,9 @@
     .searchAndCardContainer {
       display: flex;
       flex-flow: column;
-      // justify-content: center;
-      // align-items: center;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2em;
       .searchContainer {
         display: flex;
         flex-flow: column;
@@ -23,10 +25,11 @@
         align-items: center;
         align-self: center;
         width: 40%;
-        h6 {
-        color: #b6b34b;
+        margin-top: 1em;
+        h1 {
+        color: gray;
         }
-        #search {
+        #categorySearch {
           display: flex;
           justify-content: center;
         }
@@ -40,10 +43,49 @@
       .cardContainer {
         padding-top: 2em;
         width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        margin-bottom: 2em;
       }
     }
   }
   #closeForm {
 
   }
+}
+
+h6 {
+  color: gray;
+}
+
+.formContainer {
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.modalClose {
+  color: white;
+  border-radius: 5px;
+  margin-top: 2em;
+  font-family: 'Bebas Neue', cursive;
+  align-self: center;
+  border: 0px solid transparent;
+  background-color: transparent;
+  margin-bottom: 2em;
+  img {
+    width: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+.Modal {
+background-color: #b6b34b;
+height: 100%;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-flow: column;
 }

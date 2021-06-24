@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.friendEventCard {
+  display: flex;
+  width: 18em;
+  font-family: 'Bebas Neue', cursive;
+  margin: 2em;
+  box-shadow: 0 0 .5em lightgray;
+  border-radius: 1em;
+  padding-bottom: 3em;
+  .name {
+    background-color: #B6B34B;
+    color: white;
+    display: block;
+    .calenderHole {
+      width: .75em;
+      margin-left: 1.75em;
+      margin-right: 1.75em;
+      margin-top: .25em;
+      margin-bottom: .25em;
+    }
+  }
+  .eventDate {
+    color: gray;
+  }
+  .eventDescription {
+    color: #B6B34B;
+  }
+}

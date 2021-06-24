@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { AnimationWrapper } from 'react-hover-animation';
 import { updateEvent, addEvent } from '../helpers/data/EventData';
 import './FStyles/EventForm.scss';
 
@@ -12,7 +13,7 @@ const EventForm = ({
   uid,
   user,
   setEvents,
-  setShowAddEventForm,
+  // setShowAddEventForm,
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -36,7 +37,7 @@ const EventForm = ({
     } else {
       e.preventDefault();
       addEvent(event, user.uid).then((eventArray) => setEvents(eventArray));
-      setShowAddEventForm(false);
+      // setShowAddEventForm(false);
 
       setEvent({
         eventName: '',
@@ -58,7 +59,7 @@ const EventForm = ({
       <h3 id="eventFormTitle">{eventFormTitle}</h3>
       <label className="eventNameLabel">Name:</label>
       <input
-        className="eventName"
+        className="event"
         name='eventName'
         type='text'
         placeholder='Event Name'
@@ -68,17 +69,17 @@ const EventForm = ({
       </input>
       <label className="eventFormDescriptionLabel">Description: </label>
       <input
-        className="eventFormDescription"
+        className="event"
         name='eventDescription'
         type='text'
-        placeholder='Event Descpription'
+        placeholder='Event Description'
         value={event.eventDescription}
         onChange={handleInputChange}
       >
       </input>
       <label className="eventFormDateLabel">Image: </label>
       <input
-        className="eventFormDate"
+        className="event"
         name='eventDate'
         type='text'
         placeholder='Event Date'
@@ -86,7 +87,7 @@ const EventForm = ({
         onChange={handleInputChange}
       >
       </input>
-      <button className="addEvent" type="submit">Add Event</button>
+      <AnimationWrapper><button className="addEvent" type="submit">Add Event</button></AnimationWrapper>
     </form>
 
   );
@@ -102,7 +103,7 @@ EventForm.propTypes = {
   friendsOnly: PropTypes.bool,
   uid: PropTypes.string,
   user: PropTypes.any,
-  setShowAddEventForm: PropTypes.func
+  // setShowAddEventForm: PropTypes.func
 };
 
 export default EventForm;

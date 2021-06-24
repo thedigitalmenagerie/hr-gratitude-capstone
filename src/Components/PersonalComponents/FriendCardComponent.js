@@ -9,17 +9,22 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import './CStyles/FriendCardComponent.scss';
+import { AnimationWrapper } from 'react-hover-animation';
 import greenView from '../../Assets/greenView.png';
+import greenDelete from '../../Assets/greenDelete.png';
+import { deleteUserFriend } from '../../helpers/data/FriendData';
 
 const FriendCards = ({
   firebaseKey,
   fullName,
   profileImage,
-  uidKey,
+  // uidKey,
   userEmail,
   user,
   isFriend,
   friendKey,
+  uid,
+  // setFriends
 }) => {
   const history = useHistory();
 
@@ -28,6 +33,10 @@ const FriendCards = ({
       case 'viewFriend':
         history.push(`/friendView/${firebaseKey}`);
         break;
+      case 'deleteFriend':
+        deleteUserFriend(firebaseKey)
+          .then((userFriendArray) => console.warn(userFriendArray));
+        break;
       default:
         console.warn('Nothing selected');
     }
@@ -35,21 +44,25 @@ const FriendCards = ({
 
   return (
     <div className="friendCardContainer">
-      {
-          isFriend === true
-                && <div>
-            { uidKey !== user?.uid
-              ? <Card className="friendCards" key={firebaseKey} id={friendKey}>
+      { isFriend === true
+        && <div>
+          { uid !== user?.uid
+            ? <Card className="friendCards" key={firebaseKey} id={friendKey}>
                   <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
                   <CardTitle className="fullName">{fullName}</CardTitle>
                   <CardText className="userEmail">{userEmail}</CardText>
-                  <button className="viewFriend" onClick={() => handleClick('viewFriend')}><img className="viewFriendButton" src={greenView}/></button>
+                  <div className="buttonContainer row">
+                    <AnimationWrapper><button className="viewFriend" onClick={() => handleClick('viewFriend')}><img className="viewFriendButton" src={greenView}/></button></AnimationWrapper>
+                    <AnimationWrapper><button className="deleteFriend" onClick={() => handleClick('deleteFriend')}><img className="deleteFriendButton" src={greenDelete}/></button></AnimationWrapper>
+                  </div>
+
                 </Card>
-              : <div></div>
-            }
-            </div>
+            : <div></div>
+        }
+        </div>
       }
-    </div>
+
+            </div>
   );
 };
 
@@ -62,6 +75,8 @@ FriendCards.propTypes = {
   isFriend: PropTypes.bool,
   friendKey: PropTypes.string,
   user: PropTypes.any,
+  uid: PropTypes.any,
+  setFriends: PropTypes.any,
 };
 
 export default FriendCards;

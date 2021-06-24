@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Card,
   CardImg,
   CardTitle,
   CardText,
 } from 'reactstrap';
+import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+import { AnimationWrapper } from 'react-hover-animation';
 import ItemForm from '../../Forms/ItemForm';
 import { deleteItem } from '../../helpers/data/ItemData';
 import greenPrice from '../../Assets/greenPrice.png';
 import greenDelete from '../../Assets/greenDelete.png';
 import greenUpdate from '../../Assets/greenUpdate.png';
+import whiteX from '../../Assets/whiteX.png';
 import './CStyles/ItemCardComponent.scss';
+
+Modal.setAppElement('#root');
 
 const ItemCards = ({
   setItems,
@@ -31,7 +36,15 @@ const ItemCards = ({
   categoryName,
   categories,
 }) => {
-  const [editingItems, setEditingItems] = useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const handleClick = (type) => {
     switch (type) {
@@ -39,30 +52,30 @@ const ItemCards = ({
         deleteItem(firebaseKey, uid)
           .then((itemArray) => setItems(itemArray));
         break;
-      case 'edit':
-        setEditingItems((prevState) => !prevState);
-        break;
       default:
         console.warn('Nothing selected');
     }
   };
 
   return (
-    <div className="itemContainer">
             <Card className= "itemCard" key={firebaseKey} id={uid}>
           <CardImg className="itemImg" src={itemImage} alt="Honey-Rae Swan" />
           <CardTitle tag="h5" className="itemName">{itemName}</CardTitle>
               <CardText id="area">{itemDescription}</CardText>
-              <CardText id="price"><img className="greenPrice" src={greenPrice}/>{price}</CardText>
+              <CardText id="price"><a href={where} target="_blank" rel="noopener noreferrer"><img className="greenPrice" src={greenPrice}/></a>{price}</CardText>
               <CardText id="area">{categories.categoryName}</CardText>
-              <div>
-                <button id="deleteItem" onClick={() => handleClick('delete')}><img className="greenDelete" src={greenDelete}/></button>
-                <button id="editItem" onClick={() => handleClick('edit')}>
-                  {editingItems ? 'Close Form' : <img className="greenUpdate" src={greenUpdate}/>}
-                </button>
+              <div className="buttonContainer row">
+                <AnimationWrapper><button id="deleteItem" onClick={() => handleClick('delete')}><img className="greenDelete" src={greenDelete}/></button></AnimationWrapper>
+                <AnimationWrapper><button id="editItem" onClick={openModal}><img className="greenUpdate" src={greenUpdate}/></button></AnimationWrapper>
               </div>
               <div>
-                {editingItems && <ItemForm
+              <Modal
+                  isOpen={modalIsOpen}
+                  onRequestClose={closeModal}
+                  className="Modal"
+                >
+                  <AnimationWrapper><button className="modalClose" onClick={closeModal}><img src={whiteX}/>Close Form</button></AnimationWrapper>
+                  <ItemForm
                   itemFormTitle='Edit Item'
                   firebaseKey={firebaseKey}
                   itemImage={itemImage}
@@ -80,10 +93,10 @@ const ItemCards = ({
                   user={user}
                   setUser={setUser}
                   categories={categories}
-                />}
+                />
+                </Modal>
               </div>
       </Card>
-    </div>
   );
 };
 
