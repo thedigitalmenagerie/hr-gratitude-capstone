@@ -1,33 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.categoryFormContainer {
-  display: flex;
-  justify-content: center;
-  form {
-  width: 50em;
-  background-color: #001859;
-  color: #f8cd4c;
-  display: flex;
+#addCategoryForm {
+  border: 0px solid transparent;
+  background-color: white;
+  color: #b6b34b;
+  display: flex; 
   flex-flow: column;
+  width: 75%;
   align-items: center;
-  margin-top: 5em;
-  font-family: 'Bebas Neue', cursive;
   border-radius: 1em;
-  padding-top: 5em;
-  padding-bottom: 5em;
-    input {
-      width: 25em;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-    }
-    button {
-      width: 10em;
-      margin-top: 25px;
-      align-items: center;
-      background-color: #f8cd4c;
-      color: #001859;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-    }
+  font-family: 'Bebas Neue', cursive;
+  padding: .5em;
+  .categoryNameLabel {
+    margin-top: 2em;
   }
-}
+  .category {
+    width: 75%;
+    border-radius: .25em;
+    font-family: 'Bebas Neue', cursive;
+  }
+  .addCategory {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    align-items: center;
+    background-color: #b6b34b;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Bebas Neue', cursive;
+  }
+  }

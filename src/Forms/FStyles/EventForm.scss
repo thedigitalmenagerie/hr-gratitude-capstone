@@ -1,44 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 #addEventForm {
-  display: flex;
-  flex-flow: column wrap;
+  border: 0px solid transparent;
+  background-color: white;
+  color: #b6b34b;
+  display: flex; 
+  flex-flow: column;
+  width: 75%;
   align-items: center;
-  .eventNameLabel {
-    color: #B6B34B;
-    font-family: 'Bebas Neue', cursive;
-    margin-top: .25em;
-  }
-  .eventName {
-    color: gray;
-  }
-  .eventFormDescriptionLabel {
-    color: #B6B34B;
-    font-family: 'Bebas Neue', cursive;
-    margin-top: .25em;
-  }
-  .eventFormDescription {
-    color: gray;
-  }
-
-  .eventFormDateLabel {
-    color: #B6B34B;
-    font-family: 'Bebas Neue', cursive;
-    margin-top: .25em;
-  }
-
-  .eventFormDate {
-    color: gray;
-  }
-  .addEvent {
-    background-color: white;
-    color: #B6B34B;
-    font-family: 'Bebas Neue', cursive;
-    border-radius: 5px;
-    border-color: white;
-    width: 10em;
-    align-self: center;
-    margin-bottom: 1em;
-    margin-top: 1em;
-  }
+  border-radius: 1em;
+  font-family: 'Bebas Neue', cursive;
+  padding: .5em;
 }
+
+.eventNameLabel {
+  margin-top: 2em;
+}
+    .event {
+      width: 75%;
+      border-radius: .25em;
+      font-family: 'Bebas Neue', cursive;
+    }
+    .addEvent {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      align-items: center;
+      background-color: #b6b34b;
+      color: white;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+    }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Input } from 'reactstrap';
 import { updateItem, addItem } from '../helpers/data/ItemData';
+import './FStyles/ItemForm.scss';
 
 const ItemForm = ({
   itemFormTitle,
@@ -19,7 +20,6 @@ const ItemForm = ({
   friendsOnly,
   categories,
   setItems,
-  setShowAddItemForm,
 }) => {
   const [item, setItem] = useState({
     itemName: itemName || '',
@@ -55,7 +55,6 @@ const ItemForm = ({
       updateItem(item, uid).then((itemArray) => setItems(itemArray));
     } else {
       addItem(item, user.uid).then((itemArray) => setItems(itemArray));
-      setShowAddItemForm(false);
 
       setItem({
         itemName: '',
@@ -80,8 +79,9 @@ const ItemForm = ({
       onSubmit={handleSubmit}
     >
       <h3 id="itemFormTitle">{itemFormTitle}</h3>
-      <label>Name:</label>
+      <label className="itemNameLabel">Name:</label>
       <input
+        className="item"
         name='itemName'
         type='text'
         placeholder='Item Name'
@@ -91,6 +91,7 @@ const ItemForm = ({
       </input>
       <label>Description: </label>
       <input
+        className="item"
         name='itemDescription'
         type='text'
         placeholder='Item Description'
@@ -100,6 +101,7 @@ const ItemForm = ({
       </input>
       <label>Image: </label>
       <input
+        className="item"
         name='itemImage'
         type='text'
         placeholder='Item Image URL'
@@ -107,7 +109,9 @@ const ItemForm = ({
         onChange={handleInputChange}
       >
       </input>
+      <labe>Category:</labe>
       <Input
+          className="item"
           type="select"
           name="categoryKey"
           placeholder="Category"
@@ -122,6 +126,7 @@ const ItemForm = ({
         </Input>
       <label>Price:</label>
       <input
+              className="item"
         name='price'
         type='text'
         placeholder='Price'
@@ -131,6 +136,7 @@ const ItemForm = ({
       </input>
       <label>Purchase Here (or where the steal is!):</label>
       <input
+        className="item"
         name='where'
         type='text'
         placeholder='Purchase URL'
@@ -159,18 +165,8 @@ const ItemForm = ({
           onChange={handleCheckboxChange} >
         </input>
       </FormGroup>
-      <FormGroup check id="form-check">
-        <input
-          name='purchased'
-          type='checkbox'
-          checked={item.purchased}
-          value={item.purchased}
-          onChange={handleCheckboxChange} >
-        </input>
-      </FormGroup>
-      <label check>Purchased:</label>
 
-      <button type="submit">Add Item</button>
+      <button className="addItem" type="submit">Add Item</button>
     </form>
 
   );
@@ -195,7 +191,6 @@ ItemForm.propTypes = {
   categoryName: PropTypes.any,
   categoryImage: PropTypes.any,
   categoryDescription: PropTypes.any,
-  setShowAddItemForm: PropTypes.any
 };
 
 export default ItemForm;

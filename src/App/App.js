@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { addUser, getLoggedInUser, getSpecificUser } from '../helpers/data/UserData';
 import { getCategory } from '../helpers/data/CategoryData';
 import NavBar from '../Components/PersonalComponents/NavBarComponent';
+import background from '../Assets/background2.gif';
 import Routes from '../helpers/Routes';
 import './App.scss';
 
@@ -38,7 +39,7 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
+    <div className='App' style={{ backgroundImage: `url(${background})` }}>
     <Router>
     {
             user !== null

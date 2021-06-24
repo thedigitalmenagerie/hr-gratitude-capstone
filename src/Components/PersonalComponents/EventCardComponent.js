@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Card,
   CardTitle,
   CardText,
 } from 'reactstrap';
+import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { AnimationWrapper } from 'react-hover-animation';
 import EventForm from '../../Forms/EventForm';
@@ -11,7 +12,10 @@ import { deleteEvent } from '../../helpers/data/EventData';
 import whiteSolidCircle from '../../Assets/whiteSolidCircle.png';
 import greenDelete from '../../Assets/greenDelete.png';
 import greenUpdate from '../../Assets/greenUpdate.png';
+import whiteX from '../../Assets/whiteX.png';
 import './CStyles/EventCardComponent.scss';
+
+Modal.setAppElement('#root');
 
 const EventCards = ({
   setEvents,
@@ -23,16 +27,21 @@ const EventCards = ({
   user,
   setUser,
 }) => {
-  const [editingEvents, setEditingEvents] = useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteEvent(firebaseKey, uid)
           .then((eventArray) => setEvents(eventArray));
-        break;
-      case 'edit':
-        setEditingEvents((prevState) => !prevState);
         break;
       default:
         console.warn('Nothing selected');
@@ -46,10 +55,14 @@ const EventCards = ({
           <CardText className="eventDescription">{eventDescription}</CardText>
           <div className="eventButtonRow">
                 <AnimationWrapper><button id="deleteEvent" onClick={() => handleClick('delete')}><img className="deleteEventImg" src={greenDelete}/></button></AnimationWrapper>
-                <AnimationWrapper><button id="editEvent" onClick={() => handleClick('edit')}>
-                  {editingEvents ? 'Close Form' : <img className="editEventImg" src={greenUpdate}/>}
-                </button></AnimationWrapper>
-                {editingEvents && <EventForm
+                <AnimationWrapper><button id="editEvent" onClick={openModal}><img className="editEventImg" src={greenUpdate}/></button></AnimationWrapper>
+                <Modal
+                  isOpen={modalIsOpen}
+                  onRequestClose={closeModal}
+                  className="Modal"
+                >
+                  <AnimationWrapper><button className="modalClose" onClick={closeModal}><img src={whiteX}/>Close Form</button></AnimationWrapper>
+                  <EventForm
                   categoryFormTitle='Edit Event'
                   firebaseKey={firebaseKey}
                   eventDate={eventDate}
@@ -59,7 +72,9 @@ const EventCards = ({
                   setEvents={setEvents}
                   user={user}
                   setUser={setUser}
-                />}</div>
+                />
+                </Modal>
+                </div>
       </Card>
   );
 };

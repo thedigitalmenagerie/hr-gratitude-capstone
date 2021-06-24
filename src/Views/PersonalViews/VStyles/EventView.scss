@@ -6,21 +6,25 @@
   align-items: center;
   font-family: 'Bebas Neue', cursive;
   margin-top: 2em;
+  background-color: transparent;
   .innerContainer {
     display: flex;
+    flex-flow: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
+    width: 90%;
     .searchAndCardContainer {
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-flow: column;
-      h6 {
-        color: #b6b34b;
+      // justify-content: center;
+      // align-items: center;
+      margin-top: 2em;
+      h1 {
+        color: gray;
+        font-family: 'Bebas Neue', cursive;
       }
       .searchBarContainer {
         width: 40%;
+        margin-top: 1em;
       }
       #addEvent {
         margin-top: 2em;
@@ -36,7 +40,40 @@
       }
     }
   }
-  #closeForm {
+}
 
+.formContainer {
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+  .modalClose {
+    color: white;
+    border-radius: 5px;
+    margin-top: 2em;
+    font-family: 'Bebas Neue', cursive;
+    align-self: center;
+    border: 0px solid transparent;
+    background-color: transparent;
+    margin-bottom: 2em;
+    img {
+      width: 1em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
   }
+
+.Modal {
+  background-color: #b6b34b;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+h6 {
+  color: gray;
+  font-family: 'Bebas Neue', cursive;
 }

@@ -12,14 +12,14 @@ export default function HomeView({
   user,
 }) {
   return (
-    <div>
+    <div className="homeView">
       {
         user !== null
           && <div id="authButtonsHome">
             {
               user
                 ? <div className="loggedInView">
-                  <Typing><span><div className="welcomeMessage">Welcome, {user.fullName}!</div></span></Typing>
+                  <Typing><div className="welcomeMessage">Welcome, {user.fullName}!</div></Typing>
                   <img style={{ animation: animations.fadeIn }} id="loggedInLogo" src={gratitude}></img>
                   </div>
                 : <AnimationWrapper>

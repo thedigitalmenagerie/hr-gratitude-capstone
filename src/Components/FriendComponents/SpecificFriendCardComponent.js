@@ -8,6 +8,7 @@ import {
   CardText,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { AnimationWrapper } from 'react-hover-animation';
 import greenEvents from '../../Assets/greenEvents.png';
 import greenCategory from '../../Assets/greenCategory.png';
 import greenItems from '../../Assets/greenItems.png';
@@ -21,7 +22,7 @@ const SpecificFriendCards = ({
   friendKey,
   isFriend,
   uid,
-  specificFriends,
+  // specificFriends,
   user
 }) => {
   const history = useHistory();
@@ -47,15 +48,15 @@ const SpecificFriendCards = ({
             {
           isFriend === true
                 && <div>
-            { specificFriends.friendKey === user.firebaseKey
+            { uid !== user?.uid
               ? <Card className="friendCard" key={firebaseKey} id={friendKey}>
                   <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
                   <CardTitle className="fullName">{fullName}</CardTitle>
                   <CardText className="userEmail">{userEmail}</CardText>
                   <div className="specificFriendButtonDiv">
-                  <button className="viewFriend"><img className="viewFriendButton" src={greenEvents} onClick={() => handleClick('viewFriendEvents')}></img></button>
-                  <button className="viewFriend"><img className="viewFriendButton" src={greenCategory} onClick={() => handleClick('viewFriendCategories')}></img></button>
-                  <button className="viewFriend"><img className="viewFriendButton" src={greenItems} onClick={() => handleClick('viewFriendItems')}></img></button></div>
+                  <AnimationWrapper><button className="viewFriend"><img className="viewFriendButton" src={greenEvents} onClick={() => handleClick('viewFriendEvents')}></img></button></AnimationWrapper>
+                  <AnimationWrapper><button className="viewFriend"><img className="viewFriendButton" src={greenCategory} onClick={() => handleClick('viewFriendCategories')}></img></button></AnimationWrapper>
+                  <AnimationWrapper><button className="viewFriend"><img className="viewFriendButton" src={greenItems} onClick={() => handleClick('viewFriendItems')}></img></button></AnimationWrapper></div>
                 </Card>
               : <div></div>
             }

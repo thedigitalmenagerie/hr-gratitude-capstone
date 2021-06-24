@@ -32,7 +32,7 @@ const mergedUserFriendData = () => new Promise((resolve, reject) => {
     .then(([userArray, userFriendArray]) => {
       resolve(userArray.map((user) => ({
         ...user,
-        isFriend: Boolean(userFriendArray.find((friend) => friend.friendKey === user.uid))
+        isFriend: Boolean(userFriendArray.find((friend) => friend.friendKey === user.uid && friend.uidKey !== user.uid)),
       })));
     }).catch((error) => reject(error));
 });
