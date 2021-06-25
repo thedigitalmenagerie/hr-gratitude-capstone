@@ -48,13 +48,13 @@ export default function Routes({
         user={user}
         setUser={setUser}
         />
-        <Route exact path='/myEvents'
+        <PrivateRoute exact path='/myEvents'
         component={() => <EventView
         user={user}
         />}
         user={user}
         />
-        <Route exact path='/myCategories'
+        <PrivateRoute exact path='/myCategories'
         component={() => <CategoryView
         user={user}
         setUser={setUser}
@@ -64,7 +64,7 @@ export default function Routes({
         user={user}
         setUser={setUser}
         />
-        <Route exact path='/myItems'
+        <PrivateRoute exact path='/myItems'
         component={() => <ItemView
         user={user}
         setUser={setUser}
@@ -73,12 +73,12 @@ export default function Routes({
         user={user}
         setUser={setUser}
         />
-        <Route
+        <PrivateRoute
           exact path='/myCategories/:categoryKey'
           user={user}
           component={() => <SingleCategoryView user={user} setUser={setUser}/>}
         />
-        <Route exact path='/friendView'
+        <PrivateRoute exact path='/friendView'
         component={() => <FriendView
         user={user}
         setUser={setUser}
@@ -86,27 +86,27 @@ export default function Routes({
         user={user}
         setUser={setUser}
         />
-        <Route
+        <PrivateRoute
           exact path='/friendView/:firebaseKey'
           user={user}
           component={() => <SingleFriendView user={user} setUser={setUser}/>}
         />
-        <Route
+        <PrivateRoute
           exact path='/friendView/:firebaseKey/Categories/:uid/'
           user={user}
           component={() => <SpecificFriendCategoryView user={user} setUser={setUser} categories={categories} setCategories={setCategories}/>}
         />
-        <Route
+        <PrivateRoute
           exact path='/friendView/:firebaseKey/Categories/:uid/CategoryItems/:categoryKey/'
           user={user}
           component={() => <SingleFriendCategoryItemView user={user} setUser={setUser}/>}
         />
-        <Route
+        <PrivateRoute
           exact path='/friendView/:firebaseKey/Items/:uid/'
           user={user}
           component={() => <SpecificFriendItemView user={user} setUser={setUser}/>}
         />
-        <Route
+        <PrivateRoute
           exact path='/friendView/:firebaseKey/Events/:uid/'
           user={user}
           component={() => <SpecificFriendEventView user={user} setUser={setUser}/>}
