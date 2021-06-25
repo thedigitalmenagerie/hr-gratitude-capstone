@@ -18,13 +18,11 @@ const FriendCards = ({
   firebaseKey,
   fullName,
   profileImage,
-  // uidKey,
   userEmail,
   user,
   isFriend,
   friendKey,
   uid,
-  // setFriends
 }) => {
   const history = useHistory();
 
@@ -48,14 +46,17 @@ const FriendCards = ({
         && <div>
           { uid !== user?.uid
             ? <Card className="friendCards" key={firebaseKey} id={friendKey}>
-                  <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
-                  <CardTitle className="fullName">{fullName}</CardTitle>
+              <div>
+                 <CardImg className="profileImage" src={profileImage} alt="Profile Image" />
+              </div>
+                 <div>
+                   <CardTitle className="fullName">{fullName}</CardTitle>
                   <CardText className="userEmail">{userEmail}</CardText>
-                  <div className="buttonContainer row">
+                    <div className="buttonContainer row">
                     <AnimationWrapper><button className="viewFriend" onClick={() => handleClick('viewFriend')}><img className="viewFriendButton" src={greenView}/></button></AnimationWrapper>
                     <AnimationWrapper><button className="deleteFriend" onClick={() => handleClick('deleteFriend')}><img className="deleteFriendButton" src={greenDelete}/></button></AnimationWrapper>
                   </div>
-
+                 </div>
                 </Card>
             : <div></div>
         }

@@ -47,7 +47,11 @@ export default function CategoryView({
           </div>
         : <div id="categoryView" style={{ animation: animations.fadeIn }}>
             { filteredData.length === 0
-              ? <Typing><h6>Add an occasion.</h6></Typing>
+              ? <div>
+                <Typing><h6>Add an category.</h6></Typing>
+                <AnimationWrapper><button id="addCategory" onClick={openModal}>Add Category</button></AnimationWrapper>
+              </div>
+
               : <div className="innerContainer">
                   { filteredData.length === 0
                     ? <Typing><h6 className="header">Category not found!</h6></Typing>

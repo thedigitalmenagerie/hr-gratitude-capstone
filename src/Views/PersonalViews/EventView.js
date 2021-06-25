@@ -51,7 +51,10 @@ export default function EventView({
           </div>
         : <div className="eventView" style={{ animation: animations.fadeIn }}>
             { filteredData.length === 0
-              ? <Typing><h6>Add an occasion.</h6></Typing>
+              ? <div>
+                <Typing><h6>Add an occasion.</h6></Typing>
+                <AnimationWrapper><button id="addEvent" onClick={openModal}>Add Event</button></AnimationWrapper>
+                </div>
               : <div className="innerContainer">
                   { filteredData.length === 0
                     ? <Typing><h6 className="header">Event not found!</h6></Typing>
