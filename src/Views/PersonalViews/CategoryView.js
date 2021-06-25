@@ -50,6 +50,23 @@ export default function CategoryView({
               ? <div>
                 <Typing><h6>Add an category.</h6></Typing>
                 <AnimationWrapper><button className="addCategory" onClick={openModal}>Add Category</button></AnimationWrapper>
+                <div>
+                        <Modal
+                          isOpen={modalIsOpen}
+                          onRequestClose={closeModal}
+                          className="Modal"
+                        >
+                          <AnimationWrapper><button className="modalClose" onClick={closeModal}><img src={whiteX}/>Close Form</button></AnimationWrapper>
+                          <div className="formContainer"></div>
+                          <CategoryForm
+                            categoryFormTitle="Add Category"
+                            setCategories={setCategories}
+                            user={user}
+                            categories={categories}
+                            setUser={setUser}
+                          />
+                        </Modal>
+                        </div>
               </div>
               : <div className="innerContainer">
                   { filteredData.length === 0
