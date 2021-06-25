@@ -54,6 +54,20 @@ export default function EventView({
               ? <div>
                 <Typing><h6>Add an occasion.</h6></Typing>
                 <AnimationWrapper><button className="addEvent" onClick={openModal}>Add Event</button></AnimationWrapper>
+                <div className="formContainer">
+                          <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                            className="Modal"
+                          >
+                            <AnimationWrapper><button className="modalClose" onClick={closeModal}><img src={whiteX}/>Close Form</button></AnimationWrapper>
+                            <EventForm
+                              itemFormTitle="Add Event"
+                              setEvents={setEvents}
+                              user={user}
+                            />
+                          </Modal>
+                        </div>
                 </div>
               : <div className="innerContainer">
                   { filteredData.length === 0

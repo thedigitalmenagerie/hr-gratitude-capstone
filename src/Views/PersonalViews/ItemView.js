@@ -57,6 +57,22 @@ export default function ItemView({
               ? <div>
                 <Typing><h6>Add items to your wishlist.</h6></Typing>
                 <AnimationWrapper><button className="addItem" onClick={openModal}>Add Item</button></AnimationWrapper>
+                <div className="formContainer">
+                      <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        className="Modal"
+                      >
+                        <AnimationWrapper><button className="modalClose" onClick={closeModal}><img src={whiteX}/>Close Form</button></AnimationWrapper>
+                        <ItemForm
+                        itemFormTitle="Add Item"
+                        setItems={setItems}
+                        user={user}
+                        setUser={setUser}
+                        categories={categories}
+                        />
+                      </Modal>
+                      </div>
                 </div>
               : <div className="innerContainer">
                   { items.length === 0
