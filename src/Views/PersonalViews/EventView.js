@@ -53,7 +53,7 @@ export default function EventView({
             { filteredData.length === 0
               ? <div>
                 <Typing><h6>Add an occasion.</h6></Typing>
-                <AnimationWrapper><button id="addEvent" onClick={openModal}>Add Event</button></AnimationWrapper>
+                <AnimationWrapper><button className="addEvent" onClick={openModal}>Add Event</button></AnimationWrapper>
                 </div>
               : <div className="innerContainer">
                   { filteredData.length === 0
@@ -64,7 +64,7 @@ export default function EventView({
                           <div className="searchBarContainer">
                           <input type="search" id="search" placeholder="Search" aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
                         </div>
-                        <AnimationWrapper><button id="addEvent" onClick={openModal}>Add Event</button></AnimationWrapper>
+                        <AnimationWrapper><button className="addEvent" onClick={openModal}>Add Event</button></AnimationWrapper>
                         <div className="eventCardContainer">
                         {filteredData?.map((eventInfo) => (
                           <EventCards
