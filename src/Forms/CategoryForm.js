@@ -15,7 +15,6 @@ const CategoryForm = ({
   user,
   friendsOnly,
   setCategories,
-  // setShowAddCategoryForm,
 }) => {
   const [category, setCategory] = useState({
     categoryName: categoryName || '',
@@ -46,7 +45,6 @@ const CategoryForm = ({
       updateCategory(category, uid).then((categoryArray) => setCategories(categoryArray));
     } else {
       addCategory(category, user.uid).then((categoryArray) => setCategories(categoryArray));
-      // setShowAddCategoryForm(false);
 
       setCategory({
         categoryName: '',
@@ -123,7 +121,6 @@ CategoryForm.propTypes = {
   uid: PropTypes.string,
   user: PropTypes.object,
   category: PropTypes.any,
-  // setShowAddCategoryForm: PropTypes.any,
 };
 
 export default CategoryForm;

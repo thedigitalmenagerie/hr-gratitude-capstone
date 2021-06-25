@@ -22,7 +22,6 @@ const SpecificFriendCards = ({
   friendKey,
   isFriend,
   uid,
-  // specificFriends,
   user
 }) => {
   const history = useHistory();

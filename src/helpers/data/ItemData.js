@@ -9,12 +9,6 @@ const getItem = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
-//   axios.get(`${DBURL}/items/${firebaseKey}.json`)
-//     .then((response) => resolve(response.data))
-//     .catch((error) => reject(error));
-// });
-
 const addItem = (items, uid) => new Promise((resolve, reject) => {
   axios.post(`${DBURL}/items.json`, items)
     .then((response) => {

@@ -54,7 +54,10 @@ export default function ItemView({
           </div>
         : <div className="itemView">
             { items.length === 0
-              ? <Typing><h6>Add items to your wishlist.</h6></Typing>
+              ? <div>
+                <Typing><h6>Add items to your wishlist.</h6></Typing>
+                <AnimationWrapper><button id="addItem" onClick={openModal}>Add Item</button></AnimationWrapper>
+                </div>
               : <div className="innerContainer">
                   { items.length === 0
                     ? <Typing><h6 className="">No items found with that name!</h6></Typing>

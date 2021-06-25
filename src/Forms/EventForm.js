@@ -13,7 +13,6 @@ const EventForm = ({
   uid,
   user,
   setEvents,
-  // setShowAddEventForm,
 }) => {
   const [event, setEvent] = useState({
     eventName: eventName || '',
@@ -37,7 +36,6 @@ const EventForm = ({
     } else {
       e.preventDefault();
       addEvent(event, user.uid).then((eventArray) => setEvents(eventArray));
-      // setShowAddEventForm(false);
 
       setEvent({
         eventName: '',
@@ -103,7 +101,6 @@ EventForm.propTypes = {
   friendsOnly: PropTypes.bool,
   uid: PropTypes.string,
   user: PropTypes.any,
-  // setShowAddEventForm: PropTypes.func
 };
 
 export default EventForm;
