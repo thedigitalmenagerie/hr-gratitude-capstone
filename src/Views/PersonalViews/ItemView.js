@@ -56,7 +56,7 @@ export default function ItemView({
             { items.length === 0
               ? <div>
                 <Typing><h6>Add items to your wishlist.</h6></Typing>
-                <AnimationWrapper><button id="addItem" onClick={openModal}>Add Item</button></AnimationWrapper>
+                <AnimationWrapper><button className="addItem" onClick={openModal}>Add Item</button></AnimationWrapper>
                 </div>
               : <div className="innerContainer">
                   { items.length === 0
@@ -65,7 +65,7 @@ export default function ItemView({
                         <div className="searchContainer">
                         <Typing><h1 className="">Your Items</h1></Typing>
                         <input type="search" id="itemSearch" placeholder="Search" aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
-                          <AnimationWrapper><button id="addItem" onClick={openModal}>Add Item</button></AnimationWrapper>
+                          <AnimationWrapper><button className="addItem" onClick={openModal}>Add Item</button></AnimationWrapper>
                           </div>
                           <div className="cardContainer">
                             {filteredData?.map((itemInfo) => (

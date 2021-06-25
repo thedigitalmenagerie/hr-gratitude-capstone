@@ -49,9 +49,8 @@ export default function CategoryView({
             { filteredData.length === 0
               ? <div>
                 <Typing><h6>Add an category.</h6></Typing>
-                <AnimationWrapper><button id="addCategory" onClick={openModal}>Add Category</button></AnimationWrapper>
+                <AnimationWrapper><button className="addCategory" onClick={openModal}>Add Category</button></AnimationWrapper>
               </div>
-
               : <div className="innerContainer">
                   { filteredData.length === 0
                     ? <Typing><h6 className="header">Category not found!</h6></Typing>
@@ -59,7 +58,7 @@ export default function CategoryView({
                         <div className="searchContainer">
                         <Typing><h1 className="header">Your Categories</h1></Typing>
                           <input type="search" id="categorySearch" placeholder="Search" aria-describedby="button-addon" className="form-control" onChange={(e) => setSearch(e.target.value)}/>
-                          <AnimationWrapper><button id="addCategory" onClick={openModal}>Add Category</button></AnimationWrapper>
+                          <AnimationWrapper><button className="addCategory" onClick={openModal}>Add Category</button></AnimationWrapper>
                         </div>
                         <div className="cardContainer">
                           {filteredData.map((categoryInfo) => (
